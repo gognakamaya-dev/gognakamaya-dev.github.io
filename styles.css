@@ -482,6 +482,119 @@ body {
     color: var(--primary);
 }
 
+/* Projects Section */
+.projects {
+    padding: 80px 20px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 212, 255, 0.05) 100%);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: rgba(131, 56, 236, 0.05);
+    border: 2px solid var(--accent);
+    padding: 30px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    box-shadow: 0 15px 40px rgba(131, 56, 236, 0.2);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 15px;
+    gap: 15px;
+}
+
+.project-header h3 {
+    color: var(--text-light);
+    font-size: 1.2rem;
+    flex: 1;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    border: 1px solid var(--primary);
+    padding: 5px 10px;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+
+.project-link:hover {
+    background: var(--primary);
+    color: var(--dark);
+}
+
+.project-badge {
+    display: inline-block;
+    background: var(--secondary);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.project-description {
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.project-tag {
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid var(--primary);
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.project-tag:hover {
+    background: var(--primary);
+    color: var(--dark);
+}
+
 /* Skills Section */
 .skills {
     padding: 80px 20px;
@@ -712,6 +825,10 @@ body {
     }
 
     .experience-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-grid {
         grid-template-columns: 1fr;
     }
 
