@@ -1,0 +1,17 @@
+{% assign essays = site.essays | sort: "date" | reverse %}
+{% if include.limit %}{% assign essays = essays | slice: 0, include.limit %}{% endif %}
+{% if essays.size > 0 %}
+<ol class="essay-list">
+  {% for essay in essays %}
+  <li>
+    <time datetime="{{ essay.date | date: '%Y-%m-%d' }}">{{ essay.date | date: "%b %Y" }}</time>
+    <div>
+      <a href="{{ essay.url | relative_url }}">{{ essay.title }}</a>{% if essay.published == false %} <span class="draft">draft</span>{% endif %}
+      {% if essay.dek %}<p>{{ essay.dek }}</p>{% endif %}
+    </div>
+  </li>
+  {% endfor %}
+</ol>
+{% else %}
+<p class="empty">The first essay is still on the workbench.</p>
+{% endif %}

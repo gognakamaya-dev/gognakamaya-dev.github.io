@@ -1,0 +1,25 @@
+---
+layout: default
+section: essays
+---
+{% assign words = content | number_of_words %}
+{% assign minutes = words | divided_by: 220 | at_least: 1 %}
+<article class="essay">
+  <header class="essay-head">
+    <p class="essay-meta">
+      <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%-d %B %Y" }}</time>
+      <span class="sep" aria-hidden="true">/</span>
+      {{ minutes }} min read
+    </p>
+    <h1>{{ page.title }}</h1>
+    {% if page.dek %}<p class="dek">{{ page.dek }}</p>{% endif %}
+  </header>
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  <footer class="essay-foot">
+    <a href="{{ '/essays/' | relative_url }}">All essays</a>
+  </footer>
+</article>

@@ -1,0 +1,55 @@
+# ─────────────────────────────────────────────
+#  Site settings. Edit these, then push.
+# ─────────────────────────────────────────────
+title: Kamaya Gogna
+description: Engineer in Dublin. Essays, a bookshelf, and the things I've built.
+author: Kamaya Gogna
+url: "https://gognakamaya-dev.github.io"
+baseurl: ""
+
+# Leave blank to hide. Fill in to show in the footer.
+email: ""
+github: gognakamaya-dev
+linkedin: kamaya-gogna
+
+# ─────────────────────────────────────────────
+#  You shouldn't need to touch anything below.
+# ─────────────────────────────────────────────
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  footnote_backlink: "↩︎"
+
+collections:
+  essays:
+    output: true
+    permalink: /essays/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: essays
+    values:
+      layout: essay
+  - scope:
+      path: ""
+    values:
+      layout: page
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+feed:
+  collections:
+    essays:
+      path: /feed.xml
+
+exclude:
+  - README.md
+  - WRITING-GUIDE.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

@@ -1,0 +1,29 @@
+{% comment %}
+  Renders books as spines on a shelf.
+  include.status: only show books with this status (optional)
+  include.id: unique id for this shelf
+{% endcomment %}
+{% if include.status %}
+  {% assign books = site.data.books | where: "status", include.status %}
+{% else %}
+  {% assign books = site.data.books %}
+{% endif %}
+<div class="shelf" data-shelf>
+  <div class="spines" role="list">
+    {% for book in books %}
+    {% assign pages = book.pages | default: 300 %}
+    {% assign h = pages | divided_by: 5 | plus: 170 | at_most: 264 | at_least: 200 %}
+    {% assign w = pages | divided_by: 14 | plus: 20 | at_most: 58 | at_least: 30 %}
+    <button class="spine{% if book.text == 'dark' %} spine-dark{% endif %}" type="button" role="listitem"
+      style="--c: {{ book.color | default: '#38503f' }}; --h: {{ h }}px; --w: {{ w }}px"
+      aria-expanded="false" aria-controls="{{ include.id }}-detail"
+      data-title="{{ book.title | escape }}" data-author="{{ book.author | escape }}"
+      data-note="{{ book.note | escape }}" data-status="{{ book.status }}" data-year="{{ book.year }}">
+      <span class="spine-title">{{ book.title }}</span>
+      <span class="spine-author">{{ book.author | split: " " | last }}</span>
+    </button>
+    {% endfor %}
+  </div>
+  <div class="plank" aria-hidden="true"></div>
+  <div class="shelf-detail" id="{{ include.id }}-detail" aria-live="polite" hidden></div>
+</div>

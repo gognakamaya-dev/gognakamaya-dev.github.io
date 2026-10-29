@@ -1,0 +1,68 @@
+# ─────────────────────────────────────────────
+#  Everything on the Work page. Add, remove or reorder freely.
+# ─────────────────────────────────────────────
+
+experience:
+  - when: "2026"
+    role: Engineering intern
+    org: Anaula
+    what: Built the central control for the main photobioreactor so it draws algae on its own. Wrote the sensor control loops that watch the culture, and owned all the electronics.
+    tools: STM32, embedded C, sensor integration
+
+  - when: "2025"
+    role: Cohort member
+    org: Patch
+    what: Two-month summer accelerator. Built ScopeLab, an all-in-one diagnostic board for debugging robots during testing, and presented it to 300+ founders and builders.
+    tools: Robotics diagnostics, pitching
+
+  - when: "2024"
+    role: Engineering intern
+    org: Akara Robotics
+    what: Designed a custom PCB and LED control system for their sanitation robot. It now ships in the commercial robot deployed in hospitals across the US, UK and Ireland.
+    tools: KiCad, LED systems
+
+  - when: "2024–now"
+    role: Mentor
+    org: CoderDojo Malahide
+    what: Teaching Scratch and Python to young builders, and running robotics competitions for 20+ students.
+    tools: Python, Scratch, robotics
+
+projects:
+  - name: ScopeLab
+    context: Patch accelerator
+    what: A diagnostic board that plugs into a robot under test and logs, monitors and analyses its sensors in real time.
+
+  - name: Low-cost intraoral scanner
+    context: Fiacla
+    what: An affordable dental imaging scanner, with custom optics and mechanics and a 3D reconstruction pipeline.
+
+  - name: Dental ML platform
+    context: Fiacla
+    what: Computer vision for dental images, covering tooth classification and anomaly detection, built to slot into clinical workflows.
+
+  - name: AccelLab
+    context: Personal
+    link: https://github.com/gognakamaya-dev/AccelLab
+    what: A 3D particle accelerator visualiser with torus geometry and simulated trajectories, in NumPy and Matplotlib.
+
+  - name: Solar storm prediction
+    context: BTYSTE Bootcamp
+    what: As CTO, built a model that forecasts solar storms from Parker spiral diagrams and historical solar wind data.
+
+  - name: A camera on the ISS
+    context: Mission Space Lab
+    what: Selected to run a Raspberry Pi camera experiment on the International Space Station and collect our own Earth observation data.
+
+awards:
+  - "BT Young Scientist & Technology Exhibition: three-time winner, including first in Intermediate Individual Technology and the Stripe Software Award (2024), and second in Junior Technology (2022)"
+  - "BTYSTE Bootcamp: one of 30 projects picked from 550+"
+  - "SciFest: four-time winner and twice a national finalist"
+  - "ESKOM International Science Expo: represented Ireland, second place in Computer Science"
+  - "QxQ 2024 quantum computing scholar"
+  - "Trinity Access Academic Award"
+  - "Fujitsu World of Work: one of 30 selected"
+
+skills:
+  Hardware: KiCad PCB design, STM32, ESP32, Arduino, Raspberry Pi, sensor integration
+  Software: Python, C, JavaScript, MicroPython, Modbus/RS485, web
+  Also: machine learning, computer vision, photogrammetry, 3D modelling
