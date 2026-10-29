@@ -56,3 +56,22 @@ The board is drawn by `_tools/board.py`. To add a chip or rename one, edit the l
 ## Settings
 
 `_config.yml` holds your name, description, and links. Add your email there to show it in the footer.
+
+## Add travel photos
+
+1. Upload your photos to `assets/img/travel/` (on GitHub: open the folder, then **Add file → Upload files**). Photos straight off a phone are huge, so shrink them to about 2000px wide first if you can.
+2. Open `_data/travel.yml`, delete the `[]` line, and add a trip:
+
+   ```
+   - place: San Francisco
+     country: USA
+     when: October 2026
+     coords: 37.77° N, 122.42° W   # optional
+     note: A line about the trip.  # optional
+     photos:
+       - file: golden-gate.jpg
+         caption: Fog eating the bridge.   # optional
+       - file: mission-mural.jpg
+   ```
+
+Put the newest trip at the top. Each photo becomes a postcard; clicking it opens it full size.

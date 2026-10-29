@@ -1,0 +1,15 @@
+# ─────────────────────────────────────────────
+#  Travel gallery. One entry per trip, newest first.
+#  Put photos in assets/img/travel/ and list them under the trip.
+#
+#  - place: San Francisco
+#    country: USA
+#    when: October 2026
+#    coords: 37.77° N, 122.42° W      # optional, printed like a silkscreen label
+#    note: A line about the trip.     # optional
+#    photos:
+#      - file: sf-golden-gate.jpg
+#        caption: Fog eating the Golden Gate.   # optional
+# ─────────────────────────────────────────────
+
+[]

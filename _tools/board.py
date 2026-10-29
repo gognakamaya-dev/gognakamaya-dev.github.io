@@ -245,9 +245,9 @@ def wide():
 
     # connectors = navigation
     for ref, label, cx, href in [("J1", "ESSAYS", 180, "/essays/"), ("J2", "BOOKSHELF", 340, "/bookshelf/"),
-                                 ("J3", "WORK", 500, "/work/")]:
+                                 ("J3", "WORK", 500, "/work/"), ("J4", "TRAVEL", 660, "/travel/")]:
         b.usbc(ref, label, cx, 740, href, w=104)
-    b.header("J4", "GITHUB", 120, 616, "https://github.com/gognakamaya-dev", n=3)
+    b.header("J5", "GITHUB", 120, 616, "https://github.com/gognakamaya-dev", n=3)
 
     for ref, x, y, v in [("C1", 818, 278, False), ("C2", 962, 278, False), ("R1", 980, 470, True),
                          ("R2", 800, 470, True), ("C3", 760, 300, True)]:
@@ -299,9 +299,9 @@ def tall():
             b.trace([prev, din], "leds", width=3)
         prev = dout
 
-    for ref, label, cx, href in [("J1", "ESSAYS", 80, "/essays/"), ("J2", "BOOKS", 210, "/bookshelf/"),
-                                 ("J3", "WORK", 340, "/work/")]:
-        b.usbc(ref, label, cx, 1240, href, w=84)
+    for ref, label, cx, href in [("J1", "ESSAYS", 64, "/essays/"), ("J2", "BOOKS", 162, "/bookshelf/"),
+                                 ("J3", "WORK", 260, "/work/"), ("J4", "TRAVEL", 358, "/travel/")]:
+        b.usbc(ref, label, cx, 1240, href, w=72)
     return b.svg("A circuit board with my name on it. Each chip is a project, each connector is a page.", "tall")
 
 

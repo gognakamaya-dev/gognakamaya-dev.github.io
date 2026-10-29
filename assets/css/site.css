@@ -488,6 +488,48 @@ a:hover { color: var(--foil); }
 .essay-foot { margin-top: 4rem; text-align: center; font-style: italic; }
 .essay-foot .ornament { margin-bottom: 1.5rem; }
 
+/* ── Travel: postcards ──────────────────────────────────────── */
+
+.trip { margin-top: 4.5rem; scroll-margin-top: 1.5rem; }
+.trip:first-of-type { margin-top: 0; }
+.trip-head { text-align: center; margin-bottom: 2.2rem; }
+.trip-head .chapter { margin-bottom: 0.6rem; }
+.trip-head .chapter::after { display: none; }
+.trip-country { color: var(--ink-soft); }
+.trip-meta { margin: 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 0.4rem 1.4rem; font-variant: small-caps; letter-spacing: 0.05em; color: var(--ink-soft); }
+.trip-meta .coords { font-family: var(--mono); font-variant: normal; font-size: 0.72rem; letter-spacing: 0.06em; color: var(--foil); padding-top: 0.2rem; }
+.trip-note { margin: 0.8rem auto 0; max-width: 34rem; font-style: italic; }
+
+.plates { columns: 3 15rem; column-gap: 1.6rem; }
+.postcard {
+  break-inside: avoid;
+  margin: 0 0 1.8rem;
+  padding: 10px 10px 0;
+  background: #fbf8f1;
+  border: 1px solid var(--rule);
+  box-shadow: 0 14px 22px -16px rgba(30, 25, 10, 0.55), 0 1px 2px rgba(30, 25, 10, 0.12);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 200ms ease;
+}
+.postcard:nth-child(3n+1) { --tilt: -0.8deg; }
+.postcard:nth-child(3n+2) { --tilt: 0.6deg; }
+.postcard:nth-child(4n) { --tilt: -0.3deg; }
+.postcard:hover { transform: rotate(0deg) translateY(-3px); }
+.postcard-open { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.postcard img { display: block; width: 100%; height: auto; }
+.postcard figcaption { padding: 0.55rem 0.2rem 0.75rem; font-style: italic; font-size: 0.95rem; line-height: 1.4; color: var(--ink-soft); }
+.postcard:not(:has(figcaption)) { padding-bottom: 10px; }
+
+.lightbox { max-width: min(92vw, 1100px); max-height: 92vh; padding: 14px 14px 0; border: 0; background: #fbf8f1; box-shadow: 0 30px 60px rgba(0,0,0,.5); }
+.lightbox::backdrop { background: rgba(10, 30, 22, 0.88); }
+.lightbox figure { margin: 0; }
+.lightbox img { display: block; max-width: 100%; max-height: calc(92vh - 90px); margin: 0 auto; }
+.lightbox figcaption { padding: 0.7rem 0.2rem 0.9rem; font-style: italic; color: var(--ink-soft); }
+.lightbox-close { position: absolute; top: 10px; right: 10px; padding: 0.35rem 0.7rem; border: 0; border-radius: 3px; background: var(--mask); color: var(--silk); font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.05em; cursor: pointer; }
+.lightbox-close:hover { color: var(--cu); }
+
+@media (prefers-reduced-motion: reduce) { .postcard { transform: none; transition: none; } }
+
 /* ── Small screens ──────────────────────────────────────────── */
 
 @media (max-width: 640px) {
@@ -506,3 +548,4 @@ a:hover { color: var(--foil); }
   .spine { transition: none; }
   .spine:hover, .spine[aria-expanded="true"] { transform: none; outline: 2px solid var(--cu); }
 }
+.board.tall .conn-label { font-size: 11px; letter-spacing: 0.04em; }

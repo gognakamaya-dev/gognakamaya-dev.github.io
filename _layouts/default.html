@@ -23,6 +23,7 @@
         <a href="{{ '/essays/' | relative_url }}" {% if page.section == 'essays' %}aria-current="page"{% endif %}>Essays</a>
         <a href="{{ '/bookshelf/' | relative_url }}" {% if page.section == 'bookshelf' %}aria-current="page"{% endif %}>Bookshelf</a>
         <a href="{{ '/work/' | relative_url }}" {% if page.section == 'work' %}aria-current="page"{% endif %}>Work</a>
+        <a href="{{ '/travel/' | relative_url }}" {% if page.section == 'travel' %}aria-current="page"{% endif %}>Travel</a>
       </nav>
     </div>
   </header>
@@ -38,6 +39,7 @@
         <a href="{{ '/essays/' | relative_url }}">Essays</a>
         <a href="{{ '/bookshelf/' | relative_url }}">Bookshelf</a>
         <a href="{{ '/work/' | relative_url }}">Work</a>
+        <a href="{{ '/travel/' | relative_url }}">Travel</a>
         <a href="https://github.com/{{ site.github }}">GitHub</a>
         <a href="https://www.linkedin.com/in/{{ site.linkedin }}">LinkedIn</a>
         {% if site.email != "" %}<a href="mailto:{{ site.email }}">Email</a>{% endif %}

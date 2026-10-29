@@ -1,0 +1,48 @@
+---
+title: Travel
+section: travel
+---
+<section class="book wide-book">
+  <header class="page-head">
+    <h1>Travel</h1>
+    <p>Places I've been, and the photos I took there. Click any photo to see it bigger.</p>
+  </header>
+
+  {% assign trips = site.data.travel %}
+  {% if trips and trips.size > 0 %}
+    {% for trip in trips %}
+    <section class="trip" id="{{ trip.place | slugify }}">
+      <header class="trip-head">
+        <h2 class="chapter">{{ trip.place }}{% if trip.country %}<span class="trip-country">, {{ trip.country }}</span>{% endif %}</h2>
+        <p class="trip-meta">
+          {% if trip.when %}<span>{{ trip.when }}</span>{% endif %}
+          {% if trip.coords %}<span class="coords">{{ trip.coords }}</span>{% endif %}
+        </p>
+        {% if trip.note %}<p class="trip-note">{{ trip.note }}</p>{% endif %}
+      </header>
+      <div class="plates">
+        {% for photo in trip.photos %}
+        {% capture src %}{{ '/assets/img/travel/' | append: photo.file | relative_url }}{% endcapture %}
+        <figure class="postcard">
+          <button type="button" class="postcard-open" data-src="{{ src }}" data-caption="{{ photo.caption | escape }}" data-place="{{ trip.place | escape }}">
+            <img src="{{ src }}" alt="{{ photo.caption | default: trip.place | escape }}" loading="lazy">
+          </button>
+          {% if photo.caption %}<figcaption>{{ photo.caption }}</figcaption>{% endif %}
+        </figure>
+        {% endfor %}
+      </div>
+    </section>
+    {% endfor %}
+  {% else %}
+    <p class="empty">The first photos are still being developed.</p>
+  {% endif %}
+</section>
+
+<dialog class="lightbox" aria-label="Photo">
+  <figure>
+    <img alt="">
+    <figcaption></figcaption>
+  </figure>
+  <button type="button" class="lightbox-close" aria-label="Close">Close</button>
+</dialog>
+<script src="{{ '/assets/js/travel.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
