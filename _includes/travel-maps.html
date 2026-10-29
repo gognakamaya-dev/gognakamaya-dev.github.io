@@ -7,11 +7,14 @@
 {% assign countries = site.data.travel %}
 <style>
   {% for c in countries %}.atlas .land [data-c~="{{ c.country | slugify }}"]{% unless forloop.last %},{% endunless %}{% endfor %} {
-    fill: var(--cu-dim); stroke: #6e5523;
+    fill: var(--cu-dim); stroke: #6e5523; cursor: pointer;
+  }
+  {% for c in countries %}.atlas .land [data-c~="{{ c.country | slugify }}"]:hover{% unless forloop.last %},{% endunless %}{% endfor %} {
+    fill: var(--cu);
   }
 </style>
 
-<figure class="atlas atlas-world">
+<figure class="atlas atlas-world" data-atlas>
   <svg viewBox="0 0 1129 337" role="img" aria-label="World map with the countries I've visited plated in gold">
     <defs><clipPath id="clip-world"><rect x="10" y="10" width="1109" height="317" rx="14"/></clipPath></defs>
     <rect class="ocean" x="10" y="10" width="1109" height="317" rx="14"/>
@@ -21,7 +24,7 @@
       {% for p in c.places %}{% if p.lat %}
         {% assign x = p.lon | minus: -130 | times: 4.5 | plus: 20 | round: 1 %}
         {% assign y = 66 | minus: p.lat | times: 4.5 | plus: 20 | round: 1 %}
-        <a class="pin{% if p.note == 'home' %} home{% endif %}" href="#{{ c.country | slugify }}">
+        <a class="pin{% if p.note == 'home' %} home{% endif %}" href="#{{ c.country | slugify }}" data-c="{{ c.country | slugify }}" data-place="{{ p.name | escape }}">
           <title>{{ p.name }}, {{ c.country }}</title>
           <circle cx="{{ x }}" cy="{{ y }}" r="{% if p.note == 'home' %}6{% else %}3.2{% endif %}"/>
         </a>
@@ -31,11 +34,11 @@
         {% endif %}{% endif %}
       {% endif %}{% endfor %}{% endfor %}
     </g>
-    <text class="map-silk" x="30" y="318">MAP-01 · WORLD</text>
+    <text class="map-silk" x="30" y="318">MAP-01 · WORLD · CLICK A GOLD COUNTRY</text>
   </svg>
 </figure>
 
-<figure class="atlas atlas-europe">
+<figure class="atlas atlas-europe" data-atlas>
   <svg viewBox="0 0 780 835" role="img" aria-label="Map of Europe with every place I've been marked">
     <defs><clipPath id="clip-europe"><rect x="10" y="10" width="760" height="815" rx="14"/></clipPath></defs>
     <rect class="ocean" x="10" y="10" width="760" height="815" rx="14"/>
@@ -45,7 +48,7 @@
       {% if p.lon > -11 and p.lon < 26 and p.lat > 35 and p.lat < 61.5 %}
         {% assign x = p.lon | minus: -11 | times: 20 | plus: 20 | round: 1 %}
         {% assign y = 61.5 | minus: p.lat | times: 30 | plus: 20 | round: 1 %}
-        <a class="pin{% if p.note == 'home' %} home{% endif %}" href="#{{ c.country | slugify }}">
+        <a class="pin{% if p.note == 'home' %} home{% endif %}" href="#{{ c.country | slugify }}" data-c="{{ c.country | slugify }}" data-place="{{ p.name | escape }}">
           <title>{{ p.name }}, {{ c.country }}</title>
           <circle cx="{{ x }}" cy="{{ y }}" r="{% if p.note == 'home' %}9{% else %}5{% endif %}"/>
           <text class="pin-label" x="{{ x | plus: 10 }}" y="{{ y | plus: 4 }}">{{ p.name }}</text>
@@ -54,6 +57,10 @@
       {% endif %}
       {% endif %}{% endfor %}{% endfor %}
     </g>
-    <text class="map-silk" x="30" y="808">MAP-02 · EUROPE · HOVER OR TAP A PIN</text>
+    <text class="map-silk" x="30" y="808">MAP-02 · EUROPE · CLICK A COUNTRY OR A PIN</text>
   </svg>
 </figure>
+
+<script type="application/json" id="travel-data">
+[{% for c in countries %}{"slug": {{ c.country | slugify | jsonify }}, "country": {{ c.country | jsonify }}, "places": [{% for p in c.places %}{"name": {{ p.name | jsonify }}, "visits": {{ p.visits | default: 1 }}, "note": {{ p.note | default: "" | jsonify }}, "photos": [{% for ph in p.photos %}{{ '/assets/img/travel/' | append: ph.file | relative_url | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}]}{% unless forloop.last %},{% endunless %}{% endfor %}]}{% unless forloop.last %},{% endunless %}{% endfor %}]
+</script>
