@@ -2,44 +2,40 @@
 title: Bookshelf
 section: bookshelf
 ---
-<header class="page-head">
-  <h1>Bookshelf</h1>
-  <p>What I'm reading, what I've read, and what's next. Pick a spine for my notes.</p>
-</header>
+<section class="book wide-book">
+  <header class="page-head">
+    <h1>Bookshelf</h1>
+    <p>What I'm reading, what I've read, and what's next. Mostly classic novels, with some engineering sneaking in. Pick a spine for my notes.</p>
+  </header>
 
-{% assign reading = site.data.books | where: "status", "reading" %}
-{% assign read = site.data.books | where: "status", "read" %}
-{% assign upnext = site.data.books | where: "status", "next" %}
+  {% assign reading = site.data.books | where: "status", "reading" %}
+  {% assign read = site.data.books | where: "status", "read" %}
+  {% assign upnext = site.data.books | where: "status", "next" %}
 
-{% if reading.size > 0 %}
-<section class="block">
-  <h2>Reading now</h2>
+  {% if reading.size > 0 %}
+  <h2 class="shelf-label">Reading now</h2>
   {% include shelf.html id="shelf-reading" status="reading" %}
-</section>
-{% endif %}
+  {% endif %}
 
-{% if read.size > 0 %}
-<section class="block">
-  <h2>Read</h2>
+  {% if read.size > 0 %}
+  <h2 class="shelf-label">Read</h2>
   {% include shelf.html id="shelf-read" status="read" %}
-</section>
-{% endif %}
+  {% endif %}
 
-{% if upnext.size > 0 %}
-<section class="block">
-  <h2>Up next</h2>
+  {% if upnext.size > 0 %}
+  <h2 class="shelf-label">Up next</h2>
   {% include shelf.html id="shelf-next" status="next" %}
+  {% endif %}
 </section>
-{% endif %}
 
-<section class="block">
-  <h2>The list</h2>
+<section class="book">
+  <h2 class="chapter">The list</h2>
   <ul class="book-list">
     {% for book in site.data.books %}
     <li>
-      <span class="swatch" style="--c: {{ book.color | default: '#38503f' }}" aria-hidden="true"></span>
+      <span class="swatch" style="--c: {{ book.color | default: '#0f3d2c' }}" aria-hidden="true"></span>
       <div>
-        <p class="book-line"><cite>{{ book.title }}</cite> by {{ book.author }}{% if book.status == "reading" %} <span class="status">reading now</span>{% elsif book.status == "next" %} <span class="status">up next</span>{% elsif book.year %} <span class="status">{{ book.year }}</span>{% endif %}</p>
+        <p class="book-line"><cite>{{ book.title }}</cite> by {{ book.author }}{% if book.status == "reading" %}<span class="status">reading now</span>{% elsif book.status == "next" %}<span class="status">up next</span>{% elsif book.year %}<span class="status">{{ book.year }}</span>{% endif %}</p>
         {% if book.note and book.note != "" %}<p class="book-note">{{ book.note }}</p>{% endif %}
       </div>
     </li>

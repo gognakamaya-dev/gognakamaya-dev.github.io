@@ -2,52 +2,32 @@
 title: Work
 section: work
 ---
-<header class="page-head">
-  <h1>Work</h1>
-  <p>Where I've worked, what I've built, and a few prizes along the way.</p>
-</header>
+<section class="book wide-book">
+  <header class="page-head">
+    <h1>Work</h1>
+    <p>Every chip on the home page, with its datasheet. Where I've worked, what I've built, and a few prizes along the way.</p>
+  </header>
 
-<section class="block">
-  <h2>Experience</h2>
-  <ol class="timeline">
-    {% for job in site.data.work.experience %}
-    <li>
-      <span class="when">{{ job.when }}</span>
-      <div>
-        <h3>{{ job.role }}, {{ job.org }}</h3>
-        <p>{{ job.what }}</p>
-        {% if job.tools %}<p class="tools">{{ job.tools }}</p>{% endif %}
-      </div>
-    </li>
-    {% endfor %}
-  </ol>
+  <h2 class="chapter">Experience</h2>
+  {% for d in site.data.work.experience %}{% include datasheet.html d=d %}{% endfor %}
+
+  <h2 class="chapter">Projects</h2>
+  {% for d in site.data.work.projects %}{% include datasheet.html d=d %}{% endfor %}
 </section>
 
-<section class="block">
-  <h2>Projects</h2>
-  <ul class="built">
-    {% for p in site.data.work.projects %}
-    <li>
-      <h3>{% if p.link %}<a href="{{ p.link }}">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}</h3>
-      <p class="context">{{ p.context }}</p>
-      <p>{{ p.what }}</p>
-    </li>
-    {% endfor %}
-  </ul>
-</section>
-
-<section class="block">
-  <h2>Awards</h2>
+<section class="book">
+  <h2 class="chapter">Prizes</h2>
   <ul class="awards">
     {% for a in site.data.work.awards %}<li>{{ a }}</li>{% endfor %}
   </ul>
-</section>
 
-<section class="block">
-  <h2>Toolkit</h2>
+  <h2 class="chapter">Education</h2>
   <dl class="toolkit">
-    {% for s in site.data.work.skills %}
-    <dt>{{ s[0] }}</dt><dd>{{ s[1] }}</dd>
-    {% endfor %}
+    {% for e in site.data.work.education %}<dt>{{ e.where }}</dt><dd>{{ e.what }}</dd>{% endfor %}
+  </dl>
+
+  <h2 class="chapter">Toolkit</h2>
+  <dl class="toolkit">
+    {% for s in site.data.work.skills %}<dt>{{ s[0] }}</dt><dd>{{ s[1] }}</dd>{% endfor %}
   </dl>
 </section>

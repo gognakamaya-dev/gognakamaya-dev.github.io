@@ -1,5 +1,5 @@
 {% comment %}
-  Renders books as spines on a shelf.
+  Renders books as cloth-bound spines on a shelf.
   include.status: only show books with this status (optional)
   include.id: unique id for this shelf
 {% endcomment %}
@@ -12,10 +12,10 @@
   <div class="spines" role="list">
     {% for book in books %}
     {% assign pages = book.pages | default: 300 %}
-    {% assign h = pages | divided_by: 5 | plus: 170 | at_most: 264 | at_least: 200 %}
-    {% assign w = pages | divided_by: 14 | plus: 20 | at_most: 58 | at_least: 30 %}
-    <button class="spine{% if book.text == 'dark' %} spine-dark{% endif %}" type="button" role="listitem"
-      style="--c: {{ book.color | default: '#38503f' }}; --h: {{ h }}px; --w: {{ w }}px"
+    {% assign h = pages | divided_by: 6 | plus: 170 | at_most: 290 | at_least: 210 %}
+    {% assign w = pages | divided_by: 16 | plus: 22 | at_most: 64 | at_least: 34 %}
+    <button class="spine" type="button" role="listitem"
+      style="--c: {{ book.color | default: '#0f3d2c' }}; --h: {{ h }}px; --w: {{ w }}px"
       aria-expanded="false" aria-controls="{{ include.id }}-detail"
       data-title="{{ book.title | escape }}" data-author="{{ book.author | escape }}"
       data-note="{{ book.note | escape }}" data-status="{{ book.status }}" data-year="{{ book.year }}">

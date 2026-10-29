@@ -1,0 +1,25 @@
+{% assign d = include.d %}
+<article class="datasheet{% if d.image %} has-image{% endif %}" id="{{ d.slug }}">
+  <header class="ds-head">
+    <span class="ds-ref">{{ d.ref }}</span>
+    <h3>{% if d.org %}{{ d.org }}{% else %}{{ d.name }}{% endif %}</h3>
+    {% if d.when %}<span class="ds-when">{{ d.when }}</span>{% endif %}
+  </header>
+  <div class="ds-body">
+    {% if d.image %}
+    <figure class="ds-fig"><img src="{{ '/assets/img/' | append: d.image | relative_url }}" alt="{{ d.alt }}" loading="lazy"></figure>
+    {% endif %}
+    <div class="ds-text">
+      {% if d.role %}<p class="ds-role">{{ d.role }}</p>{% endif %}
+      {{ d.what | markdownify }}
+      {% if d.specs %}
+      <table class="specs">
+        <tbody>
+          {% for s in d.specs %}<tr><th scope="row">{{ s[0] }}</th><td>{{ s[1] }}</td></tr>{% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+      {% if d.link %}<p class="ds-link"><a href="{{ d.link }}">See the code</a></p>{% endif %}
+    </div>
+  </div>
+</article>

@@ -17,7 +17,7 @@ Everything is plain text files. Edit them on github.com (press `.` in the repo t
 
 3. Write underneath in Markdown. `_essays/2026-10-29-example-essay.md` shows every trick: subheadings, quotes, footnotes, images, code.
 
-**Red-pen margin notes.** Put a short aside inside a paragraph like this:
+**Margin notes.** Put a short aside inside a paragraph like this:
 
 ```
 The board worked first time.<span class="margin-note">It did not.</span>
@@ -39,8 +39,7 @@ Open `_data/books.yml` and add an entry:
   status: read          # reading, read or next
   year: 2026            # when you read it
   pages: 368            # makes the spine the right thickness
-  color: "#c44d2f"      # spine colour
-  text: dark            # only if the colour is light
+  color: "#5a1f1f"      # cloth colour of the spine (darker colours suit the gold lettering)
   note: One or two lines on why it stuck.
 ```
 
@@ -48,7 +47,11 @@ The order in the file is the order on the shelf. **The six books in there now ar
 
 ## Update your work
 
-Experience, projects, awards and skills are all in `_data/work.yml`. The first four projects also appear on the home page.
+Experience, projects, prizes, education and skills are all in `_data/work.yml`. Each entry becomes a "datasheet" on the Work page; photos go in `assets/img/`.
+
+## The circuit board on the home page
+
+The board is drawn by `_tools/board.py`. To add a chip or rename one, edit the lists in that file and run `python3 _tools/board.py`; it rewrites `_includes/board-wide.svg` (laptops) and `_includes/board-tall.svg` (phones). Each chip links to `/work/#slug`, so keep the slug matching the entry in `_data/work.yml`.
 
 ## Settings
 

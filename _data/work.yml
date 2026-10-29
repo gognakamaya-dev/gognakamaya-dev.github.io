@@ -1,57 +1,138 @@
 # ─────────────────────────────────────────────
 #  Everything on the Work page. Add, remove or reorder freely.
+#  ref:   the part number shown on the datasheet (U1, U2, M1 …)
+#  image: a file in assets/img/ (optional)
+#  specs: short facts shown as a spec table (optional)
 # ─────────────────────────────────────────────
 
 experience:
-  - when: "2026"
+  - slug: anaula
+    ref: U3
+    when: Jun – Aug 2026
     role: Engineering intern
     org: Anaula
-    what: Built the central control for the main photobioreactor so it draws algae on its own. Wrote the sensor control loops that watch the culture, and owned all the electronics.
-    tools: STM32, embedded C, sensor integration
+    image: anaula-bench.jpg
+    alt: A workbench covered in sensors, wiring, a bench power supply and a laptop
+    what: |
+      My first time in a truly early-stage startup. In a five-person team, I owned most of the electronics and embedded systems for our photobioreactor platform, and built the central control that draws algae on its own.
 
-  - when: "2025"
+      There was no existing electronics system to work from, so I had to figure out how the sensors, actuators and control loops fit together, prototype it, test it, and iterate when it didn't work. I integrated temperature, pH, turbidity, dissolved oxygen and optical sensors, drove the LEDs, motors, pumps, valves and heating, and wrote the calibration and test procedures for the sensors.
+    specs:
+      Platform: STM32, embedded C
+      Sensors: temperature, pH, turbidity, dissolved O₂, optical
+      Actuators: LEDs, motors, pumps, valves, heating
+      Team: five people, I owned the electronics
+
+  - slug: patch
+    ref: U4
+    when: Jul – Aug 2025
     role: Cohort member
     org: Patch
-    what: Two-month summer accelerator. Built ScopeLab, an all-in-one diagnostic board for debugging robots during testing, and presented it to 300+ founders and builders.
-    tools: Robotics diagnostics, pitching
+    image: scopelab-pcb.jpg
+    alt: Front of the green ScopeLab analyser circuit board
+    what: |
+      A two-month summer accelerator for young builders at Dogpatch Labs. I built ScopeLab, a wireless debugging tool for robots. Logic analysers need heavy wiring and keep a robot tethered to the bench; ScopeLab streams I²C and UART traffic over Wi-Fi from an analyser on the robot to an ESP32 dongle on your laptop, so you can debug while the robot is moving.
 
-  - when: "2024"
+      I co-designed the custom PCB, was picked for the opening pitch, and demoed it live to 300+ people.
+    specs:
+      Hardware: co-designed analyser PCB
+      Link: ESP32, Wi-Fi streaming
+      Buses: I²C, UART, in real time
+      Demo: live, to 300+ people
+
+  - slug: akara
+    ref: U2
+    when: Jun – Aug 2024
     role: Engineering intern
     org: Akara Robotics
-    what: Designed a custom PCB and LED control system for their sanitation robot. It now ships in the commercial robot deployed in hospitals across the US, UK and Ireland.
-    tools: KiCad, LED systems
+    image: akara-violet.jpg
+    alt: Violet, Akara's UV sanitation robot, glowing blue in a hospital room
+    what: |
+      At 16 I worked on the human–robot interaction for Violet, Akara's UV sanitation robot. I designed a custom PCB for its LED system and programmed the lighting patterns with FastLED, so the robot can tell people nearby what it's about to do: turning left, turning right, battery status.
 
-  - when: "2024–now"
+      It ships in the commercial robot, deployed in hospitals in the US, UK and Ireland.
+    specs:
+      Hardware: custom LED control PCB (KiCad)
+      Firmware: FastLED lighting patterns
+      Signals: turn left, turn right, battery, status
+      Deployed: hospitals in the US, UK and Ireland
+
+  - slug: coderdojo
+    ref: U9
+    when: Aug 2024 – now
     role: Mentor
     org: CoderDojo Malahide
-    what: Teaching Scratch and Python to young builders, and running robotics competitions for 20+ students.
-    tools: Python, Scratch, robotics
+    what: |
+      I teach young learners to code in Scratch and Python, write the lesson plans, help them build their first projects, and run robotics competitions for 20+ students.
+    specs:
+      Teaching: Scratch, Python
+      Students: 20+
 
 projects:
-  - name: ScopeLab
-    context: Patch accelerator
-    what: A diagnostic board that plugs into a robot under test and logs, monitors and analyses its sensors in real time.
+  - slug: fiacla
+    ref: U5
+    name: "Fiacla: AI for panoramic X-rays"
+    image: fiacla-xray.jpg
+    alt: A panoramic dental X-ray with a region highlighted
+    what: |
+      Flowchart-based diagnosis of panoramic X-rays misses up to 49% of cases. I built a clinically validated dataset with dentists at the Dublin Dental University Hospital, trained a CNN with active contour layers to detect radiolucencies, and built a web app where dentists upload an X-ray and get AI-assisted analysis in real time.
+    specs:
+      Misdiagnosis: 49% → 13%
+      F1 score: 87%
+      Trial: dentists at DDUH
 
-  - name: Low-cost intraoral scanner
-    context: Fiacla
-    what: An affordable dental imaging scanner, with custom optics and mechanics and a 3D reconstruction pipeline.
+  - slug: intraoral
+    ref: U6
+    name: A photogrammetry intraoral scanner
+    image: intraoral-scan.jpg
+    alt: A 3D-printed dental model on a calibration checkerboard
+    what: |
+      A dental scanner built from scratch, on my own: the housing for the optics and camera, the electronics, and software that uses photogrammetry to reconstruct 3D models of teeth in real time. Clear digital impressions without the cost of a commercial scanner.
+    specs:
+      Method: photogrammetry
+      Built: optics housing, PCB, software
+      Team: just me
 
-  - name: Dental ML platform
-    context: Fiacla
-    what: Computer vision for dental images, covering tooth classification and anomaly detection, built to slot into clinical workflows.
+  - slug: robowars
+    ref: M1
+    name: Robowars
+    image: robowars-build.jpg
+    alt: Building the red combat robot with a chainsaw weapon
+    what: |
+      A remote-controlled combat robot built for Patch Robowars at Dogpatch Labs, right in the middle of my exams. Mecanum wheels on BLDC motors, a hot-swappable high-current battery pack, a chainsaw for a weapon, and an outer shell made of baking tins.
+    specs:
+      Drive: BLDC motors, mecanum wheels
+      Weapon: chainsaw, remote actuated
+      Armour: baking tins
 
-  - name: AccelLab
-    context: Personal
+  - slug: iss
+    ref: U7
+    name: A camera on the ISS
+    image: iss-earth.jpg
+    alt: A circular view of Earth taken from orbit
+    what: |
+      At 14 I was selected to send my own Raspberry Pi camera to the International Space Station. It captured about three hours of Earth observation footage, which I labelled against a global biome map and used to train a model that classifies biomes from orbit. I then extended it to compare Earth's biomes with possible analogues on other planets.
+    specs:
+      Footage: ~3 hours from orbit
+      Model: terrestrial biome classifier
+      Programme: ESA Mission Space Lab
+
+  - slug: accellab
+    ref: U8
+    name: AccelLab
     link: https://github.com/gognakamaya-dev/AccelLab
-    what: A 3D particle accelerator visualiser with torus geometry and simulated trajectories, in NumPy and Matplotlib.
+    what: |
+      A 3D particle accelerator visualiser with torus geometry and simulated trajectories, in NumPy and Matplotlib.
+    specs:
+      Stack: Python, NumPy, Matplotlib
 
-  - name: Solar storm prediction
-    context: BTYSTE Bootcamp
-    what: As CTO, built a model that forecasts solar storms from Parker spiral diagrams and historical solar wind data.
-
-  - name: A camera on the ISS
-    context: Mission Space Lab
-    what: Selected to run a Raspberry Pi camera experiment on the International Space Station and collect our own Earth observation data.
+  - slug: solar
+    ref: U10
+    name: Solar storm prediction
+    what: |
+      At the BTYSTE Bootcamp, one of 30 projects picked from 550+, I was CTO of a team that built a model to forecast solar storms from Parker spiral diagrams.
+    specs:
+      Role: CTO
 
 awards:
   - "BT Young Scientist & Technology Exhibition: three-time winner, including first in Intermediate Individual Technology and the Stripe Software Award (2024), and second in Junior Technology (2022)"
@@ -59,10 +140,18 @@ awards:
   - "SciFest: four-time winner and twice a national finalist"
   - "ESKOM International Science Expo: represented Ireland, second place in Computer Science"
   - "QxQ 2024 quantum computing scholar"
+  - "ESA Mission Space Lab: sent my own camera to the ISS"
   - "Trinity Access Academic Award"
-  - "Fujitsu World of Work: one of 30 selected"
+  - "Fujitsu World of Work programme"
+
+education:
+  - where: Dublin City University
+    what: Physics
+  - where: St Joseph's Secondary School, Rush
+    what: Leaving Certificate, all higher level — Physics, Chemistry, Computer Science, Maths, French, English and Irish
 
 skills:
-  Hardware: KiCad PCB design, STM32, ESP32, Arduino, Raspberry Pi, sensor integration
-  Software: Python, C, JavaScript, MicroPython, Modbus/RS485, web
-  Also: machine learning, computer vision, photogrammetry, 3D modelling
+  Hardware: KiCad PCB design, STM32, ESP32, Arduino, Raspberry Pi, sensors, LED control, motor control
+  Firmware: C, C++, MicroPython, I²C, UART, Modbus, RS485
+  Software: Python, JavaScript, HTML, machine learning, computer vision, photogrammetry, 3D modelling
+  Languages: English, Hindi, Punjabi, Irish, French

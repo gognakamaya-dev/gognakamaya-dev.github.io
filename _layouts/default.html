@@ -3,38 +3,51 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.documentElement.classList.add('js')</script>
   {% seo %}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Schibsted+Grotesk:wght@400..700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Martian+Mono:wdth,wght@75..112.5,300..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
   <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
-  <link rel="alternate" type="application/atom+xml" title="{{ site.title }} — essays" href="{{ '/feed.xml' | relative_url }}">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}: essays" href="{{ '/feed.xml' | relative_url }}">
 </head>
 <body class="{{ page.body_class }}">
   <a class="skip" href="#main">Skip to content</a>
-  <header class="masthead">
-    <a class="wordmark" href="{{ '/' | relative_url }}">Kamaya Gogna</a>
-    <nav aria-label="Main">
-      <a href="{{ '/essays/' | relative_url }}" {% if page.section == 'essays' %}aria-current="page"{% endif %}>Essays</a>
-      <a href="{{ '/bookshelf/' | relative_url }}" {% if page.section == 'bookshelf' %}aria-current="page"{% endif %}>Bookshelf</a>
-      <a href="{{ '/work/' | relative_url }}" {% if page.section == 'work' %}aria-current="page"{% endif %}>Work</a>
-    </nav>
-  </header>
 
-  <main id="main" class="sheet">
+  {% unless page.body_class == 'home' %}
+  <header class="strip strip-top">
+    <div class="strip-inner">
+      <a class="wordmark" href="{{ '/' | relative_url }}">Kamaya Gogna <span>rev 18</span></a>
+      <nav aria-label="Main">
+        <a href="{{ '/essays/' | relative_url }}" {% if page.section == 'essays' %}aria-current="page"{% endif %}>Essays</a>
+        <a href="{{ '/bookshelf/' | relative_url }}" {% if page.section == 'bookshelf' %}aria-current="page"{% endif %}>Bookshelf</a>
+        <a href="{{ '/work/' | relative_url }}" {% if page.section == 'work' %}aria-current="page"{% endif %}>Work</a>
+      </nav>
+    </div>
+  </header>
+  {% endunless %}
+
+  <main id="main">
     {{ content }}
   </main>
 
-  <footer class="colophon">
-    <p>
-      <a href="https://github.com/{{ site.github }}">GitHub</a>
-      <a href="https://www.linkedin.com/in/{{ site.linkedin }}">LinkedIn</a>
-      {% if site.email != "" %}<a href="mailto:{{ site.email }}">Email</a>{% endif %}
-      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
-    </p>
-    <p class="fine">Written and soldered in Dublin.</p>
+  <footer class="strip strip-bottom">
+    <div class="strip-inner">
+      <p class="links">
+        <a href="{{ '/essays/' | relative_url }}">Essays</a>
+        <a href="{{ '/bookshelf/' | relative_url }}">Bookshelf</a>
+        <a href="{{ '/work/' | relative_url }}">Work</a>
+        <a href="https://github.com/{{ site.github }}">GitHub</a>
+        <a href="https://www.linkedin.com/in/{{ site.linkedin }}">LinkedIn</a>
+        {% if site.email != "" %}<a href="mailto:{{ site.email }}">Email</a>{% endif %}
+        <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+      </p>
+      <p class="silk-note">No magic smoke was released in the making of this site.</p>
+    </div>
   </footer>
+
+  {% if page.body_class == 'home' %}<script src="{{ '/assets/js/board.js' | relative_url }}" defer></script>{% endif %}
   <script src="{{ '/assets/js/shelf.js' | relative_url }}" defer></script>
 </body>
 </html>

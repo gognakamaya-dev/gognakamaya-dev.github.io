@@ -11,7 +11,7 @@ Write in plain Markdown. A blank line starts a new paragraph. *Italics* and **bo
 
 ## Subheadings use two hashes
 
-Margin notes are the red-pen scribbles that sit beside the text on a wide screen and drop in below the line on a phone.<span class="margin-note">Like this one. Wrap a short aside in a span with class margin-note.</span> They're good for asides that would break the flow of a sentence.
+Margin notes sit beside the text on a wide screen and drop in below the line on a phone.<span class="margin-note">Like this one. Wrap a short aside in a span with class margin-note.</span> They're good for asides that would break the flow of a sentence. The first letter of every essay becomes a drop cap automatically, like the opening of a chapter.
 
 Footnotes work too, for citations or longer tangents.[^1]
 

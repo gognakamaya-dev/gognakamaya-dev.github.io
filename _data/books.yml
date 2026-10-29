@@ -4,57 +4,54 @@
 #  status:  reading | read | next
 #  year:    the year you read it (optional)
 #  pages:   page count; sets how thick/tall the spine is (optional)
-#  color:   spine colour as a hex code (optional)
-#  text:    set to "dark" if the spine colour is light (optional)
+#  color:   cloth colour of the spine as a hex code (optional)
 #  note:    a line or two on why it stuck with you (optional)
 #
 #  The books below are STARTER EXAMPLES. Replace them with yours.
 # ─────────────────────────────────────────────
 
-- title: The Art of Doing Science and Engineering
-  author: Richard Hamming
+- title: Middlemarch
+  author: George Eliot
   status: reading
-  pages: 432
-  color: "#1f3b5c"
+  pages: 880
+  color: "#2f4a3a"
   note: ""
 
-- title: The Soul of a New Machine
-  author: Tracy Kidder
+- title: Frankenstein
+  author: Mary Shelley
   status: read
   year: 2026
-  pages: 320
-  color: "#8c2f23"
+  pages: 280
+  color: "#5a1f1f"
   note: ""
 
-- title: Surely You're Joking, Mr. Feynman!
-  author: Richard Feynman
+- title: Jane Eyre
+  author: Charlotte Brontë
   status: read
   year: 2025
-  pages: 350
-  color: "#e2c044"
-  text: dark
+  pages: 500
+  color: "#1f3350"
   note: ""
 
-- title: The Making of the Atomic Bomb
-  author: Richard Rhodes
+- title: Crime and Punishment
+  author: Fyodor Dostoevsky
   status: read
   year: 2025
-  pages: 886
-  color: "#2b2b2b"
+  pages: 670
+  color: "#2a2724"
   note: ""
 
-- title: Project Hail Mary
-  author: Andy Weir
+- title: The Art of Doing Science and Engineering
+  author: Richard Hamming
   status: read
   year: 2025
-  pages: 496
-  color: "#3f6d5a"
+  pages: 432
+  color: "#6b4a1e"
   note: ""
 
-- title: Chip War
-  author: Chris Miller
+- title: Anna Karenina
+  author: Leo Tolstoy
   status: next
-  pages: 464
-  color: "#d7d2c3"
-  text: dark
+  pages: 860
+  color: "#6e2b3a"
   note: ""

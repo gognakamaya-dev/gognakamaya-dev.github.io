@@ -2,48 +2,37 @@
 title: Kamaya Gogna
 body_class: home
 ---
-<section class="intro">
-  <h1>Kamaya Gogna</h1>
-  <p class="lede">
-    I design circuit boards, robots and medical devices,
-    and study physics at DCU in Dublin.
-    This is where I write about what I'm building and thinking,
-    and keep track of the books that changed my mind.
-    <span class="margin-note">3× BT Young Scientist winner, if you're keeping score.</span>
-  </p>
-  <p class="lede-small">
-    Off the bench: badminton, sea swimming, music, travelling, and a lot of reading.
-  </p>
+<section class="hero" aria-label="Introduction">
+  <h1 class="sr-only">Kamaya Gogna</h1>
+  <div class="board-wrap" data-board>
+    {% include board-wide.svg %}
+    {% include board-tall.svg %}
+  </div>
 </section>
 
-<section class="block">
-  <header class="block-head">
-    <h2>Essays</h2>
-    <a href="{{ '/essays/' | relative_url }}">All essays</a>
-  </header>
-  {% include essay-list.html limit=5 %}
+<section class="book about" id="about">
+  <figure class="plate">
+    <img src="{{ '/assets/img/kamaya.jpg' | relative_url }}" alt="Kamaya Gogna, smiling, wearing a conference lanyard" width="560" height="560">
+    <figcaption>Frontispiece. The author.</figcaption>
+  </figure>
+  <div class="about-text">
+    <h2 class="chapter">About me</h2>
+    <p class="opening">Hi, I'm Kamaya. I'm eighteen, from Dublin, and I study physics at DCU. I like the problems where hardware and software meet: robots, embedded systems, control loops, and the moment a board I designed lights up for the first time.</p>
+    <p>I learn by building. At sixteen I designed the lights that let a hospital robot tell people where it's going. Since then I've built a wireless debugger for robots, an AI that reads dental X-rays, an intraoral scanner, and a chainsaw robot armoured in baking tins. At fourteen I sent a camera to the International Space Station.</p>
+    <p>Away from the bench I swim in the sea, play badminton, and read classic novels. This is where I write things down.</p>
+    <p class="about-links"><a href="{{ '/work/' | relative_url }}">See everything I've built</a></p>
+  </div>
 </section>
 
-<section class="block">
-  <header class="block-head">
-    <h2>On the shelf</h2>
-    <a href="{{ '/bookshelf/' | relative_url }}">Full bookshelf</a>
-  </header>
+<section class="book">
+  <h2 class="chapter">Essays</h2>
+  {% include essay-list.html limit=6 %}
+  <p class="more"><a href="{{ '/essays/' | relative_url }}">All essays</a></p>
+</section>
+
+<section class="book wide-book">
+  <h2 class="chapter">On the shelf</h2>
   <p class="hint">Pick a spine to see what I thought of it.</p>
   {% include shelf.html id="home-shelf" %}
-</section>
-
-<section class="block">
-  <header class="block-head">
-    <h2>Things I've built</h2>
-    <a href="{{ '/work/' | relative_url }}">Everything</a>
-  </header>
-  <ul class="built">
-    {% for p in site.data.work.projects limit: 4 %}
-    <li>
-      <h3>{% if p.link %}<a href="{{ p.link }}">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}</h3>
-      <p>{{ p.what }}</p>
-    </li>
-    {% endfor %}
-  </ul>
+  <p class="more"><a href="{{ '/bookshelf/' | relative_url }}">The whole bookshelf</a></p>
 </section>
