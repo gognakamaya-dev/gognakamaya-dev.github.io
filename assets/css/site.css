@@ -530,6 +530,78 @@ a:hover { color: var(--foil); }
 
 @media (prefers-reduced-motion: reduce) { .postcard { transform: none; transition: none; } }
 
+/* ── Travel: atlas ──────────────────────────────────────────── */
+
+.odometer {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1.5rem, 6vw, 4rem);
+  margin: 0 auto 2.2rem;
+  padding: 1.3rem 1.5rem 1.2rem;
+  max-width: 34rem;
+  background-color: var(--mask);
+  background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.025) 0 1px, transparent 1px 6px);
+  border-radius: 10px;
+  box-shadow: 0 14px 26px -18px rgba(30, 25, 10, 0.7);
+  font-family: var(--mono);
+  color: var(--silk);
+}
+.odometer > div { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+.odo-num {
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  font-weight: 800;
+  font-stretch: 112.5%;
+  line-height: 1;
+  color: #ffc768;
+  text-shadow: 0 0 14px rgba(255, 190, 80, 0.45);
+  font-variant-numeric: tabular-nums;
+}
+.odo-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--silk); opacity: 0.85; }
+
+.country-index { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.35rem 1.1rem; margin: 0 auto 1rem; max-width: 46rem; font-size: 0.98rem; }
+.country-index a { text-decoration: none; color: var(--ink-soft); }
+.country-index a:hover { color: var(--foil); text-decoration: underline; }
+
+.country { margin-top: 3.6rem; scroll-margin-top: 1.5rem; }
+.country-name {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin: 0 0 1.1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 3.5vw, 2.2rem);
+  line-height: 1.15;
+}
+.country-count { margin-left: auto; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.06em; color: var(--foil); white-space: nowrap; }
+
+.places { list-style: none; margin: 0; padding: 0; columns: 3 12rem; column-gap: 2rem; }
+.places li {
+  break-inside: avoid;
+  position: relative;
+  padding: 0.28rem 0 0.28rem 1.3rem;
+  font-size: 1.06rem;
+  line-height: 1.45;
+}
+/* each place sits on a little gold pad */
+.places li::before {
+  content: "";
+  position: absolute; left: 0.1rem; top: 0.78rem;
+  width: 8px; height: 8px; border-radius: 1.5px;
+  background: var(--cu);
+  box-shadow: inset 0 0 0 2px var(--cu), inset 0 0 0 4px var(--paper);
+}
+.places li.has-photos::before { border-radius: 50%; background: #ffc35c; box-shadow: 0 0 0 1.5px var(--cu-dim), 0 0 8px 1px rgba(255, 190, 80, 0.6); }
+.visits { margin-left: 0.35rem; font-family: var(--mono); font-size: 0.7rem; font-weight: 700; color: var(--foil); vertical-align: 0.1em; }
+.place-note { margin-left: 0.4rem; font-style: italic; color: var(--ink-soft); font-size: 0.95rem; }
+.place-note::before { content: "("; }
+.place-note::after { content: ")"; }
+
+.place-photos { margin-top: 2rem; scroll-margin-top: 1.5rem; }
+.place-photos h3 { margin: 0 0 1rem; font-style: italic; font-weight: 400; font-size: 1.25rem; }
+
 /* ── Small screens ──────────────────────────────────────────── */
 
 @media (max-width: 640px) {

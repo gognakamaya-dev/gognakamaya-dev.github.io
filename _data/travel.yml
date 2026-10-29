@@ -1,15 +1,136 @@
 # ─────────────────────────────────────────────
-#  Travel gallery. One entry per trip, newest first.
-#  Put photos in assets/img/travel/ and list them under the trip.
+#  Travel: every country and place I've been.
 #
-#  - place: San Francisco
-#    country: USA
-#    when: October 2026
-#    coords: 37.77° N, 122.42° W      # optional, printed like a silkscreen label
-#    note: A line about the trip.     # optional
-#    photos:
-#      - file: sf-golden-gate.jpg
-#        caption: Fog eating the Golden Gate.   # optional
+#  visits: how many times (optional, shown as ×5)
+#  note:   a short note shown next to the place (optional)
+#  photos: put files in assets/img/travel/ and list them (optional)
+#
+#    - name: Rome
+#      photos:
+#        - file: rome-colosseum.jpg
+#          caption: The Colosseum at sunset.   # optional
 # ─────────────────────────────────────────────
 
-[]
+- country: United Kingdom
+  places:
+    - name: London
+      visits: 5
+    - name: Middlesbrough
+      visits: 10
+    - name: Bath
+    - name: Bristol
+    - name: Redcar
+    - name: York
+    - name: Newcastle
+
+- country: Scotland
+  places:
+    - name: Edinburgh
+
+- country: Ireland
+  places:
+    - name: Dublin
+      note: home
+    - name: Kerry
+    - name: Donegal
+    - name: Limerick
+    - name: Clare
+    - name: Derry
+    - name: Belfast
+    - name: Antrim
+    - name: Wicklow
+    - name: Galway
+    - name: Cork
+
+- country: Italy
+  places:
+    - name: Pisa
+    - name: Tuscany
+    - name: Viareggio
+    - name: Florence
+    - name: Rome
+    - name: Milan
+    - name: Lake Como
+    - name: Vatican City
+
+- country: India
+  places:
+    - name: Jalandhar
+    - name: Delhi
+    - name: Palampur
+    - name: Amritsar
+    - name: Goa
+    - name: Bikaner
+
+- country: Finland
+  places:
+    - name: Helsinki
+
+- country: Spain
+  places:
+    - name: Málaga
+    - name: Granada
+
+- country: Belgium
+  places:
+    - name: Brussels
+    - name: Bruges
+
+- country: France
+  places:
+    - name: Paris
+      visits: 2
+    - name: Nice
+    - name: Èze
+    - name: Menton
+    - name: Cannes
+    - name: Villefranche-sur-Mer
+    - name: Antibes
+
+- country: Austria
+  places:
+    - name: Vienna
+
+- country: Portugal
+  places:
+    - name: Lisbon
+
+- country: Switzerland
+  places:
+    - name: Zurich
+    - name: Geneva
+    - name: Morges
+    - name: Interlaken
+    - name: Grindelwald
+    - name: Jungfraujoch
+    - name: Lauterbrunnen
+
+- country: Croatia
+  places:
+    - name: Dubrovnik
+    - name: Lokrum
+    - name: Koločep
+
+- country: Bosnia and Herzegovina
+  places:
+    - name: Mostar
+    - name: Kravica Waterfalls
+
+- country: United Arab Emirates
+  places:
+    - name: Dubai
+
+- country: Thailand
+  places:
+    - name: Phuket
+    - name: Krabi
+    - name: Bangkok
+
+- country: Monaco
+  places:
+    - name: Monte Carlo
+
+- country: United States
+  places:
+    - name: San Francisco
+    - name: San Jose

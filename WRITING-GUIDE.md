@@ -60,18 +60,14 @@ The board is drawn by `_tools/board.py`. To add a chip or rename one, edit the l
 ## Add travel photos
 
 1. Upload your photos to `assets/img/travel/` (on GitHub: open the folder, then **Add file → Upload files**). Photos straight off a phone are huge, so shrink them to about 2000px wide first if you can.
-2. Open `_data/travel.yml`, delete the `[]` line, and add a trip:
+2. Open `_data/travel.yml`, find the place, and add the photos under it:
 
    ```
-   - place: San Francisco
-     country: USA
-     when: October 2026
-     coords: 37.77° N, 122.42° W   # optional
-     note: A line about the trip.  # optional
+   - name: Rome
      photos:
-       - file: golden-gate.jpg
-         caption: Fog eating the bridge.   # optional
-       - file: mission-mural.jpg
+       - file: rome-colosseum.jpg
+         caption: The Colosseum at sunset.   # optional
+       - file: rome-trevi.jpg
    ```
 
-Put the newest trip at the top. Each photo becomes a postcard; clicking it opens it full size.
+New places go under their country (add `visits: 3` for repeat trips). A new country is a new block with `country:` and `places:`. Places with photos get a lit LED in the list and open into postcards; clicking a postcard shows it full size.
