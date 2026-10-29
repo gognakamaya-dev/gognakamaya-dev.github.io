@@ -1,0 +1,59 @@
+{% comment %}
+  The two travel maps. Land comes from _tools/map.js; every place with a
+  lat/lon in _data/travel.yml is placed here automatically, using the same
+  projection numbers as map.js (world: lon0 -130, lat0 66, k 4.5;
+  europe: lon0 -11, lat0 61.5, kx 20, ky 30; both padded by 20).
+{% endcomment %}
+{% assign countries = site.data.travel %}
+<style>
+  {% for c in countries %}.atlas .land [data-c~="{{ c.country | slugify }}"]{% unless forloop.last %},{% endunless %}{% endfor %} {
+    fill: var(--cu-dim); stroke: #6e5523;
+  }
+</style>
+
+<figure class="atlas atlas-world">
+  <svg viewBox="0 0 1129 337" role="img" aria-label="World map with the countries I've visited plated in gold">
+    <defs><clipPath id="clip-world"><rect x="10" y="10" width="1109" height="317" rx="14"/></clipPath></defs>
+    <rect class="ocean" x="10" y="10" width="1109" height="317" rx="14"/>
+    <g clip-path="url(#clip-world)">
+      {% include map-world-land.svg %}
+      {% for c in countries %}{% assign first = c.places | first %}
+      {% for p in c.places %}{% if p.lat %}
+        {% assign x = p.lon | minus: -130 | times: 4.5 | plus: 20 | round: 1 %}
+        {% assign y = 66 | minus: p.lat | times: 4.5 | plus: 20 | round: 1 %}
+        <a class="pin{% if p.note == 'home' %} home{% endif %}" href="#{{ c.country | slugify }}">
+          <title>{{ p.name }}, {{ c.country }}</title>
+          <circle cx="{{ x }}" cy="{{ y }}" r="{% if p.note == 'home' %}6{% else %}3.2{% endif %}"/>
+        </a>
+        {% if p.note == 'home' %}<text class="map-label home-label" x="{{ x | minus: 10 }}" y="{{ y | minus: 10 }}" text-anchor="end">HOME</text>{% endif %}
+        {% if forloop.first %}{% if p.lon < -30 or p.lon > 40 %}
+        <text class="map-label" x="{{ x | plus: 9 }}" y="{{ y | plus: 4 }}">{{ c.country }}</text>
+        {% endif %}{% endif %}
+      {% endif %}{% endfor %}{% endfor %}
+    </g>
+    <text class="map-silk" x="30" y="318">MAP-01 · WORLD</text>
+  </svg>
+</figure>
+
+<figure class="atlas atlas-europe">
+  <svg viewBox="0 0 780 835" role="img" aria-label="Map of Europe with every place I've been marked">
+    <defs><clipPath id="clip-europe"><rect x="10" y="10" width="760" height="815" rx="14"/></clipPath></defs>
+    <rect class="ocean" x="10" y="10" width="760" height="815" rx="14"/>
+    <g clip-path="url(#clip-europe)">
+      {% include map-europe-land.svg %}
+      {% for c in countries %}{% for p in c.places %}{% if p.lat %}
+      {% if p.lon > -11 and p.lon < 26 and p.lat > 35 and p.lat < 61.5 %}
+        {% assign x = p.lon | minus: -11 | times: 20 | plus: 20 | round: 1 %}
+        {% assign y = 61.5 | minus: p.lat | times: 30 | plus: 20 | round: 1 %}
+        <a class="pin{% if p.note == 'home' %} home{% endif %}" href="#{{ c.country | slugify }}">
+          <title>{{ p.name }}, {{ c.country }}</title>
+          <circle cx="{{ x }}" cy="{{ y }}" r="{% if p.note == 'home' %}9{% else %}5{% endif %}"/>
+          <text class="pin-label" x="{{ x | plus: 10 }}" y="{{ y | plus: 4 }}">{{ p.name }}</text>
+        </a>
+        {% if p.note == 'home' %}<text class="map-label home-label big" x="{{ x | plus: 16 }}" y="{{ y | plus: 22 }}">HOME</text>{% endif %}
+      {% endif %}
+      {% endif %}{% endfor %}{% endfor %}
+    </g>
+    <text class="map-silk" x="30" y="808">MAP-02 · EUROPE · HOVER OR TAP A PIN</text>
+  </svg>
+</figure>

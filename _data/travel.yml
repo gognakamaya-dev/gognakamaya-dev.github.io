@@ -1,6 +1,8 @@
 # ─────────────────────────────────────────────
 #  Travel: every country and place I've been.
 #
+#  lat/lon: where it is, so it shows on the maps (look it up on Google Maps:
+#           right-click a spot and the first line is lat, lon)
 #  visits: how many times (optional, shown as ×5)
 #  note:   a short note shown next to the place (optional)
 #  photos: put files in assets/img/travel/ and list them (optional)
@@ -14,123 +16,255 @@
 - country: United Kingdom
   places:
     - name: London
+      lat: 51.51
+      lon: -0.13
       visits: 5
     - name: Middlesbrough
+      lat: 54.57
+      lon: -1.23
       visits: 10
     - name: Bath
+      lat: 51.38
+      lon: -2.36
     - name: Bristol
+      lat: 51.45
+      lon: -2.59
     - name: Redcar
+      lat: 54.62
+      lon: -1.07
     - name: York
+      lat: 53.96
+      lon: -1.08
     - name: Newcastle
+      lat: 54.98
+      lon: -1.61
 
 - country: Scotland
   places:
     - name: Edinburgh
+      lat: 55.95
+      lon: -3.19
 
 - country: Ireland
   places:
     - name: Dublin
+      lat: 53.35
+      lon: -6.26
       note: home
     - name: Kerry
+      lat: 52.06
+      lon: -9.5
     - name: Donegal
+      lat: 54.65
+      lon: -8.11
     - name: Limerick
+      lat: 52.66
+      lon: -8.63
     - name: Clare
+      lat: 52.84
+      lon: -8.98
     - name: Derry
+      lat: 55.0
+      lon: -7.31
     - name: Belfast
+      lat: 54.6
+      lon: -5.93
     - name: Antrim
+      lat: 54.72
+      lon: -6.21
     - name: Wicklow
+      lat: 52.98
+      lon: -6.04
     - name: Galway
+      lat: 53.27
+      lon: -9.05
     - name: Cork
+      lat: 51.9
+      lon: -8.47
 
 - country: Italy
   places:
     - name: Pisa
+      lat: 43.72
+      lon: 10.4
     - name: Tuscany
+      lat: 43.32
+      lon: 11.33
     - name: Viareggio
+      lat: 43.87
+      lon: 10.25
     - name: Florence
+      lat: 43.77
+      lon: 11.26
     - name: Rome
+      lat: 41.9
+      lon: 12.5
     - name: Milan
+      lat: 45.46
+      lon: 9.19
     - name: Lake Como
+      lat: 46.0
+      lon: 9.26
     - name: Vatican City
+      lat: 41.9
+      lon: 12.45
 
 - country: India
   places:
     - name: Jalandhar
+      lat: 31.33
+      lon: 75.58
     - name: Delhi
+      lat: 28.61
+      lon: 77.21
     - name: Palampur
+      lat: 32.11
+      lon: 76.54
     - name: Amritsar
+      lat: 31.63
+      lon: 74.87
     - name: Goa
+      lat: 15.3
+      lon: 74.12
     - name: Bikaner
+      lat: 28.02
+      lon: 73.31
 
 - country: Finland
   places:
     - name: Helsinki
+      lat: 60.17
+      lon: 24.94
 
 - country: Spain
   places:
     - name: Málaga
+      lat: 36.72
+      lon: -4.42
     - name: Granada
+      lat: 37.18
+      lon: -3.6
 
 - country: Belgium
   places:
     - name: Brussels
+      lat: 50.85
+      lon: 4.35
     - name: Bruges
+      lat: 51.21
+      lon: 3.22
 
 - country: France
   places:
     - name: Paris
+      lat: 48.86
+      lon: 2.35
       visits: 2
     - name: Nice
+      lat: 43.7
+      lon: 7.27
     - name: Èze
+      lat: 43.73
+      lon: 7.36
     - name: Menton
+      lat: 43.78
+      lon: 7.5
     - name: Cannes
+      lat: 43.55
+      lon: 7.01
     - name: Villefranche-sur-Mer
+      lat: 43.7
+      lon: 7.31
     - name: Antibes
+      lat: 43.58
+      lon: 7.12
 
 - country: Austria
   places:
     - name: Vienna
+      lat: 48.21
+      lon: 16.37
 
 - country: Portugal
   places:
     - name: Lisbon
+      lat: 38.72
+      lon: -9.14
 
 - country: Switzerland
   places:
     - name: Zurich
+      lat: 47.38
+      lon: 8.54
     - name: Geneva
+      lat: 46.2
+      lon: 6.14
     - name: Morges
+      lat: 46.51
+      lon: 6.5
     - name: Interlaken
+      lat: 46.69
+      lon: 7.86
     - name: Grindelwald
+      lat: 46.62
+      lon: 8.04
     - name: Jungfraujoch
+      lat: 46.55
+      lon: 7.98
     - name: Lauterbrunnen
+      lat: 46.59
+      lon: 7.91
 
 - country: Croatia
   places:
     - name: Dubrovnik
+      lat: 42.65
+      lon: 18.09
     - name: Lokrum
+      lat: 42.63
+      lon: 18.12
     - name: Koločep
+      lat: 42.67
+      lon: 18.01
 
 - country: Bosnia and Herzegovina
   places:
     - name: Mostar
+      lat: 43.34
+      lon: 17.81
     - name: Kravica Waterfalls
+      lat: 43.16
+      lon: 17.61
 
 - country: United Arab Emirates
   places:
     - name: Dubai
+      lat: 25.2
+      lon: 55.27
 
 - country: Thailand
   places:
     - name: Phuket
+      lat: 7.88
+      lon: 98.39
     - name: Krabi
+      lat: 8.09
+      lon: 98.91
     - name: Bangkok
+      lat: 13.76
+      lon: 100.5
 
 - country: Monaco
   places:
     - name: Monte Carlo
+      lat: 43.74
+      lon: 7.43
 
 - country: United States
   places:
     - name: San Francisco
+      lat: 37.77
+      lon: -122.42
     - name: San Jose
+      lat: 37.34
+      lon: -121.89

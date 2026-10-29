@@ -71,3 +71,9 @@ The board is drawn by `_tools/board.py`. To add a chip or rename one, edit the l
    ```
 
 New places go under their country (add `visits: 3` for repeat trips). A new country is a new block with `country:` and `places:`. Places with photos get a lit LED in the list and open into postcards; clicking a postcard shows it full size.
+
+## The travel maps
+
+Every place in `_data/travel.yml` with a `lat:` and `lon:` gets a pin on the maps automatically, and every country you list is plated in gold. To find a place's coordinates, right-click it on Google Maps; the first line of the menu is `lat, lon`. Places in Europe also appear on the zoomed-in Europe map.
+
+The land shapes and the gold routes out of Dublin come from `_tools/map.js` (run it with Node after `npm i world-atlas@2 topojson-client@3` in `_tools/`). You only need it to add a new long-haul route or change the map area.

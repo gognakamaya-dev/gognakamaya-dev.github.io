@@ -21,6 +21,8 @@ section: travel
     {% if photo_count > 0 %}<div><span class="odo-num">{{ photo_count }}</span><span class="odo-label">photos</span></div>{% endif %}
   </div>
 
+  {% include travel-maps.html %}
+
   <nav class="country-index" aria-label="Countries">
     {% for c in countries %}<a href="#{{ c.country | slugify }}">{{ c.country }}</a>{% endfor %}
   </nav>

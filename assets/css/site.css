@@ -602,12 +602,37 @@ a:hover { color: var(--foil); }
 .place-photos { margin-top: 2rem; scroll-margin-top: 1.5rem; }
 .place-photos h3 { margin: 0 0 1rem; font-style: italic; font-weight: 400; font-size: 1.25rem; }
 
+/* ── Travel: maps ───────────────────────────────────────────── */
+
+.atlas { margin: 0 auto 2rem; filter: drop-shadow(0 16px 22px rgba(30, 25, 10, 0.3)); }
+.atlas svg { display: block; width: 100%; height: auto; font-family: var(--mono); }
+.atlas-europe { max-width: 40rem; }
+.atlas .ocean { fill: var(--mask); stroke: #c8b98a; stroke-opacity: 0.45; stroke-width: 2; }
+.atlas .land path { fill: #175a40; stroke: #0b3022; stroke-width: 0.7; stroke-linejoin: round; }
+.atlas .land path:hover { fill: #1d6b4c; }
+.atlas .routes path { fill: none; stroke: #ffd27a; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; opacity: 0.9; }
+.atlas .pin circle { fill: var(--mask-deep); stroke: #ffc768; stroke-width: 1.6; transition: fill 120ms; }
+.atlas-europe .pin circle { stroke-width: 2.2; }
+.atlas .pin.home circle { fill: var(--cu); stroke: #fff3d6; stroke-width: 2; }
+.atlas .pin:hover circle, .atlas .pin:focus circle { fill: #ffc768; }
+.atlas .pin { outline: none; cursor: pointer; }
+.atlas .map-label { fill: var(--silk); font-size: 10px; font-weight: 600; letter-spacing: 0.06em; paint-order: stroke; stroke: var(--mask); stroke-width: 3px; }
+.atlas .home-label { fill: #ffc768; font-weight: 800; }
+.atlas .home-label.big { font-size: 15px; }
+.atlas .pin-label { fill: #fff3d6; font-size: 15px; font-weight: 700; opacity: 0; pointer-events: none; paint-order: stroke; stroke: var(--mask-deep); stroke-width: 4px; transition: opacity 120ms; }
+.atlas .pin:hover .pin-label, .atlas .pin:focus .pin-label { opacity: 1; }
+.atlas .map-silk { fill: var(--silk); font-size: 10px; letter-spacing: 0.12em; opacity: 0.7; }
+.atlas-europe .map-silk { font-size: 13px; }
+
 /* ── Small screens ──────────────────────────────────────────── */
 
 @media (max-width: 640px) {
   body { font-size: 1.04rem; }
   .strip-top .strip-inner { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
-  .strip nav { gap: 1.1rem; }
+  .strip nav { gap: 0.9rem; }
+  .strip nav a { font-size: 0.72rem; gap: 0.4rem; }
+  .atlas-world { overflow-x: auto; -webkit-overflow-scrolling: touch; filter: none; }
+  .atlas-world svg { width: 780px; max-width: none; }
   .prose { font-size: 1.06rem; }
   .prose p { text-align: left; }
   .contents a { flex-wrap: wrap; }
