@@ -44,7 +44,7 @@ class Board:
     # traces ----------------------------------------------------
     def trace(self, pts, net="", width=4, via_end=False):
         self.traces.append(
-            f'<path class="cu" data-net="{net}" pathLength="1" stroke-width="{width}" d="{chamfer(pts)}"/>'
+            f'<path class="cu" data-net="{net}" stroke-width="{width}" d="{chamfer(pts)}"/>'
         )
         if via_end:
             self.via(*pts[-1], net)

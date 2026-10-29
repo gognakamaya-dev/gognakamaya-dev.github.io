@@ -30,17 +30,7 @@
   color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #17160f;
-    --paper-hi: #1f1d15;
-    --ink: #ece4cf;
-    --ink-soft: #a89f88;
-    --rule: #37332a;
-    --foil: #d4ad5c;
-    color-scheme: dark;
-  }
-}
+/* The pages are paper, so they stay light even in dark mode. */
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
@@ -222,11 +212,8 @@ a:hover { color: var(--foil); }
 .board .led:hover .led-glow, .board .led:focus .led-glow { opacity: 0.9; }
 
 /* power-on: traces route themselves, then the LED chain lights up */
-.js .board .cu { stroke-dasharray: 1 1; stroke-dashoffset: 1; }
-.js .board.powered .cu { stroke-dashoffset: 0; transition: stroke-dashoffset 900ms cubic-bezier(.6,0,.3,1) var(--d, 0ms), stroke 160ms, stroke-opacity 160ms; }
-@media (prefers-reduced-motion: reduce) {
-  .js .board .cu { stroke-dasharray: none; stroke-dashoffset: 0; }
-}
+/* traces draw themselves on load; board.js sets the lengths */
+.board .cu.drawing { transition: stroke-dashoffset 900ms cubic-bezier(.6,0,.3,1), stroke 160ms, stroke-opacity 160ms; }
 
 /* ── Book pages ─────────────────────────────────────────────── */
 
@@ -285,9 +272,6 @@ a:hover { color: var(--foil); }
   line-height: 0.82;
   padding: 0.06em 0.1em 0 0;
   color: var(--cloth);
-}
-@media (prefers-color-scheme: dark) {
-  .opening::first-letter, .prose > p:first-of-type::first-letter { color: var(--foil); }
 }
 
 /* Contents (essay list) */

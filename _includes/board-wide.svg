@@ -5,33 +5,33 @@
 <rect x="10" y="10" width="1180" height="720" rx="26" fill="url(#weave-wide)"/>
 <rect class="edge" x="10" y="10" width="1180" height="720" rx="26"/>
 <g class="traces">
-<path class="cu" data-net="akara" pathLength="1" stroke-width="4" d="M836.4 293.0 L836.4 264.0 L822.4 250.0 L667.2 250.0 L653.2 236.0 L653.2 158.0"/>
-<path class="cu" data-net="akara" pathLength="1" stroke-width="4" d="M857.9 293.0 L857.9 278.0 L843.9 264.0 L693.6 264.0 L679.6 250.0 L679.6 158.0"/>
-<path class="cu" data-net="anaula" pathLength="1" stroke-width="4" d="M879.3 293.0 L879.3 233.2 L878.0 232.0 L878.0 232.0 L876.8 230.8 L876.8 158.0"/>
-<path class="cu" data-net="anaula" pathLength="1" stroke-width="4" d="M900.7 293.0 L900.7 247.2 L902.0 246.0 L902.0 246.0 L903.2 244.8 L903.2 158.0"/>
-<path class="cu" data-net="fiacla" pathLength="1" stroke-width="4" d="M922.1 293.0 L922.1 278.0 L936.1 264.0 L1038.0 264.0 L1052.0 250.0 L1052.0 188.0"/>
-<path class="cu" data-net="fiacla" pathLength="1" stroke-width="4" d="M943.6 293.0 L943.6 264.0 L957.6 250.0 L1066.0 250.0 L1080.0 236.0 L1080.0 188.0"/>
-<path class="cu" data-net="patch" pathLength="1" stroke-width="4" d="M977.0 347.9 L996.3 347.9 L1000.0 344.1 L1000.0 344.1 L1003.7 340.4 L1038.0 340.4"/>
-<path class="cu" data-net="patch" pathLength="1" stroke-width="4" d="M977.0 369.3 L984.8 369.3 L986.0 368.0 L986.0 368.0 L987.2 366.8 L1038.0 366.8"/>
-<path class="cu" data-net="patch" pathLength="1" stroke-width="4" d="M977.0 390.7 L973.2 390.7 L972.0 392.0 L972.0 392.0 L973.2 393.2 L1038.0 393.2"/>
-<path class="cu" data-net="patch" pathLength="1" stroke-width="4" d="M977.0 412.1 L961.7 412.1 L958.0 415.9 L958.0 415.9 L961.7 419.6 L1038.0 419.6"/>
-<path class="cu" data-net="robowars" pathLength="1" stroke-width="4" d="M803.0 347.9 L763.7 347.9 L760.0 344.1 L760.0 344.1 L756.3 340.4 L684.0 340.4"/>
-<path class="cu" data-net="robowars" pathLength="1" stroke-width="4" d="M803.0 369.3 L775.2 369.3 L774.0 368.0 L774.0 368.0 L772.8 366.8 L684.0 366.8"/>
-<path class="cu" data-net="robowars" pathLength="1" stroke-width="4" d="M803.0 390.7 L789.2 390.7 L788.0 392.0 L788.0 392.0 L786.8 393.2 L684.0 393.2"/>
-<path class="cu" data-net="robowars" pathLength="1" stroke-width="4" d="M803.0 412.1 L802.5 412.1 L802.0 412.6 L802.0 415.9 L798.3 419.6 L684.0 419.6"/>
-<path class="cu" data-net="intraoral" pathLength="1" stroke-width="4" d="M857.9 467.0 L857.9 496.0 L843.9 510.0 L667.2 510.0 L653.2 524.0 L653.2 582.0"/>
-<path class="cu" data-net="intraoral" pathLength="1" stroke-width="4" d="M879.3 467.0 L879.3 482.0 L865.3 496.0 L693.6 496.0 L679.6 510.0 L679.6 582.0"/>
-<path class="cu" data-net="iss" pathLength="1" stroke-width="4" d="M900.7 467.0 L900.7 516.0 L888.8 528.0 L888.8 528.0 L876.8 540.0 L876.8 582.0"/>
-<path class="cu" data-net="iss" pathLength="1" stroke-width="4" d="M922.1 467.0 L922.1 504.5 L912.7 514.0 L912.7 514.0 L903.2 523.5 L903.2 582.0"/>
-<path class="cu" data-net="accellab" pathLength="1" stroke-width="4" d="M943.6 467.0 L943.6 496.0 L957.6 510.0 L1038.0 510.0 L1052.0 524.0 L1052.0 572.0"/>
-<path class="cu" data-net="leds" pathLength="1" stroke-width="3" d="M117.0 505.0 L167.0 505.0"/>
-<path class="cu" data-net="leds" pathLength="1" stroke-width="3" d="M193.0 505.0 L243.0 505.0"/>
-<path class="cu" data-net="leds" pathLength="1" stroke-width="3" d="M269.0 505.0 L319.0 505.0"/>
-<path class="cu" data-net="leds" pathLength="1" stroke-width="3" d="M345.0 505.0 L395.0 505.0"/>
-<path class="cu" data-net="leds" pathLength="1" stroke-width="3" d="M421.0 505.0 L471.0 505.0"/>
-<path class="cu" data-net="leds" pathLength="1" stroke-width="3" d="M497.0 505.0 L526.0 505.0 L540.0 491.0 L540.0 484.0 L554.0 470.0 L690.0 470.0"/>
+<path class="cu" data-net="akara" stroke-width="4" d="M836.4 293.0 L836.4 264.0 L822.4 250.0 L667.2 250.0 L653.2 236.0 L653.2 158.0"/>
+<path class="cu" data-net="akara" stroke-width="4" d="M857.9 293.0 L857.9 278.0 L843.9 264.0 L693.6 264.0 L679.6 250.0 L679.6 158.0"/>
+<path class="cu" data-net="anaula" stroke-width="4" d="M879.3 293.0 L879.3 233.2 L878.0 232.0 L878.0 232.0 L876.8 230.8 L876.8 158.0"/>
+<path class="cu" data-net="anaula" stroke-width="4" d="M900.7 293.0 L900.7 247.2 L902.0 246.0 L902.0 246.0 L903.2 244.8 L903.2 158.0"/>
+<path class="cu" data-net="fiacla" stroke-width="4" d="M922.1 293.0 L922.1 278.0 L936.1 264.0 L1038.0 264.0 L1052.0 250.0 L1052.0 188.0"/>
+<path class="cu" data-net="fiacla" stroke-width="4" d="M943.6 293.0 L943.6 264.0 L957.6 250.0 L1066.0 250.0 L1080.0 236.0 L1080.0 188.0"/>
+<path class="cu" data-net="patch" stroke-width="4" d="M977.0 347.9 L996.3 347.9 L1000.0 344.1 L1000.0 344.1 L1003.7 340.4 L1038.0 340.4"/>
+<path class="cu" data-net="patch" stroke-width="4" d="M977.0 369.3 L984.8 369.3 L986.0 368.0 L986.0 368.0 L987.2 366.8 L1038.0 366.8"/>
+<path class="cu" data-net="patch" stroke-width="4" d="M977.0 390.7 L973.2 390.7 L972.0 392.0 L972.0 392.0 L973.2 393.2 L1038.0 393.2"/>
+<path class="cu" data-net="patch" stroke-width="4" d="M977.0 412.1 L961.7 412.1 L958.0 415.9 L958.0 415.9 L961.7 419.6 L1038.0 419.6"/>
+<path class="cu" data-net="robowars" stroke-width="4" d="M803.0 347.9 L763.7 347.9 L760.0 344.1 L760.0 344.1 L756.3 340.4 L684.0 340.4"/>
+<path class="cu" data-net="robowars" stroke-width="4" d="M803.0 369.3 L775.2 369.3 L774.0 368.0 L774.0 368.0 L772.8 366.8 L684.0 366.8"/>
+<path class="cu" data-net="robowars" stroke-width="4" d="M803.0 390.7 L789.2 390.7 L788.0 392.0 L788.0 392.0 L786.8 393.2 L684.0 393.2"/>
+<path class="cu" data-net="robowars" stroke-width="4" d="M803.0 412.1 L802.5 412.1 L802.0 412.6 L802.0 415.9 L798.3 419.6 L684.0 419.6"/>
+<path class="cu" data-net="intraoral" stroke-width="4" d="M857.9 467.0 L857.9 496.0 L843.9 510.0 L667.2 510.0 L653.2 524.0 L653.2 582.0"/>
+<path class="cu" data-net="intraoral" stroke-width="4" d="M879.3 467.0 L879.3 482.0 L865.3 496.0 L693.6 496.0 L679.6 510.0 L679.6 582.0"/>
+<path class="cu" data-net="iss" stroke-width="4" d="M900.7 467.0 L900.7 516.0 L888.8 528.0 L888.8 528.0 L876.8 540.0 L876.8 582.0"/>
+<path class="cu" data-net="iss" stroke-width="4" d="M922.1 467.0 L922.1 504.5 L912.7 514.0 L912.7 514.0 L903.2 523.5 L903.2 582.0"/>
+<path class="cu" data-net="accellab" stroke-width="4" d="M943.6 467.0 L943.6 496.0 L957.6 510.0 L1038.0 510.0 L1052.0 524.0 L1052.0 572.0"/>
+<path class="cu" data-net="leds" stroke-width="3" d="M117.0 505.0 L167.0 505.0"/>
+<path class="cu" data-net="leds" stroke-width="3" d="M193.0 505.0 L243.0 505.0"/>
+<path class="cu" data-net="leds" stroke-width="3" d="M269.0 505.0 L319.0 505.0"/>
+<path class="cu" data-net="leds" stroke-width="3" d="M345.0 505.0 L395.0 505.0"/>
+<path class="cu" data-net="leds" stroke-width="3" d="M421.0 505.0 L471.0 505.0"/>
+<path class="cu" data-net="leds" stroke-width="3" d="M497.0 505.0 L526.0 505.0 L540.0 491.0 L540.0 484.0 L554.0 470.0 L690.0 470.0"/>
 <circle class="via" data-net="leds" cx="690" cy="470" r="6"/>
-<path class="cu" data-net="leds" pathLength="1" stroke-width="3" d="M690.0 470.0 L746.0 470.0 L760.0 456.0 L760.0 447.6 L774.0 433.6 L803.0 433.6"/>
+<path class="cu" data-net="leds" stroke-width="3" d="M690.0 470.0 L746.0 470.0 L760.0 456.0 L760.0 447.6 L774.0 433.6 L803.0 433.6"/>
 </g>
 <circle class="hole-ring" cx="50" cy="50" r="17"/><circle class="hole" cx="50" cy="50" r="10"/>
 <circle class="hole-ring" cx="1150" cy="50" r="17"/><circle class="hole" cx="1150" cy="50" r="10"/>
