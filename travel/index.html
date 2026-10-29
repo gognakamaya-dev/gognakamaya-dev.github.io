@@ -12,10 +12,10 @@ section: travel
 <section class="book wide-book">
   <header class="page-head">
     <h1>Travel</h1>
-    <p>Everywhere I've been, country by country. Places with photos open into postcards; click any photo to see it bigger.</p>
+    <p>Everywhere I've been. Click a gold country or a pin to see the places I went.</p>
   </header>
 
-  <div class="odometer" aria-label="{{ countries.size }} countries, {{ place_count }} places">
+  <div class="odometer" id="map" aria-label="{{ countries.size }} countries, {{ place_count }} places">
     <div><span class="odo-num">{{ countries.size }}</span><span class="odo-label">countries</span></div>
     <div><span class="odo-num">{{ place_count }}</span><span class="odo-label">places</span></div>
     {% if photo_count > 0 %}<div><span class="odo-num">{{ photo_count }}</span><span class="odo-label">photos</span></div>{% endif %}
@@ -23,41 +23,25 @@ section: travel
 
   {% include travel-maps.html %}
 
-  <nav class="country-index" aria-label="Countries">
-    {% for c in countries %}<a href="#{{ c.country | slugify }}">{{ c.country }}</a>{% endfor %}
-  </nav>
-
-  {% for c in countries %}
-  <section class="country" id="{{ c.country | slugify }}">
-    <h2 class="country-name">{{ c.country }}<span class="country-count">{{ c.places.size }} {% if c.places.size == 1 %}place{% else %}places{% endif %}</span></h2>
-    <ul class="places">
-      {% for p in c.places %}
-      <li{% if p.photos %} class="has-photos"{% endif %}>
-        {% if p.photos %}<a href="#{{ p.name | slugify }}">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}
-        {% if p.visits %}<span class="visits" title="Visited {{ p.visits }} times">×{{ p.visits }}</span>{% endif %}
-        {% if p.note %}<span class="place-note">{{ p.note }}</span>{% endif %}
-      </li>
+  {% if photo_count > 0 %}
+  <h2 class="chapter photos-chapter">Postcards</h2>
+  {% for c in countries %}{% for p in c.places %}{% if p.photos %}
+  <section class="place-photos" id="photos-{{ p.name | slugify }}">
+    <h3>{{ p.name }}<span>, {{ c.country }}</span></h3>
+    <div class="plates">
+      {% for photo in p.photos %}
+      {% capture src %}{{ '/assets/img/travel/' | append: photo.file | relative_url }}{% endcapture %}
+      <figure class="postcard">
+        <button type="button" class="postcard-open" data-src="{{ src }}" data-caption="{{ photo.caption | escape }}" data-place="{{ p.name | escape }}, {{ c.country | escape }}">
+          <img src="{{ src }}" alt="{{ photo.caption | default: p.name | escape }}" loading="lazy">
+        </button>
+        {% if photo.caption %}<figcaption>{{ photo.caption }}</figcaption>{% endif %}
+      </figure>
       {% endfor %}
-    </ul>
-
-    {% for p in c.places %}{% if p.photos %}
-    <div class="place-photos" id="{{ p.name | slugify }}">
-      <h3>{{ p.name }}</h3>
-      <div class="plates">
-        {% for photo in p.photos %}
-        {% capture src %}{{ '/assets/img/travel/' | append: photo.file | relative_url }}{% endcapture %}
-        <figure class="postcard">
-          <button type="button" class="postcard-open" data-src="{{ src }}" data-caption="{{ photo.caption | escape }}" data-place="{{ p.name | escape }}, {{ c.country | escape }}">
-            <img src="{{ src }}" alt="{{ photo.caption | default: p.name | escape }}" loading="lazy">
-          </button>
-          {% if photo.caption %}<figcaption>{{ photo.caption }}</figcaption>{% endif %}
-        </figure>
-        {% endfor %}
-      </div>
     </div>
-    {% endif %}{% endfor %}
   </section>
-  {% endfor %}
+  {% endif %}{% endfor %}{% endfor %}
+  {% endif %}
 </section>
 
 <dialog class="lightbox" aria-label="Photo">

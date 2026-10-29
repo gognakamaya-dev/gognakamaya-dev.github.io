@@ -70,7 +70,7 @@ The board is drawn by `_tools/board.py`. To add a chip or rename one, edit the l
        - file: rome-trevi.jpg
    ```
 
-New places go under their country (add `visits: 3` for repeat trips). A new country is a new block with `country:` and `places:`. Places with photos get a lit LED in the list and open into postcards; clicking a postcard shows it full size.
+New places go under their country (add `visits: 3` for repeat trips). A new country is a new block with `country:` and `places:`. Places with photos show thumbnails on their map card and appear as postcards under the maps; clicking a postcard shows it full size.
 
 ## The travel maps
 

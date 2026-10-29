@@ -656,6 +656,20 @@ a:hover { color: var(--foil); }
 .mc-photos img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; border-radius: 2px; }
 .mc-more { display: block; padding: 0.55rem 0.9rem 0.75rem; font-style: italic; font-size: 0.95rem; }
 
+.atlas .pin-count { fill: var(--mask-deep); font-size: 11px; font-weight: 800; pointer-events: none; }
+.atlas-world .pin-count { font-size: 9px; }
+.atlas .country-pin circle, .atlas .cluster circle { fill: #ffc768; stroke: #fff3d6; stroke-width: 2; }
+.atlas .country-pin:hover circle, .atlas .cluster:hover circle,
+.atlas .country-pin.selected circle, .atlas .cluster.selected circle { fill: #fff3d6; }
+.atlas .home-pad { fill: var(--cu); stroke: #fff3d6; stroke-width: 1.5; }
+.atlas .eu-box rect { fill: rgba(255, 199, 104, 0.06); stroke: var(--silk); stroke-width: 1.2; stroke-dasharray: 5 4; transition: fill 150ms; }
+.atlas .eu-box:hover rect { fill: rgba(255, 199, 104, 0.16); }
+.atlas .eu-box { cursor: pointer; outline: none; }
+.atlas .eu-label { font-size: 9px; fill: #ffc768; }
+.mc-places.last { padding-bottom: 0.85rem; }
+.photos-chapter { margin-top: 4rem; }
+.place-photos h3 span { color: var(--ink-soft); }
+
 /* ── Small screens ──────────────────────────────────────────── */
 
 @media (max-width: 640px) {
