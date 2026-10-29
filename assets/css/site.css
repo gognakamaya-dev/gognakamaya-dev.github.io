@@ -212,6 +212,17 @@ a:hover { color: var(--foil); }
 .board .led:hover .led-glow, .board .led:focus .led-glow { opacity: 0.9; }
 
 /* power-on: traces route themselves, then the LED chain lights up */
+/* data pulses and the breathing LED chain (board.js starts them after power-on) */
+.board .pulse { fill: none; stroke: #fff3d6; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 3px #ffc768) drop-shadow(0 0 6px rgba(255, 190, 80, 0.6)); pointer-events: none; }
+@keyframes breathe { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.8; } }
+@keyframes breathe-lens { 0%, 100% { fill: #f4b452; } 50% { fill: #ffd27a; } }
+.board .led.lit .led-glow { animation: breathe 3.6s ease-in-out infinite; animation-delay: calc(var(--i) * 0.3s); }
+.board .led.lit .led-lens { animation: breathe-lens 3.6s ease-in-out infinite; animation-delay: calc(var(--i) * 0.3s); }
+.board .led:hover .led-lens, .board .led:focus .led-lens, .board .led:hover .led-glow, .board .led:focus .led-glow { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  .board .led.lit .led-glow, .board .led.lit .led-lens { animation: none; }
+}
+
 /* traces draw themselves on load; board.js sets the lengths */
 .board .cu.drawing { transition: stroke-dashoffset 900ms cubic-bezier(.6,0,.3,1), stroke 160ms, stroke-opacity 160ms; }
 
