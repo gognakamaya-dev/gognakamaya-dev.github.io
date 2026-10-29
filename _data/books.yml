@@ -6,52 +6,46 @@
 #  pages:   page count; sets how thick/tall the spine is (optional)
 #  color:   cloth colour of the spine as a hex code (optional)
 #  note:    a line or two on why it stuck with you (optional)
-#
-#  The books below are STARTER EXAMPLES. Replace them with yours.
 # ─────────────────────────────────────────────
 
-- title: Middlemarch
-  author: George Eliot
-  status: reading
-  pages: 880
+- title: Wuthering Heights
+  author: Emily Brontë
+  status: read
+  pages: 416
   color: "#2f4a3a"
   note: ""
 
-- title: Frankenstein
-  author: Mary Shelley
+- title: Pride and Prejudice
+  author: Jane Austen
   status: read
-  year: 2026
-  pages: 280
-  color: "#5a1f1f"
-  note: ""
-
-- title: Jane Eyre
-  author: Charlotte Brontë
-  status: read
-  year: 2025
-  pages: 500
-  color: "#1f3350"
-  note: ""
-
-- title: Crime and Punishment
-  author: Fyodor Dostoevsky
-  status: read
-  year: 2025
-  pages: 670
-  color: "#2a2724"
-  note: ""
-
-- title: The Art of Doing Science and Engineering
-  author: Richard Hamming
-  status: read
-  year: 2025
   pages: 432
+  color: "#3b5470"
+  note: ""
+
+- title: The Aeneid
+  author: Virgil
+  status: read
+  pages: 442
   color: "#6b4a1e"
   note: ""
 
-- title: Anna Karenina
-  author: Leo Tolstoy
-  status: next
-  pages: 860
-  color: "#6e2b3a"
+- title: The Awakening
+  author: Kate Chopin
+  status: read
+  pages: 200
+  color: "#1f4f55"
+  note: ""
+
+- title: Perfume
+  author: Patrick Süskind
+  status: read
+  pages: 263
+  color: "#5a1f2c"
+  note: ""
+
+- title: The Dream Machine
+  author: M. Mitchell Waldrop
+  status: read
+  pages: 528
+  color: "#1f3350"
   note: ""
