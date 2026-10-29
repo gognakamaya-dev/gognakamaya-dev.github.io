@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Martian+Mono:wdth,wght@75..112.5,300..800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
   <link rel="alternate" type="application/atom+xml" title="{{ site.title }}: essays" href="{{ '/feed.xml' | relative_url }}">
 </head>
@@ -47,7 +47,7 @@
     </div>
   </footer>
 
-  {% if page.body_class == 'home' %}<script src="{{ '/assets/js/board.js' | relative_url }}" defer></script>{% endif %}
-  <script src="{{ '/assets/js/shelf.js' | relative_url }}" defer></script>
+  {% if page.body_class == 'home' %}<script src="{{ '/assets/js/board.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>{% endif %}
+  <script src="{{ '/assets/js/shelf.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
 </body>
 </html>
