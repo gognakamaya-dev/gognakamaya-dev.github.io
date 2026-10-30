@@ -139,12 +139,18 @@ h1{font:700 clamp(30px,6vw,46px)/1.08 var(--f-display);letter-spacing:-.02em;mar
 
 /* deadlines */
 .dl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
-.dl li{display:grid;grid-template-columns:76px 1fr;gap:14px;align-items:baseline;padding:10px 12px;border-radius:3px;border-left:3px solid var(--rule);background:var(--paper)}
+.dl li{display:grid;grid-template-columns:22px 92px 1fr;gap:14px;align-items:baseline;padding:10px 12px;border-radius:3px;border-left:3px solid var(--rule);background:var(--paper)}
 .dl li.today{border-left-color:var(--due);background:var(--due-wash)}
 .dl li.soon{border-left-color:var(--soon);background:var(--soon-wash)}
 .dl .when{font:500 12px/1.3 var(--f-mono);text-transform:uppercase;letter-spacing:.04em;font-variant-numeric:tabular-nums}
 .dl .what{min-width:0}
 .dl .what small{display:block;color:var(--ink-2);font-size:13px}
+.dtick{appearance:none;width:20px;height:20px;border-radius:50%;border:2px solid var(--ink-3);background:transparent;cursor:pointer;padding:0;align-self:center;display:grid;place-items:center}
+.dl li.today .dtick{border-color:var(--due)}.dl li.soon .dtick{border-color:var(--soon)}
+.dl li.done{opacity:.5;border-left-color:var(--ok);background:var(--paper)}
+.dl li.done .what{text-decoration:line-through}
+.dl li.done .dtick{background:var(--ok);border-color:var(--ok)}
+.dl li.done .dtick::after{content:"";width:5px;height:9px;border:solid var(--sheet);border-width:0 2px 2px 0;transform:translateY(-1px) rotate(45deg)}
 .empty{border:1px dashed var(--ink-3);border-radius:3px;padding:14px 16px;color:var(--ink-2);font-size:14px;display:flex;flex-direction:column;gap:8px}
 .empty b{color:var(--ink)}
 .empty ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
@@ -167,7 +173,7 @@ footer a{color:var(--ink-3)}
 
 @media (max-width:560px){
   .sheet{padding:18px 16px}
-  .dl li{grid-template-columns:1fr;gap:2px}
+  .dl li{grid-template-columns:22px 1fr;gap:2px 12px}.dl .when{grid-column:2}.dl .what{grid-column:2}.dl .dtick{grid-row:1/3}
 }
 @media (prefers-reduced-motion:no-preference){
   .sheet{animation:rise .35s ease-out both}
@@ -590,7 +596,7 @@ footer a{color:var(--ink-3)}
   </section>
 
   <section class="sheet" aria-labelledby="h-due">
-    <h2 id="h-due">Due &amp; coming up <span>DCU Loop</span></h2>
+    <h2 id="h-due">Due &amp; coming up <span id="due-progress">DCU Loop</span></h2>
     <div id="deadlines"></div>
   </section>
 
@@ -698,14 +704,45 @@ footer a{color:var(--ink-3)}
 
   // deadlines
   if (D.deadlines && D.deadlines.length){
+    // Tick off a deadline once it's submitted. Saved by title (stable across days) in the
+    // page's database on the Claude page, and in this browser everywhere.
+    const dkey = 'km-deadlines-done'; let ddone = {};
+    try { ddone = JSON.parse(localStorage.getItem(dkey)||'{}'); } catch(e){}
+    let dlDoc = null; const rows = {};
     const ul = el('ul',{className:'dl'});
-    D.deadlines.forEach(x=> ul.append(el('li',{className:x.level||'later'},[
-      el('span',{className:'when',textContent:x.when}),
-      el('div',{className:'what'},[document.createTextNode(x.title), el('small',{textContent:x.detail||''})])
-    ])));
+    const dpaint = () => {
+      D.deadlines.forEach(x=>{ const r=rows[x.title]; const on=!!ddone[x.title]; r.li.classList.toggle('done',on); r.btn.setAttribute('aria-pressed',on); r.btn.setAttribute('aria-label',(on?'Mark not done: ':'Mark done: ')+x.title); });
+      const open = D.deadlines.filter(x=>x.level==='today' && !ddone[x.title]).length;
+      $('stamp-count').textContent = open ? open+' need attention' : '';
+      $('due-progress').textContent = D.deadlines.filter(x=>ddone[x.title]).length+' / '+D.deadlines.length+' done';
+    };
+    D.deadlines.forEach(x=>{
+      const btn = el('button',{type:'button',className:'dtick'});
+      const li = el('li',{className:x.level||'later'},[
+        btn,
+        el('span',{className:'when',textContent:x.when}),
+        el('div',{className:'what'},[document.createTextNode(x.title), el('small',{textContent:x.detail||''})])
+      ]);
+      btn.addEventListener('click',()=>{
+        ddone[x.title]=!ddone[x.title]; if(!ddone[x.title]) delete ddone[x.title]; dpaint();
+        try{localStorage.setItem(dkey,JSON.stringify(ddone));}catch(e){}
+        if (dlDoc) dlDoc.set({done:Object.keys(ddone), updatedAt:new Date().toISOString()}).catch(()=>{});
+      });
+      rows[x.title]={li,btn}; ul.append(li);
+    });
     $('deadlines').append(ul);
-    const today = D.deadlines.filter(x=>x.level==='today').length;
-    $('stamp-count').textContent = today ? today+' due today' : '';
+    dpaint();
+    (async ()=>{
+      const d3 = window.claude && window.claude.use ? await window.claude.use('db') : null;
+      if (!d3) return;
+      dlDoc = d3.collection('checks').doc('deadlines');
+      dlDoc.onSnapshot(snap=>{
+        const data = snap && snap.data && snap.data();
+        if (!data || !Array.isArray(data.done)) return;
+        ddone = {}; data.done.forEach(t=>{ ddone[t]=true; }); dpaint();
+        try{localStorage.setItem(dkey,JSON.stringify(ddone));}catch(e){}
+      }, ()=>{});
+    })();
   } else {
     const box = el('div',{className:'empty'});
     box.append(el('b',{textContent:'Loop not linked yet'}), el('span',{textContent:D.deadlinesNote||''}));
