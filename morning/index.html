@@ -65,7 +65,14 @@ h1{font:700 clamp(30px,6vw,46px)/1.08 var(--f-display);letter-spacing:-.02em;mar
 .chip.feena{background:var(--soon-wash);color:var(--soon)}
 .chip.setup{background:var(--rule);color:var(--ink-2)}
 .chip.read{background:var(--teal-wash);color:var(--teal)}
-.chip.done{opacity:.35;text-decoration:line-through}
+.chip{display:inline-flex;align-items:center;gap:.45em}
+.tick{width:.85em;height:.85em;border-radius:50%;border:2px solid currentColor;opacity:.55;flex:none;display:grid;place-items:center;box-sizing:border-box}
+.chip.done{opacity:.45;text-decoration:line-through}
+.chip.done .tick{opacity:1;background:currentColor}
+.chip.done .tick::after{content:"";width:.22em;height:.42em;border:solid var(--sheet);border-width:0 2px 2px 0;transform:translateY(-.05em) rotate(45deg)}
+.chip.w3.college .tick::after{border-color:var(--cobalt)}.chip.w3.feena .tick::after{border-color:var(--soon)}
+.track{height:4px;border-radius:2px;background:var(--rule);overflow:hidden}
+.bar{height:100%;width:0;background:linear-gradient(90deg,var(--cobalt),var(--soon));transition:width .3s}
 .hint{margin:0;text-align:center;font-size:12px;color:var(--ink-3)}
 /* meetings */
 .mform{display:grid;grid-template-columns:2fr 1.2fr 1fr 1fr;gap:10px;align-items:end}
@@ -557,8 +564,9 @@ footer a{color:var(--ink-3)}
 
   <section class="sheet" aria-labelledby="h-cloud">
     <h2 id="h-cloud">On your plate <span id="cloud-progress"></span></h2>
+    <div class="track" aria-hidden="true"><div class="bar" id="cloud-bar"></div></div>
     <div class="cloud" id="cloud"></div>
-    <p class="hint">Bigger means more urgent. Tap one when it's done.</p>
+    <p class="hint">Bigger means more urgent. Tap a task to check it off; tap again to undo.</p>
   </section>
 
   <section class="sheet" aria-labelledby="h-classes">
@@ -616,18 +624,40 @@ footer a{color:var(--ink-3)}
   $('headline').textContent = D.headline;
   $('sub').textContent = D.sub || '';
 
-  // cloud of things to do (tap to mark done; remembered per day in this browser)
+  // cloud of things to do. Tap to check off. Saved to the page's database on the Claude page
+  // (so it follows you across devices and the morning refresh can carry unfinished items),
+  // and to this browser everywhere else.
   const key = 'km-cloud-'+D.date; let done = {};
   try { done = JSON.parse(localStorage.getItem(key)||'{}'); } catch(e){}
-  const cl = D.cloud || [];
-  const prog = () => { $('cloud-progress').textContent = cl.filter(c=>done[c.text]).length+' / '+cl.length+' done'; };
+  const cl = D.cloud || []; const chips = {};
+  let checksDoc = null;
+  const prog = () => {
+    const n = cl.filter(c=>done[c.text]).length;
+    $('cloud-progress').textContent = n+' / '+cl.length+' done';
+    const bar = $('cloud-bar'); if (bar) bar.style.width = (cl.length? n/cl.length*100 : 0)+'%';
+  };
+  const paint = () => { cl.forEach(c=>{ const b=chips[c.text]; b.classList.toggle('done',!!done[c.text]); b.setAttribute('aria-pressed',!!done[c.text]); }); prog(); };
   cl.forEach(c=>{
-    const b = el('button',{type:'button',className:'chip w'+(c.weight||1)+' '+(c.tag||'')+(done[c.text]?' done':''),textContent:c.text});
-    b.setAttribute('aria-pressed', !!done[c.text]);
-    b.addEventListener('click',()=>{ done[c.text]=!done[c.text]; b.classList.toggle('done',done[c.text]); b.setAttribute('aria-pressed',!!done[c.text]); prog(); try{localStorage.setItem(key,JSON.stringify(done));}catch(e){} });
-    $('cloud').append(b);
+    const b = el('button',{type:'button',className:'chip w'+(c.weight||1)+' '+(c.tag||'')},[el('span',{className:'tick','aria-hidden':'true'}), document.createTextNode(c.text)]);
+    b.addEventListener('click',()=>{
+      done[c.text]=!done[c.text]; paint();
+      try{localStorage.setItem(key,JSON.stringify(done));}catch(e){}
+      if (checksDoc) checksDoc.set({date:D.date, done:Object.keys(done).filter(k=>done[k]), updatedAt:new Date().toISOString()}).catch(()=>{});
+    });
+    chips[c.text]=b; $('cloud').append(b);
   });
-  prog();
+  paint();
+  (async ()=>{
+    const d2 = window.claude && window.claude.use ? await window.claude.use('db') : null;
+    if (!d2) return;
+    checksDoc = d2.collection('checks').doc(D.date);
+    checksDoc.onSnapshot(snap=>{
+      const data = snap && snap.data && snap.data();
+      if (!data || !Array.isArray(data.done)) return;
+      done = {}; data.done.forEach(t=>{ done[t]=true; }); paint();
+      try{localStorage.setItem(key,JSON.stringify(done));}catch(e){}
+    }, ()=>{});
+  })();
 
   // classes
   const TT = D.timetable || [], C = D.config || {};
