@@ -71,6 +71,18 @@ h1{font:700 clamp(30px,6vw,46px)/1.08 var(--f-display);letter-spacing:-.02em;mar
 .chip.done .tick{opacity:1;background:currentColor}
 .chip.done .tick::after{content:"";width:.22em;height:.42em;border:solid var(--sheet);border-width:0 2px 2px 0;transform:translateY(-.05em) rotate(45deg)}
 .chip.w3.college .tick::after{border-color:var(--cobalt)}.chip.w3.feena .tick::after{border-color:var(--soon)}
+.h-right{display:inline-flex;gap:12px;align-items:baseline}
+.edit-btn{font:500 11px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;background:none;border:1px solid var(--rule);color:var(--ink-2);border-radius:3px;padding:5px 8px;cursor:pointer}
+.edit-btn[aria-pressed="true"]{background:var(--ink);color:var(--sheet);border-color:var(--ink)}
+.cloud.editing .chip{cursor:pointer;outline:1.5px dashed currentColor;outline-offset:2px}
+.chip .x{display:none;font:600 .8em/1 var(--f-body);margin-left:.2em;opacity:.7}
+.cloud.editing .chip .x{display:inline}
+.cloud.editing .chip .tick{display:none}
+.chip.mine{font-style:normal}
+.addform{display:flex;flex-wrap:wrap;gap:10px;align-items:end;padding-top:8px;border-top:1px dashed var(--rule)}
+.addform .grow{flex:1 1 220px}
+.addform select{font:400 14px/1.3 var(--f-body);color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:8px 10px}
+.addform .btn{grid-column:auto;padding:10px 16px}
 .track{height:4px;border-radius:2px;background:var(--rule);overflow:hidden}
 .bar{height:100%;width:0;background:linear-gradient(90deg,var(--cobalt),var(--soon));transition:width .3s}
 .hint{margin:0;text-align:center;font-size:12px;color:var(--ink-3)}
@@ -200,8 +212,18 @@ footer a{color:var(--ink-3)}
    "tag": "college"
   },
   {
+   "text": "Catch up: Calculus",
+   "weight": 2,
+   "tag": "college"
+  },
+  {
    "text": "Check 27 Oct submissions",
    "weight": 3,
+   "tag": "college"
+  },
+  {
+   "text": "Catch up: Light & Optics",
+   "weight": 2,
    "tag": "college"
   },
   {
@@ -210,12 +232,7 @@ footer a{color:var(--ink-3)}
    "tag": "college"
   },
   {
-   "text": "Email profs re: CA prep",
-   "weight": 2,
-   "tag": "college"
-  },
-  {
-   "text": "Week 8 report · Tue",
+   "text": "Catch up: Motion & Energy",
    "weight": 2,
    "tag": "college"
   },
@@ -225,7 +242,27 @@ footer a{color:var(--ink-3)}
    "tag": "feena"
   },
   {
-   "text": "Start Overleaf summary",
+   "text": "Catch up: Chemistry",
+   "weight": 2,
+   "tag": "college"
+  },
+  {
+   "text": "Email profs re: CA prep",
+   "weight": 1,
+   "tag": "college"
+  },
+  {
+   "text": "Catch up: Digital Skills",
+   "weight": 1,
+   "tag": "college"
+  },
+  {
+   "text": "Week 8 report · Tue",
+   "weight": 2,
+   "tag": "college"
+  },
+  {
+   "text": "Catch up: Physics Lab",
    "weight": 1,
    "tag": "college"
   },
@@ -233,11 +270,6 @@ footer a{color:var(--ink-3)}
    "text": "MTH1033 Topic 7 quiz",
    "weight": 1,
    "tag": "college"
-  },
-  {
-   "text": "Read Dulo's raise",
-   "weight": 1,
-   "tag": "feena"
   },
   {
    "text": "Today's PG essay",
@@ -569,10 +601,16 @@ footer a{color:var(--ink-3)}
   </header>
 
   <section class="sheet" aria-labelledby="h-cloud">
-    <h2 id="h-cloud">On your plate <span id="cloud-progress"></span></h2>
+    <h2 id="h-cloud">On your plate <span class="h-right"><span id="cloud-progress"></span><button type="button" class="edit-btn" id="cloud-edit" aria-pressed="false">Edit</button></span></h2>
     <div class="track" aria-hidden="true"><div class="bar" id="cloud-bar"></div></div>
     <div class="cloud" id="cloud"></div>
-    <p class="hint">Bigger means more urgent. Tap a task to check it off; tap again to undo.</p>
+    <form class="addform" id="addform" hidden autocomplete="off">
+      <label class="f grow"><span>Add something</span><input id="add-text" maxlength="60" placeholder="e.g. Revise Snell's law"></label>
+      <label class="f"><span>Size</span><select id="add-weight"><option value="1">Small</option><option value="2" selected>Medium</option><option value="3">Big</option></select></label>
+      <label class="f"><span>Type</span><select id="add-tag"><option value="college">College</option><option value="feena">Feena</option><option value="read">Reading</option><option value="setup">Other</option></select></label>
+      <button type="submit" class="btn">Add</button>
+    </form>
+    <p class="hint" id="cloud-hint">Bigger means more urgent. Tap a task to check it off; tap again to undo.</p>
   </section>
 
   <section class="sheet" aria-labelledby="h-classes">
@@ -630,38 +668,87 @@ footer a{color:var(--ink-3)}
   $('headline').textContent = D.headline;
   $('sub').textContent = D.sub || '';
 
-  // cloud of things to do. Tap to check off. Saved to the page's database on the Claude page
-  // (so it follows you across devices and the morning refresh can carry unfinished items),
-  // and to this browser everywhere else.
-  const key = 'km-cloud-'+D.date; let done = {};
-  try { done = JSON.parse(localStorage.getItem(key)||'{}'); } catch(e){}
-  const cl = D.cloud || []; const chips = {};
-  let checksDoc = null;
-  const prog = () => {
-    const n = cl.filter(c=>done[c.text]).length;
-    $('cloud-progress').textContent = n+' / '+cl.length+' done';
-    const bar = $('cloud-bar'); if (bar) bar.style.width = (cl.length? n/cl.length*100 : 0)+'%';
+  // cloud: what's on your plate.
+  // Generated items come from the morning refresh. Tap to check off. In Edit mode, tap an item to
+  // cycle its size, × removes it, and the form adds your own. On the Claude page everything is saved
+  // to the page's database (own items persist until removed); elsewhere it is saved in this browser.
+  const key = 'km-cloud-'+D.date, mineKey = 'km-cloud-mine', ovKey = 'km-cloud-ov-'+D.date;
+  const ls = { get(k,f){ try{ return JSON.parse(localStorage.getItem(k)||'null') ?? f; }catch(e){ return f; } }, set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} } };
+  let done = ls.get(key,{});                 // text -> true
+  let ov = ls.get(ovKey,{hidden:[],weights:{}}); // today's edits to generated items
+  let own = ls.get(mineKey,[]);             // [{id,text,weight,tag,doneOn}]
+  let editing = false, cdb = null, checksDoc = null;
+  const gen = D.cloud || [];
+  const items = () => {
+    const hid = new Set(ov.hidden||[]);
+    const g = gen.filter(c=>!hid.has(c.text)).map(c=>Object.assign({},c,{weight:(ov.weights||{})[c.text]||c.weight||1, gen:true}));
+    const m = own.filter(x=>!x.doneOn || x.doneOn===D.date).map(x=>Object.assign({},x,{own:true}));
+    const out=[], seen=new Set(); g.concat(m).forEach(c=>{ if(!seen.has(c.text)){ seen.add(c.text); out.push(c); } });
+    return out;
   };
-  const paint = () => { cl.forEach(c=>{ const b=chips[c.text]; b.classList.toggle('done',!!done[c.text]); b.setAttribute('aria-pressed',!!done[c.text]); }); prog(); };
-  cl.forEach(c=>{
-    const b = el('button',{type:'button',className:'chip w'+(c.weight||1)+' '+(c.tag||'')},[el('span',{className:'tick','aria-hidden':'true'}), document.createTextNode(c.text)]);
-    b.addEventListener('click',()=>{
-      done[c.text]=!done[c.text]; paint();
-      try{localStorage.setItem(key,JSON.stringify(done));}catch(e){}
-      if (checksDoc) checksDoc.set({date:D.date, done:Object.keys(done).filter(k=>done[k]), updatedAt:new Date().toISOString()}).catch(()=>{});
+  const saveChecks = () => {
+    ls.set(key,done); ls.set(ovKey,ov);
+    if (checksDoc) checksDoc.set({date:D.date, done:Object.keys(done).filter(k=>done[k]), hidden:ov.hidden||[], weights:ov.weights||{}, updatedAt:new Date().toISOString()}).catch(()=>{});
+  };
+  const saveMine = (item) => {
+    ls.set(mineKey,own);
+    if (cdb && item) { const {id,...rest}=item; cdb.collection('plate').doc(id).set(rest).catch(()=>{}); }
+  };
+  const removeMine = (id) => { own = own.filter(x=>x.id!==id); ls.set(mineKey,own); if (cdb) cdb.collection('plate').doc(id).delete().catch(()=>{}); };
+  const renderCloud = () => {
+    const box = $('cloud'); box.textContent=''; box.classList.toggle('editing',editing);
+    const list = items();
+    list.forEach(c=>{
+      const on = !!done[c.text];
+      const b = el('button',{type:'button',className:'chip w'+c.weight+' '+(c.tag||'')+(on?' done':'')+(c.own?' mine':'')},[el('span',{className:'tick','aria-hidden':'true'}), document.createTextNode(c.text)]);
+      const x = el('span',{className:'x',textContent:'×'}); x.setAttribute('role','button'); x.setAttribute('aria-label','Remove '+c.text); b.append(x);
+      b.setAttribute('aria-pressed',on);
+      x.addEventListener('click',ev=>{ ev.stopPropagation();
+        if (c.own) removeMine(c.id); else { ov.hidden=(ov.hidden||[]).concat(c.text); }
+        delete done[c.text]; saveChecks(); renderCloud(); });
+      b.addEventListener('click',()=>{
+        if (editing){ const w=c.weight%3+1;
+          if (c.own){ const it=own.find(x=>x.id===c.id); it.weight=w; saveMine(it); }
+          else { ov.weights=Object.assign({},ov.weights,{[c.text]:w}); saveChecks(); }
+          renderCloud(); return; }
+        done[c.text]=!done[c.text]; if(!done[c.text]) delete done[c.text];
+        if (c.own){ const it=own.find(x=>x.id===c.id); it.doneOn = done[c.text]? D.date : null; saveMine(it); }
+        saveChecks(); renderCloud();
+      });
+      box.append(b);
     });
-    chips[c.text]=b; $('cloud').append(b);
+    const n = list.filter(c=>done[c.text]).length;
+    $('cloud-progress').textContent = n+' / '+list.length+' done';
+    $('cloud-bar').style.width = (list.length? n/list.length*100 : 0)+'%';
+  };
+  $('cloud-edit').addEventListener('click',()=>{
+    editing=!editing; $('cloud-edit').setAttribute('aria-pressed',editing); $('cloud-edit').textContent = editing?'Done':'Edit';
+    $('addform').hidden=!editing;
+    $('cloud-hint').textContent = editing ? 'Tap an item to change its size. × removes it. Your own items stay until you remove or finish them.' : 'Bigger means more urgent. Tap a task to check it off; tap again to undo.';
+    renderCloud(); if(editing) $('add-text').focus();
   });
-  paint();
+  $('addform').addEventListener('submit',ev=>{
+    ev.preventDefault();
+    const text=$('add-text').value.trim(); if(!text) return;
+    if (items().some(c=>c.text===text)) { $('add-text').select(); return; }
+    const it={id:'p'+Date.now().toString(36)+Math.random().toString(36).slice(2,6), text, weight:+$('add-weight').value, tag:$('add-tag').value, createdAt:new Date().toISOString(), doneOn:null};
+    own.push(it); saveMine(it); $('add-text').value=''; renderCloud();
+  });
+  renderCloud();
   (async ()=>{
     const d2 = window.claude && window.claude.use ? await window.claude.use('db') : null;
     if (!d2) return;
+    cdb = d2;
     checksDoc = d2.collection('checks').doc(D.date);
     checksDoc.onSnapshot(snap=>{
-      const data = snap && snap.data && snap.data();
-      if (!data || !Array.isArray(data.done)) return;
-      done = {}; data.done.forEach(t=>{ done[t]=true; }); paint();
-      try{localStorage.setItem(key,JSON.stringify(done));}catch(e){}
+      const data = snap && snap.data && snap.data(); if (!data) return;
+      if (Array.isArray(data.done)){ done={}; data.done.forEach(t=>{done[t]=true;}); }
+      ov = {hidden:Array.isArray(data.hidden)?data.hidden:[], weights:data.weights||{}};
+      ls.set(key,done); ls.set(ovKey,ov); renderCloud();
+    }, ()=>{});
+    d2.collection('plate').onSnapshot(snap=>{
+      own = snap.docs.map(d=>Object.assign({id:d.id}, d.data()||{})).filter(x=>x.text);
+      ls.set(mineKey,own); renderCloud();
     }, ()=>{});
   })();
 
