@@ -1,0 +1,757 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
+<title>Kamaya's Morning</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a dawn band for the headline, then white sheets on a cool lilac ground. Indigo = college, sunrise orange = Feena, rose = meetings and due, teal = reading. */
+:root{
+  --paper:#F1F1F9; --sheet:#FFFFFF; --ink:#17153A; --ink-2:#55536E; --ink-3:#8F8DA6;
+  --rule:#E4E3F0; --grid:rgba(23,21,58,.035);
+  --cobalt:#4F46E5; --cobalt-wash:#ECEBFE;
+  --due:#E11D48; --due-wash:#FFE4EA; --soon:#EA580C; --soon-wash:#FFEDD8; --ok:#16A34A;
+  --teal:#0D9488; --teal-wash:#D5F7F1;
+  --dawn-1:#1E1B4B; --dawn-2:#6D28D9; --dawn-3:#F97316; --dawn-sun:#FDBA74; --on-dawn:#FFFFFF;
+  --f-display:"Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --f-body:"IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0E0D1C; --sheet:#17162B; --ink:#ECEBFA; --ink-2:#B3B1CC; --ink-3:#77758F;
+  --rule:#2A2844; --grid:rgba(236,235,250,.03);
+  --cobalt:#A5A0FF; --cobalt-wash:#272463;
+  --due:#FB7185; --due-wash:#3D1626; --soon:#FB923C; --soon-wash:#3B2414; --ok:#4ADE80;
+  --teal:#2DD4BF; --teal-wash:#0F3330;
+  --dawn-1:#120F33; --dawn-2:#4C1D95; --dawn-3:#C2410C; --dawn-sun:#FB923C; --on-dawn:#FFF7ED; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0E0D1C; --sheet:#17162B; --ink:#ECEBFA; --ink-2:#B3B1CC; --ink-3:#77758F;
+  --rule:#2A2844; --grid:rgba(236,235,250,.03);
+  --cobalt:#A5A0FF; --cobalt-wash:#272463;
+  --due:#FB7185; --due-wash:#3D1626; --soon:#FB923C; --soon-wash:#3B2414; --ok:#4ADE80;
+  --teal:#2DD4BF; --teal-wash:#0F3330;
+  --dawn-1:#120F33; --dawn-2:#4C1D95; --dawn-3:#C2410C; --dawn-sun:#FB923C; --on-dawn:#FFF7ED; color-scheme:dark}
+
+body{background:var(--paper);color:var(--ink);font:400 15px/1.55 var(--f-body);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px}
+.wrap{max-width:780px;margin:0 auto;padding-block:40px 64px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;gap:20px}
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+a{color:inherit;text-decoration-color:var(--ink-3);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--cobalt)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--cobalt);outline-offset:2px;border-radius:3px}
+
+header{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:12px;padding:30px 28px 34px;border-radius:6px;color:var(--on-dawn);
+  background:radial-gradient(circle at 88% 118%, var(--dawn-sun) 0 14%, transparent 15%), radial-gradient(ellipse at 85% 110%, rgba(253,186,116,.55), transparent 55%), linear-gradient(160deg,var(--dawn-1) 0%,var(--dawn-2) 55%,var(--dawn-3) 100%)}
+header .mono{color:var(--on-dawn);opacity:.75}
+header .sub{color:var(--on-dawn);opacity:.88}
+@media (max-width:560px){header{padding:22px 18px 26px}}
+.stamp{display:flex;flex-wrap:wrap;gap:6px 16px}
+h1{font:700 clamp(30px,6vw,46px)/1.08 var(--f-display);letter-spacing:-.02em;margin:0;text-wrap:balance}
+.sub{color:var(--ink-2);margin:0;max-width:60ch}
+
+.sheet{background:var(--sheet);border:1px solid var(--rule);border-radius:4px;padding:22px 24px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.sheet h2{font:600 13px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;margin:0;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.sheet h2 span{color:var(--ink-3);font-weight:400}
+
+/* cloud */
+.cloud{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 12px;padding:10px 0 4px}
+.chip{font-family:var(--f-display);font-weight:500;line-height:1.1;border:0;cursor:pointer;border-radius:999px;padding:.38em .8em;background:var(--paper);color:var(--ink);transition:transform .15s, opacity .2s}
+.chip:hover{transform:translateY(-1px)}
+.chip.w1{font-size:14px}.chip.w2{font-size:18px}.chip.w3{font-size:24px;font-weight:700}
+.chip.w3.college{background:var(--cobalt);color:var(--sheet)}.chip.w3.feena{background:var(--soon);color:var(--sheet)}
+.chip.college{background:var(--cobalt-wash);color:var(--cobalt)}
+.chip.feena{background:var(--soon-wash);color:var(--soon)}
+.chip.setup{background:var(--rule);color:var(--ink-2)}
+.chip.read{background:var(--teal-wash);color:var(--teal)}
+.chip.done{opacity:.35;text-decoration:line-through}
+.hint{margin:0;text-align:center;font-size:12px;color:var(--ink-3)}
+/* meetings */
+.mform{display:grid;grid-template-columns:2fr 1.2fr 1fr 1fr;gap:10px;align-items:end}
+.mform .wide{grid-column:span 2}
+.f{display:flex;flex-direction:column;gap:4px;min-width:0}
+.f span{font:500 11px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.f input{font:400 14px/1.3 var(--f-body);color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:8px 10px;min-width:0;width:100%;box-sizing:border-box}
+.btn{grid-column:span 1;font:600 14px/1 var(--f-body);background:var(--cobalt);color:var(--sheet);border:0;border-radius:4px;padding:11px 14px;cursor:pointer}
+.btn:disabled{opacity:.5;cursor:default}
+.msg{margin:0;font-size:13px;color:var(--ink-2);min-height:1em}
+.mlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.mlist li{display:grid;grid-template-columns:96px 1fr auto;gap:14px;align-items:baseline;padding:9px 0;border-top:1px solid var(--rule)}
+.mlist .tm{font:500 12px/1.35 var(--f-mono);text-transform:uppercase;font-variant-numeric:tabular-nums}
+.mlist .nm{min-width:0}.mlist .nm small{display:block;color:var(--ink-2);font-size:13px}
+.mlist button{font:400 12px/1 var(--f-mono);background:none;border:0;color:var(--ink-3);cursor:pointer;padding:4px}
+.mlist button:hover{color:var(--due)}
+.k.Meeting{background:var(--due-wash);color:var(--due)}
+.week .b.Meeting{background:var(--due-wash);color:var(--due)}
+@media (max-width:560px){.mform{grid-template-columns:1fr 1fr}.mform .wide,.btn{grid-column:1/-1}.mlist li{grid-template-columns:1fr auto}.mlist .tm{grid-column:1/-1}}
+
+/* plan */
+.plan{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.plan li{display:grid;grid-template-columns:26px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--rule)}
+.plan li:first-child{border-top:0;padding-top:2px}
+.plan input{appearance:none;width:20px;height:20px;border:1.5px solid var(--ink-3);border-radius:4px;margin:2px 0 0;cursor:pointer;display:grid;place-items:center;background:transparent}
+.plan input:checked{background:var(--cobalt);border-color:var(--cobalt)}
+.plan input:checked::after{content:"";width:5px;height:10px;border:solid var(--sheet);border-width:0 2px 2px 0;transform:translateY(-1px) rotate(45deg)}
+.plan .t{font-weight:600}
+.plan .d{color:var(--ink-2);font-size:14px}
+.plan li.done .t{text-decoration:line-through;color:var(--ink-3)}
+.tag{font:500 11px/1 var(--f-mono);letter-spacing:.05em;text-transform:uppercase;padding:4px 6px;border-radius:3px;margin-left:8px;vertical-align:2px;white-space:nowrap}
+.tag.college{background:var(--cobalt-wash);color:var(--cobalt)}
+.tag.feena{background:var(--soon-wash);color:var(--soon)}
+.tag.setup{background:var(--rule);color:var(--ink-2)}
+
+/* classes */
+.cls{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.cls li{display:grid;grid-template-columns:96px 1fr auto;gap:14px;align-items:baseline;padding:9px 0;border-top:1px solid var(--rule)}
+.cls li:first-child{border-top:0}
+.cls .tm{font:500 13px/1.3 var(--f-mono);font-variant-numeric:tabular-nums}
+.cls .nm{min-width:0}
+.cls .nm small{display:block;color:var(--ink-2);font-size:13px}
+.cls .rm{font:400 12px/1.3 var(--f-mono);color:var(--ink-3);white-space:nowrap}
+.cls li.past{opacity:.5}
+.cls li.maybe .nm::after{content:" · your group?";color:var(--soon);font-size:12px}
+.k{font:500 10.5px/1 var(--f-mono);letter-spacing:.05em;text-transform:uppercase;margin-right:6px;padding:3px 5px;border-radius:3px;vertical-align:1px}
+.k.Lecture{background:var(--rule);color:var(--ink-2)}
+.k.Tutorial{background:var(--cobalt-wash);color:var(--cobalt)}
+.k.Lab{background:var(--soon-wash);color:var(--soon)}
+.week{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;padding-top:6px;border-top:1px dashed var(--rule)}
+.week .col{display:flex;flex-direction:column;gap:3px;min-width:0}
+.week .dn{font:500 11px/1.6 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.week .col.on .dn{color:var(--cobalt)}
+.week .b{font:400 11px/1.25 var(--f-mono);padding:4px 5px;border-radius:3px;background:var(--paper);color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.week .b.Tutorial{background:var(--cobalt-wash)}.week .b.Lab{background:var(--soon-wash)}
+.none{color:var(--ink-2);font-size:14px;margin:0}
+
+/* essay */
+.essay .et{font:700 clamp(22px,4vw,28px)/1.15 var(--f-display);letter-spacing:-.01em;margin:0;text-wrap:balance}
+.essay .et a{text-decoration-thickness:2px;text-decoration-color:var(--teal)}
+.essay{border-top:3px solid var(--teal)}
+.essay .em{font:400 12px/1.4 var(--f-mono);color:var(--ink-3);letter-spacing:.04em;text-transform:uppercase}
+.essay .ew{color:var(--ink-2);margin:0;max-width:62ch}
+
+/* deadlines */
+.dl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.dl li{display:grid;grid-template-columns:76px 1fr;gap:14px;align-items:baseline;padding:10px 12px;border-radius:3px;border-left:3px solid var(--rule);background:var(--paper)}
+.dl li.today{border-left-color:var(--due);background:var(--due-wash)}
+.dl li.soon{border-left-color:var(--soon);background:var(--soon-wash)}
+.dl .when{font:500 12px/1.3 var(--f-mono);text-transform:uppercase;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.dl .what{min-width:0}
+.dl .what small{display:block;color:var(--ink-2);font-size:13px}
+.empty{border:1px dashed var(--ink-3);border-radius:3px;padding:14px 16px;color:var(--ink-2);font-size:14px;display:flex;flex-direction:column;gap:8px}
+.empty b{color:var(--ink)}
+.empty ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+
+/* news */
+.news{list-style:none;margin:0;padding:0;counter-reset:n;display:flex;flex-direction:column}
+.news li{counter-increment:n;display:grid;grid-template-columns:36px 1fr;gap:10px;padding:14px 0;border-top:1px solid var(--rule)}
+.news li:first-child{border-top:0;padding-top:2px}
+.news li::before{content:counter(n);font:700 24px/1 var(--f-display);color:var(--soon);font-variant-numeric:tabular-nums}
+.news .h{font-weight:600;line-height:1.35}
+.news .s{color:var(--ink-2);font-size:14px;margin-top:3px}
+.news .why{font:400 12px/1.4 var(--f-mono);color:var(--ink-3);margin-top:6px}
+
+.radar{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.radar div{background:var(--paper);border-radius:3px;padding:12px 14px;font-size:14px;color:var(--ink-2);min-width:0}
+.radar b{color:var(--ink);display:block;margin-bottom:2px}
+
+footer{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--ink-3)}
+footer a{color:var(--ink-3)}
+
+@media (max-width:560px){
+  .sheet{padding:18px 16px}
+  .dl li{grid-template-columns:1fr;gap:2px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .sheet{animation:rise .35s ease-out both}
+  .sheet:nth-of-type(2){animation-delay:.05s}.sheet:nth-of-type(3){animation-delay:.1s}.sheet:nth-of-type(4){animation-delay:.15s}
+  @keyframes rise{from{transform:translateY(6px)}to{transform:none}}
+}
+</style>
+
+<!--
+  BRIEF DATA — the daily scheduled task replaces ONLY this JSON block, then republishes.
+  Fields: date (YYYY-MM-DD), headline, sub, cloud[{text,weight:1|2|3,tag:college|feena|setup|read}],
+  deadlines[{when,title,detail,level:today|soon|later}], deadlinesNote, news[{title,summary,why,url,source}],
+  radar[{title,detail,url}], sources[{title,url}], config{loopFeedUrl}
+-->
+<script id="brief-data" type="application/json">
+{
+ "date": "2026-10-30",
+ "headline": "Three Loop deadlines land Monday and Tuesday. The weekend is for the lab reports.",
+ "sub": "Loop is linked. Two things came due on 27 Oct while you were in SF, so check those first. Then Lab Report 2 and the DLAT module before Monday 23:59.",
+ "cloud": [
+  {
+   "text": "Lab Report 2 · Mon",
+   "weight": 3,
+   "tag": "college"
+  },
+  {
+   "text": "Check 27 Oct submissions",
+   "weight": 3,
+   "tag": "college"
+  },
+  {
+   "text": "DLAT data viz · Mon",
+   "weight": 2,
+   "tag": "college"
+  },
+  {
+   "text": "Email profs re: CA prep",
+   "weight": 2,
+   "tag": "college"
+  },
+  {
+   "text": "Week 8 report · Tue",
+   "weight": 2,
+   "tag": "college"
+  },
+  {
+   "text": "Feena pivot decision",
+   "weight": 3,
+   "tag": "feena"
+  },
+  {
+   "text": "Start Overleaf summary",
+   "weight": 1,
+   "tag": "college"
+  },
+  {
+   "text": "MTH1033 Topic 7 quiz",
+   "weight": 1,
+   "tag": "college"
+  },
+  {
+   "text": "Read Dulo's raise",
+   "weight": 1,
+   "tag": "feena"
+  },
+  {
+   "text": "Today's PG essay",
+   "weight": 1,
+   "tag": "read"
+  }
+ ],
+ "deadlines": [
+  {
+   "when": "27 OCT · CHECK",
+   "title": "Week 7 lab report",
+   "detail": "PHY1031 · was due while you were away. Confirm it's submitted or ask for an extension.",
+   "level": "today"
+  },
+  {
+   "when": "27 OCT · CHECK",
+   "title": "Generative AI group task + Lab Quiz",
+   "detail": "PHY1029 · group PDF and the 50-min lab quiz fell on 27 Oct. Check with your group and lecturer.",
+   "level": "today"
+  },
+  {
+   "when": "MON 2 NOV",
+   "title": "Laboratory Report 2 (formal)",
+   "detail": "PHY1031 · one experiment from weeks 6–8. 23:59.",
+   "level": "soon"
+  },
+  {
+   "when": "MON 2 NOV",
+   "title": "DLAT: Data Visualisation & Communication",
+   "detail": "PHY1029 · complete the submodule. 23:59.",
+   "level": "soon"
+  },
+  {
+   "when": "TUE 3 NOV",
+   "title": "Week 8 lab report",
+   "detail": "PHY1031 · single PDF. 23:59.",
+   "level": "soon"
+  },
+  {
+   "when": "FRI 6 NOV",
+   "title": "Overleaf LaTeX summary",
+   "detail": "PHY1029 · individual summary of the group paper, plus compiled PDF and Overleaf link.",
+   "level": "later"
+  },
+  {
+   "when": "TUE 10 NOV",
+   "title": "Week 9 lab report",
+   "detail": "PHY1031 · single PDF. 23:59.",
+   "level": "later"
+  },
+  {
+   "when": "MON 16 NOV",
+   "title": "Laboratory Report 3 (formal)",
+   "detail": "PHY1031 · one experiment from weeks 7–9.",
+   "level": "later"
+  }
+ ],
+ "deadlinesNote": "",
+ "essay": {
+  "title": "Do Things That Don't Scale",
+  "url": "https://paulgraham.com/ds.html",
+  "year": "2013",
+  "minutes": 25,
+  "why": "The founder's playbook for the earliest stage: recruit users by hand and over-serve the first few. Read it before deciding how Feena finds its first robotics customers."
+ },
+ "news": [
+  {
+   "title": "Anthropic files publicly for a Nasdaq IPO",
+   "summary": "It would list under the ticker ANT, and is expected to become the reference point for how public markets value AI labs.",
+   "why": "Sets the valuation weather for every AI raise next year, Feena's included.",
+   "url": "https://fticommunications.com/fti-consulting-news-bytes-30-october-2026/",
+   "source": "FTI News Bytes"
+  },
+  {
+   "title": "Big Tech earnings split: Microsoft up, Alphabet down 10%",
+   "summary": "Microsoft revenue rose 19% to $92.3bn with Azure up 48%. Alphabet missed for the first time in nearly four years despite 25% revenue growth.",
+   "why": "Cloud demand is still accelerating; investors punish any miss.",
+   "url": "https://fticommunications.com/fti-consulting-news-bytes-30-october-2026/",
+   "source": "FTI News Bytes"
+  },
+  {
+   "title": "Meta plans a $95bn stock raise for AI infrastructure",
+   "summary": "One of the largest stock offerings ever, backed by Nvidia, AMD and Broadcom, to pay for compute.",
+   "why": "Compute spend is now financed like national infrastructure.",
+   "url": "https://fticommunications.com/fti-consulting-news-bytes-30-october-2026/",
+   "source": "FTI News Bytes"
+  },
+  {
+   "title": "Canada takes a C$1.6bn stake in Cohere",
+   "summary": "Cohere must stay headquartered in Canada and invest at least C$1.7bn in domestic compute by 2030.",
+   "why": "Sovereign AI money is real; Ireland and the EU may follow the template.",
+   "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-october-30-2026/",
+   "source": "The Neuron"
+  },
+  {
+   "title": "Mistral releases Large 4 with open weights",
+   "summary": "A trillion-parameter multimodal model aimed at software development and defensive cybersecurity.",
+   "why": "Frontier-scale open weights you can run and fine-tune yourself.",
+   "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-october-30-2026/",
+   "source": "The Neuron"
+  }
+ ],
+ "radar": [
+  {
+   "title": "Dulo raises a $130M seed",
+   "detail": "AI models for engineering and hardware design. Closest signal yet for Feena's robotics-tooling pivot.",
+   "url": "https://techstartups.com/2026/10/30/startup-funding-news-today-october-30-2026-kalshi-cohere-bites-dulo-opentrons-firehawk-defense-more/"
+  },
+  {
+   "title": "Opentrons raises $40M Series E",
+   "detail": "Lab robotics automation. A possible customer profile for calibration and sim-debugging tools.",
+   "url": "https://techstartups.com/2026/10/30/startup-funding-news-today-october-30-2026-kalshi-cohere-bites-dulo-opentrons-firehawk-defense-more/"
+  }
+ ],
+ "sources": [
+  {
+   "title": "The Neuron, 30 Oct",
+   "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-october-30-2026/"
+  },
+  {
+   "title": "FTI News Bytes, 30 Oct",
+   "url": "https://fticommunications.com/fti-consulting-news-bytes-30-october-2026/"
+  },
+  {
+   "title": "Tech Startups funding, 30 Oct",
+   "url": "https://techstartups.com/2026/10/30/startup-funding-news-today-october-30-2026-kalshi-cohere-bites-dulo-opentrons-firehawk-defense-more/"
+  }
+ ],
+ "timetable": [
+  {
+   "day": 1,
+   "start": "12:00",
+   "end": "13:00",
+   "code": "MTH1033",
+   "name": "Calculus & its Application",
+   "kind": "Tutorial",
+   "room": "GLA.FTG09",
+   "group": "Tut group a"
+  },
+  {
+   "day": 1,
+   "start": "13:00",
+   "end": "14:00",
+   "code": "MTH1033",
+   "name": "Calculus & its Application",
+   "kind": "Tutorial",
+   "room": "GLA.FTM07",
+   "group": "Tut group b"
+  },
+  {
+   "day": 1,
+   "start": "14:00",
+   "end": "15:00",
+   "code": "PHY1029",
+   "name": "Digital Skills & Life Skills",
+   "kind": "Lecture",
+   "room": "GLA.Q120",
+   "group": ""
+  },
+  {
+   "day": 1,
+   "start": "16:00",
+   "end": "17:00",
+   "code": "PHY1022",
+   "name": "Motion and Energy",
+   "kind": "Lecture",
+   "room": "GLA.QG21",
+   "group": ""
+  },
+  {
+   "day": 1,
+   "start": "19:00",
+   "end": "21:00",
+   "code": "MTH1033",
+   "name": "Calculus & its Application",
+   "kind": "Lecture",
+   "room": "No room listed",
+   "group": ""
+  },
+  {
+   "day": 2,
+   "start": "10:00",
+   "end": "13:00",
+   "code": "PHY1031",
+   "name": "Physics Lab I",
+   "kind": "Lab",
+   "room": "GLA.NG22",
+   "group": "Lab group A"
+  },
+  {
+   "day": 2,
+   "start": "12:00",
+   "end": "13:00",
+   "code": "PHY1029",
+   "name": "Digital Skills lab",
+   "kind": "Lab",
+   "room": "GLA.N222",
+   "group": "Lab group B"
+  },
+  {
+   "day": 2,
+   "start": "14:00",
+   "end": "15:00",
+   "code": "PHY1029",
+   "name": "Digital Skills lab",
+   "kind": "Lab",
+   "room": "GLA.N222",
+   "group": "Lab group A"
+  },
+  {
+   "day": 2,
+   "start": "14:00",
+   "end": "17:00",
+   "code": "PHY1031",
+   "name": "Physics Lab I",
+   "kind": "Lab",
+   "room": "GLA.NG22",
+   "group": "Lab group B"
+  },
+  {
+   "day": 3,
+   "start": "09:00",
+   "end": "10:00",
+   "code": "PHY1018",
+   "name": "Light & Optics",
+   "kind": "Lecture",
+   "room": "GLA.XG22",
+   "group": ""
+  },
+  {
+   "day": 3,
+   "start": "10:00",
+   "end": "11:00",
+   "code": "PHY1018",
+   "name": "Light & Optics",
+   "kind": "Lecture",
+   "room": "GLA.Q120",
+   "group": ""
+  },
+  {
+   "day": 3,
+   "start": "12:00",
+   "end": "13:00",
+   "code": "PHY1022",
+   "name": "Motion and Energy",
+   "kind": "Lecture",
+   "room": "GLA.XG21",
+   "group": ""
+  },
+  {
+   "day": 4,
+   "start": "10:00",
+   "end": "11:00",
+   "code": "CHM1006",
+   "name": "Inorganic & Physical Chemistry",
+   "kind": "Lecture",
+   "room": "GLA.C104",
+   "group": ""
+  },
+  {
+   "day": 4,
+   "start": "14:00",
+   "end": "15:00",
+   "code": "MTH1033",
+   "name": "Calculus & its Application",
+   "kind": "Tutorial",
+   "room": "GLA.FTM06",
+   "group": "Tut group c"
+  },
+  {
+   "day": 4,
+   "start": "15:00",
+   "end": "16:00",
+   "code": "MTH1033",
+   "name": "Calculus & its Application",
+   "kind": "Lecture",
+   "room": "GLA.HG20",
+   "group": ""
+  },
+  {
+   "day": 5,
+   "start": "09:00",
+   "end": "10:00",
+   "code": "PHY1018",
+   "name": "Light & Optics",
+   "kind": "Tutorial",
+   "room": "GLA.Q121",
+   "group": ""
+  },
+  {
+   "day": 5,
+   "start": "10:00",
+   "end": "11:00",
+   "code": "PHY1022",
+   "name": "Motion and Energy",
+   "kind": "Lecture",
+   "room": "GLA.XG22",
+   "group": ""
+  },
+  {
+   "day": 5,
+   "start": "12:00",
+   "end": "13:00",
+   "code": "CHM1006",
+   "name": "Inorganic & Physical Chemistry",
+   "kind": "Lecture",
+   "room": "GLA.CG86",
+   "group": ""
+  }
+ ],
+ "config": {
+  "loopFeedUrl": "https://loop.dcu.ie/calendar/export_execute.php?userid=422824&authtoken=62c51a5bcb44f1ef667a929a4501cc13d88453c2&preset_what=all&preset_time=recentupcoming",
+  "tutGroup": "a",
+  "labGroup": "A",
+  "essaysServed": [
+   "https://paulgraham.com/ds.html"
+  ],
+  "timetableUrl": "https://mytimetable.dcu.ie/timetables?view=week&timetableTypeSelected=241e4d36-60e0-49f8-b27e-99416745d98d&searchText=Physics&days=0,1,2,3,4,5,6&selections=241e4d36-60e0-49f8-b27e-99416745d98d__78c0bf2e-09fd-4e44-d717-4d3b082b7a94"
+ },
+ "meetings": []
+}
+</script>
+
+<div class="wrap">
+  <header>
+    <div class="stamp mono"><span id="stamp-date"></span><span>Dublin</span><span id="stamp-count"></span></div>
+    <h1 id="headline"></h1>
+    <p class="sub" id="sub"></p>
+  </header>
+
+  <section class="sheet" aria-labelledby="h-cloud">
+    <h2 id="h-cloud">On your plate <span id="cloud-progress"></span></h2>
+    <div class="cloud" id="cloud"></div>
+    <p class="hint">Bigger means more urgent. Tap one when it's done.</p>
+  </section>
+
+  <section class="sheet" aria-labelledby="h-classes">
+    <h2 id="h-classes">Today <span id="classes-label"></span></h2>
+    <div id="classes"></div>
+    <div class="week" id="week" aria-label="Week at a glance"></div>
+  </section>
+
+  <section class="sheet" aria-labelledby="h-meet">
+    <h2 id="h-meet">Meetings <span id="meet-status">Loading</span></h2>
+    <form class="mform" id="mform" autocomplete="off">
+      <label class="f wide"><span>What</span><input id="m-title" required maxlength="120" placeholder="Call with Dogpatch"></label>
+      <label class="f"><span>Date</span><input id="m-date" type="date" required></label>
+      <label class="f"><span>Start</span><input id="m-start" type="time" required></label>
+      <label class="f wide"><span>Where</span><input id="m-where" maxlength="120" placeholder="Zoom, Dogpatch Labs, Q120"></label>
+      <label class="f"><span>End</span><input id="m-end" type="time"></label>
+      <button type="submit" class="btn" id="m-add">Add meeting</button>
+    </form>
+    <p class="msg" id="m-msg" role="status"></p>
+    <ul class="mlist" id="mlist"></ul>
+  </section>
+
+  <section class="sheet" aria-labelledby="h-due">
+    <h2 id="h-due">Due &amp; coming up <span>DCU Loop</span></h2>
+    <div id="deadlines"></div>
+  </section>
+
+  <section class="sheet essay" aria-labelledby="h-essay" id="essay-sheet">
+    <h2 id="h-essay">Today's essay <span>Paul Graham</span></h2>
+    <div id="essay"></div>
+  </section>
+
+  <section class="sheet" aria-labelledby="h-news">
+    <h2 id="h-news">Tech, top five <span>World</span></h2>
+    <ol class="news" id="news"></ol>
+  </section>
+
+  <section class="sheet" aria-labelledby="h-radar" id="radar-sheet">
+    <h2 id="h-radar">Feena radar <span>Funding &amp; signals</span></h2>
+    <div class="radar" id="radar"></div>
+  </section>
+
+  <footer id="sources"></footer>
+</div>
+
+<script>
+(function(){
+  const D = JSON.parse(document.getElementById('brief-data').textContent);
+  const $ = id => document.getElementById(id);
+  const el = (tag, props={}, kids=[]) => { const n=document.createElement(tag); Object.assign(n,props); kids.forEach(k=>n.append(k)); return n; };
+  const link = (text,url) => url && /^https:\/\//.test(url) ? el('a',{href:url,target:'_blank',rel:'noopener',textContent:text}) : document.createTextNode(text);
+
+  const d = new Date(D.date+'T12:00:00');
+  $('stamp-date').textContent = d.toLocaleDateString('en-IE',{weekday:'short',day:'numeric',month:'short',year:'numeric'});
+  $('headline').textContent = D.headline;
+  $('sub').textContent = D.sub || '';
+
+  // cloud of things to do (tap to mark done; remembered per day in this browser)
+  const key = 'km-cloud-'+D.date; let done = {};
+  try { done = JSON.parse(localStorage.getItem(key)||'{}'); } catch(e){}
+  const cl = D.cloud || [];
+  const prog = () => { $('cloud-progress').textContent = cl.filter(c=>done[c.text]).length+' / '+cl.length+' done'; };
+  cl.forEach(c=>{
+    const b = el('button',{type:'button',className:'chip w'+(c.weight||1)+' '+(c.tag||'')+(done[c.text]?' done':''),textContent:c.text});
+    b.setAttribute('aria-pressed', !!done[c.text]);
+    b.addEventListener('click',()=>{ done[c.text]=!done[c.text]; b.classList.toggle('done',done[c.text]); b.setAttribute('aria-pressed',!!done[c.text]); prog(); try{localStorage.setItem(key,JSON.stringify(done));}catch(e){} });
+    $('cloud').append(b);
+  });
+  prog();
+
+  // classes
+  const TT = D.timetable || [], C = D.config || {};
+  const dow = d.getDay(); // 0 Sun..6 Sat
+  const inGroup = c => !c.group || (/^Tut group/.test(c.group) ? (!C.tutGroup || c.group.endsWith(' '+C.tutGroup)) : (!C.labGroup || c.group.endsWith(' '+C.labGroup)));
+  const known = c => !c.group || (/^Tut/.test(c.group) ? !!C.tutGroup : !!C.labGroup);
+  const mine = TT.filter(inGroup);
+  const now = new Date(); const sameDay = now.toDateString() === d.toDateString();
+  const mins = s => { const [h,m]=s.split(':').map(Number); return h*60+m; };
+  const todays = mine.filter(c=>c.day===dow).sort((a,b)=>mins(a.start)-mins(b.start));
+  let meetings = [];
+  const fmtDate = s => new Date(s+'T12:00:00').toLocaleDateString('en-IE',{weekday:'short',day:'numeric',month:'short'});
+  const renderToday = () => {
+    const items = todays.map(c=>Object.assign({},c)).concat(meetings.filter(m=>m.date===D.date).map(m=>({start:m.start,end:m.end||m.start,name:m.title,code:'',kind:'Meeting',room:m.where||'',group:''})));
+    items.sort((a,b)=>mins(a.start)-mins(b.start));
+    const nc = todays.length, nm = items.length-nc;
+    $('classes-label').textContent = [nc?nc+' class'+(nc>1?'es':''):'', nm?nm+' meeting'+(nm>1?'s':''):''].filter(Boolean).join(' · ') || 'Physics, year 1';
+    const box = $('classes'); box.textContent='';
+    if (!items.length){ box.append(el('p',{className:'none',textContent: dow===0||dow===6 ? 'No classes today. Weekend.' : 'Nothing on the timetable today.'})); return; }
+    const ul = el('ul',{className:'cls'});
+    items.forEach(c=>{
+      const past = sameDay && (now.getHours()*60+now.getMinutes()) >= mins(c.end);
+      const nm = el('div',{className:'nm'},[el('span',{className:'k '+c.kind,textContent:c.kind}), document.createTextNode(c.name), el('small',{textContent:c.code+(c.group?' · '+c.group:'')})]);
+      ul.append(el('li',{className:(past?'past ':'')+(c.kind==='Meeting'||known(c)?'':'maybe')},[el('span',{className:'tm',textContent:c.start+(c.end&&c.end!==c.start?'–'+c.end:'')}), nm, el('span',{className:'rm',textContent:c.room})]));
+    });
+    box.append(ul);
+  };
+  renderToday();
+  ['Mon','Tue','Wed','Thu','Fri'].forEach((n,i)=>{
+    const col = el('div',{className:'col'+(dow===i+1?' on':'')},[el('span',{className:'dn',textContent:n})]);
+    mine.filter(c=>c.day===i+1).sort((a,b)=>mins(a.start)-mins(b.start)).forEach(c=>{
+      const b = el('span',{className:'b '+c.kind,textContent:c.start+' '+c.code});
+      b.title = c.kind+' · '+c.name+' · '+c.start+'–'+c.end+' · '+c.room+(c.group?' · '+c.group:'');
+      col.append(b);
+    });
+    $('week').append(col);
+  });
+
+  // deadlines
+  if (D.deadlines && D.deadlines.length){
+    const ul = el('ul',{className:'dl'});
+    D.deadlines.forEach(x=> ul.append(el('li',{className:x.level||'later'},[
+      el('span',{className:'when',textContent:x.when}),
+      el('div',{className:'what'},[document.createTextNode(x.title), el('small',{textContent:x.detail||''})])
+    ])));
+    $('deadlines').append(ul);
+    const today = D.deadlines.filter(x=>x.level==='today').length;
+    $('stamp-count').textContent = today ? today+' due today' : '';
+  } else {
+    const box = el('div',{className:'empty'});
+    box.append(el('b',{textContent:'Loop not linked yet'}), el('span',{textContent:D.deadlinesNote||''}));
+    $('deadlines').append(box);
+  }
+
+  // essay
+  if (D.essay && D.essay.title){
+    $('essay').append(
+      el('p',{className:'et'},[link(D.essay.title,D.essay.url)]),
+      el('div',{className:'em',textContent:[D.essay.year, D.essay.minutes ? D.essay.minutes+' min read' : ''].filter(Boolean).join(' · ')}),
+      el('p',{className:'ew',textContent:D.essay.why||''})
+    );
+  } else { $('essay-sheet').hidden = true; }
+
+  // news
+  D.news.slice(0,5).forEach(n=>{
+    $('news').append(el('li',{},[el('div',{},[
+      el('div',{className:'h'},[link(n.title,n.url)]),
+      el('div',{className:'s',textContent:n.summary}),
+      n.why ? el('div',{className:'why',textContent:'→ '+n.why}) : ''
+    ])]));
+  });
+
+  // radar
+  if (D.radar && D.radar.length){
+    D.radar.forEach(r=> $('radar').append(el('div',{},[el('b',{},[link(r.title,r.url)]), document.createTextNode(r.detail)])));
+  } else { $('radar-sheet').hidden = true; }
+
+  // sources
+  $('sources').append(el('span',{textContent:'Sources:'}));
+  (D.sources||[]).forEach(s=> $('sources').append(link(s.title,s.url)));
+  // meetings, stored in the page's database so the morning refresh can plan around them
+  const mDate = $('m-date'); mDate.value = new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);
+  const msg = t => { $('m-msg').textContent = t; };
+  const renderMeetings = () => {
+    const list = $('mlist'); list.textContent='';
+    const up = meetings.filter(m=>m.date>=D.date).sort((a,b)=>(a.date+a.start).localeCompare(b.date+b.start)).slice(0,10);
+    $('meet-status').textContent = up.length ? up.length+' upcoming' : 'None yet';
+    up.forEach(m=>{
+      const del = el('button',{type:'button',textContent:'Remove'}); del.setAttribute('aria-label','Remove '+m.title);
+      del.addEventListener('click', async ()=>{ del.disabled=true; try{ await db.collection('meetings').doc(m.id).delete(); msg('Removed.'); }catch(e){ del.disabled=false; msg('Could not remove that meeting. Try again.'); } });
+      list.append(el('li',{},[el('span',{className:'tm',textContent:(m.date===D.date?'Today':fmtDate(m.date))+' '+m.start}), el('div',{className:'nm'},[document.createTextNode(m.title), el('small',{textContent:[m.end?'until '+m.end:'', m.where||''].filter(Boolean).join(' · ')})]), del]));
+    });
+    renderToday();
+  };
+  let db = null;
+  $('m-add').disabled = true;
+  (async ()=>{
+    db = window.claude && window.claude.use ? await window.claude.use('db') : null;
+    if (!db){
+      // Outside Claude (e.g. the GitHub copy): show the meetings baked in by the morning refresh, read-only.
+      $('mform').hidden = true;
+      meetings = (D.meetings||[]).map((m,i)=>Object.assign({id:'b'+i},m));
+      renderMeetings();
+      $('mlist').querySelectorAll('button').forEach(b=>b.remove());
+      const a = el('a',{href:'https://claude.ai/artifact/3LBkXyeWk6AL5tTpG8Hs2x',target:'_blank',rel:'noopener',textContent:'Add or remove meetings on your Claude page'});
+      $('m-msg').textContent=''; $('m-msg').append(a, document.createTextNode('. They appear here after the next morning refresh.'));
+      return;
+    }
+    $('m-add').disabled = false;
+    db.collection('meetings').onSnapshot(snap=>{
+      meetings = snap.docs.map(d=>Object.assign({id:d.id}, d.data()||{})).filter(m=>m.title&&m.date&&m.start);
+      renderMeetings();
+    }, ()=>{ $('meet-status').textContent='Error'; msg('Could not load meetings. Reload the page to retry.'); });
+  })();
+  $('mform').addEventListener('submit', async ev=>{
+    ev.preventDefault(); if(!db) return;
+    const m = {title:$('m-title').value.trim(), date:mDate.value, start:$('m-start').value, end:$('m-end').value, where:$('m-where').value.trim(), createdAt:new Date().toISOString()};
+    if(!m.title||!m.date||!m.start){ msg('Add a title, date and start time.'); return; }
+    $('m-add').disabled = true;
+    try { await db.collection('meetings').add(m); msg('Added '+m.title+' on '+fmtDate(m.date)+'.'); $('m-title').value=''; $('m-start').value=''; $('m-end').value=''; $('m-where').value=''; }
+    catch(e){ msg('Could not save the meeting. Check you are signed in and try again.'); }
+    $('m-add').disabled = false;
+  });
+})();
+</script>
+
+</body></html>
