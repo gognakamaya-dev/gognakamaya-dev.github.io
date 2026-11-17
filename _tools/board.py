@@ -209,7 +209,6 @@ def wide():
     b.text(86, 330, "I build robots, circuit boards and", "silk intro")
     b.text(86, 354, "medical devices, and read far too", "silk intro")
     b.text(86, 378, "many classic novels.", "silk intro")
-    b.text(86, 416, "Every part on this board is a link.", "silk hint")
 
     u1 = b.chip("U1", "KG-18", "ABOUT ME", 890, 380, 150, 150, "#about", "about", pins="tblr", n=6,
                 label="About me")
@@ -269,7 +268,6 @@ def tall():
     b.text(40, 266, "I build robots, circuit boards and", "silk intro")
     b.text(40, 288, "medical devices, and read far too", "silk intro")
     b.text(40, 310, "many classic novels.", "silk intro")
-    b.text(40, 342, "Tap any part.", "silk hint")
 
     u2 = b.chip("U2", "AKARA", "VIOLET HRI", 110, 420, 132, 50, "/work/#akara", "akara", label="Akara Robotics")
     u3 = b.chip("U3", "ANAULA", "BIOREACTOR", 310, 420, 132, 50, "/work/#anaula", "anaula", label="Anaula")

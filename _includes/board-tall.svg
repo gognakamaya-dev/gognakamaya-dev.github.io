@@ -37,7 +37,6 @@
 <text class="silk intro" x="40" y="266" text-anchor="start">I build robots, circuit boards and</text>
 <text class="silk intro" x="40" y="288" text-anchor="start">medical devices, and read far too</text>
 <text class="silk intro" x="40" y="310" text-anchor="start">many classic novels.</text>
-<text class="silk hint" x="40" y="342" text-anchor="start">Tap any part.</text>
 </g>
 <g class="parts">
 <a class="part chip" href="/work/#akara" data-net="akara" aria-label="Akara Robotics"><g><rect class="pad" x="66.9" y="383.0" width="7" height="12" rx="1"/><rect class="pad" x="93.3" y="383.0" width="7" height="12" rx="1"/><rect class="pad" x="119.7" y="383.0" width="7" height="12" rx="1"/><rect class="pad" x="146.1" y="383.0" width="7" height="12" rx="1"/><rect class="pad" x="66.9" y="445.0" width="7" height="12" rx="1"/><rect class="pad" x="93.3" y="445.0" width="7" height="12" rx="1"/><rect class="pad" x="119.7" y="445.0" width="7" height="12" rx="1"/><rect class="pad" x="146.1" y="445.0" width="7" height="12" rx="1"/><rect class="pkg" x="44.0" y="395.0" width="132" height="50" rx="3"/><circle class="pin1" cx="52.0" cy="403.0" r="2.4"/><text class="mark" x="110" y="418" text-anchor="middle">AKARA</text><text class="mark-sub" x="110" y="433" text-anchor="middle">VIOLET HRI</text><text class="silk refdes" x="44.0" y="371.0">U2</text></g></a>

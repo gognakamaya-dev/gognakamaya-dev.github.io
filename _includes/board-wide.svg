@@ -44,7 +44,6 @@
 <text class="silk intro" x="86" y="330" text-anchor="start">I build robots, circuit boards and</text>
 <text class="silk intro" x="86" y="354" text-anchor="start">medical devices, and read far too</text>
 <text class="silk intro" x="86" y="378" text-anchor="start">many classic novels.</text>
-<text class="silk hint" x="86" y="416" text-anchor="start">Every part on this board is a link.</text>
 <text class="silk tiny" x="104" y="556" text-anchor="start">WS2812 · DATA →</text>
 <text class="silk tiny" x="1150" y="718" text-anchor="end">KG-PCB-01 · 2 LAYERS · 1.6 MM · ENIG · MADE IN DUBLIN</text>
 </g>

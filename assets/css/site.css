@@ -270,13 +270,13 @@ a:hover { color: var(--foil); }
 /* About */
 .about { display: grid; gap: 2.5rem; width: min(100% - 40px, 56rem); align-items: start; }
 @media (min-width: 820px) { .about { grid-template-columns: 17rem 1fr; gap: 3.5rem; } .about .chapter { text-align: left; } .about .chapter::after { margin-left: 0; } }
-.plate { margin: 0; padding: 12px 12px 0; background: var(--paper-hi); border: 1px solid var(--rule); box-shadow: 0 1px 0 var(--rule), 0 12px 24px -16px rgba(30, 25, 10, 0.5); max-width: 20rem; justify-self: center; }
+.plate { margin: 0; padding: 12px; background: var(--paper-hi); border: 1px solid var(--rule); box-shadow: 0 1px 0 var(--rule), 0 12px 24px -16px rgba(30, 25, 10, 0.5); max-width: 20rem; justify-self: center; }
 .plate img { display: block; width: 100%; height: auto; filter: sepia(0.12) contrast(1.02); }
 .plate figcaption { padding: 0.6rem 0 0.75rem; text-align: center; font-style: italic; font-size: 0.92rem; color: var(--ink-soft); }
-.about-text p { margin: 0 0 1.1em; hyphens: auto; }
+.about-text p { margin: 0 0 1.1em; }
 .about-links { font-style: italic; }
 
-.opening::first-letter, .prose > p:first-of-type::first-letter {
+.prose > p:first-of-type::first-letter {
   float: left;
   font-family: var(--display);
   font-size: 4.3em;
