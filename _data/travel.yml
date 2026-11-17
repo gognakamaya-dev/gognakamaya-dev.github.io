@@ -179,6 +179,12 @@
       lat: 43.58
       lon: 7.12
 
+- country: Netherlands
+  places:
+    - name: Amsterdam
+      lat: 52.37
+      lon: 4.9
+
 - country: Austria
   places:
     - name: Vienna
