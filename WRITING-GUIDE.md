@@ -46,7 +46,7 @@ The order in the file is the order on the shelf. **The six books in there now ar
 
 ## Update your work
 
-Experience, projects, prizes, education and skills are all in `_data/work.yml`. Each entry becomes a "datasheet" on the Work page; photos go in `assets/img/`.
+Experience, projects, awards, education and skills are all in `_data/work.yml`. Each entry becomes a "datasheet" on the Work page; photos go in `assets/img/`.
 
 ## The circuit board on the home page
 
