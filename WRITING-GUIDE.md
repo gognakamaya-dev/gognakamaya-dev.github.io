@@ -40,7 +40,6 @@ Open `_data/books.yml` and add an entry:
   year: 2026            # when you read it
   pages: 368            # makes the spine the right thickness
   color: "#5a1f1f"      # cloth colour of the spine (darker colours suit the gold lettering)
-  note: One or two lines on why it stuck.
 ```
 
 The order in the file is the order on the shelf. **The six books in there now are placeholders. Swap them for your own.**

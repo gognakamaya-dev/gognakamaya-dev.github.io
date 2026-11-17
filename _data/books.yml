@@ -5,7 +5,6 @@
 #  year:    the year you read it (optional)
 #  pages:   page count; sets how thick/tall the spine is (optional)
 #  color:   cloth colour of the spine as a hex code (optional)
-#  note:    a line or two on why it stuck with you (optional)
 # ─────────────────────────────────────────────
 
 - title: Wuthering Heights
@@ -13,39 +12,33 @@
   status: read
   pages: 416
   color: "#2f4a3a"
-  note: ""
 
 - title: Pride and Prejudice
   author: Jane Austen
   status: read
   pages: 432
   color: "#3b5470"
-  note: ""
 
 - title: The Aeneid
   author: Virgil
   status: read
   pages: 442
   color: "#6b4a1e"
-  note: ""
 
 - title: The Awakening
   author: Kate Chopin
   status: read
   pages: 200
   color: "#1f4f55"
-  note: ""
 
 - title: Perfume
   author: Patrick Süskind
   status: read
   pages: 263
   color: "#5a1f2c"
-  note: ""
 
 - title: The Dream Machine
   author: M. Mitchell Waldrop
   status: read
   pages: 528
   color: "#1f3350"
-  note: ""

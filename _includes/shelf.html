@@ -12,18 +12,14 @@
   <div class="spines" role="list">
     {% for book in books %}
     {% assign pages = book.pages | default: 300 %}
-    {% assign h = pages | divided_by: 6 | plus: 170 | at_most: 290 | at_least: 210 %}
+    {% assign h = pages | divided_by: 6 | plus: 240 | at_most: 340 | at_least: 290 %}
     {% assign w = pages | divided_by: 16 | plus: 22 | at_most: 64 | at_least: 34 %}
-    <button class="spine" type="button" role="listitem"
-      style="--c: {{ book.color | default: '#0f3d2c' }}; --h: {{ h }}px; --w: {{ w }}px"
-      aria-expanded="false" aria-controls="{{ include.id }}-detail"
-      data-title="{{ book.title | escape }}" data-author="{{ book.author | escape }}"
-      data-note="{{ book.note | escape }}" data-status="{{ book.status }}" data-year="{{ book.year }}">
+    <div class="spine" role="listitem" title="{{ book.title | escape }} by {{ book.author | escape }}"
+      style="--c: {{ book.color | default: '#0f3d2c' }}; --h: {{ h }}px; --w: {{ w }}px">
       <span class="spine-title">{{ book.title }}</span>
       <span class="spine-author">{{ book.author | split: " " | last }}</span>
-    </button>
+    </div>
     {% endfor %}
   </div>
   <div class="plank" aria-hidden="true"></div>
-  <div class="shelf-detail" id="{{ include.id }}-detail" aria-live="polite" hidden></div>
 </div>

@@ -276,15 +276,6 @@ a:hover { color: var(--foil); }
 .about-text p { margin: 0 0 1.1em; }
 .about-links { font-style: italic; }
 
-.prose > p:first-of-type::first-letter {
-  float: left;
-  font-family: var(--display);
-  font-size: 4.3em;
-  line-height: 0.82;
-  padding: 0.06em 0.1em 0 0;
-  color: var(--cloth);
-}
-
 /* Contents (essay list) */
 .contents { list-style: none; margin: 0; padding: 0; }
 .contents li { margin: 0 0 1.4rem; }
@@ -305,7 +296,7 @@ a:hover { color: var(--foil); }
   display: flex;
   align-items: flex-end;
   gap: 4px;
-  min-height: 310px;
+  min-height: 370px;
   padding: 20px 10px 0;
   overflow-x: auto;
   scrollbar-width: thin;
@@ -333,11 +324,7 @@ a:hover { color: var(--foil); }
   justify-content: space-between;
   gap: 12px;
   font-family: var(--text);
-  cursor: pointer;
-  transition: transform 200ms ease;
 }
-.spine:hover, .spine[aria-expanded="true"] { transform: translateY(-14px); }
-.spine:focus-visible { outline-offset: 3px; }
 .spine-title {
   display: block;
   max-inline-size: calc(var(--h) - 100px);
@@ -364,16 +351,6 @@ a:hover { color: var(--foil); }
   background: linear-gradient(var(--cu), var(--cu-dim));
 }
 
-.shelf-detail {
-  margin-top: 1.6rem;
-  padding: 1.1rem 1.3rem 1.2rem;
-  background: var(--paper-hi);
-  border: 1px solid var(--rule);
-  border-left: 5px solid var(--detail-c, var(--cloth));
-}
-.shelf-detail .d-title { margin: 0; font-style: italic; font-size: 1.3rem; line-height: 1.3; }
-.shelf-detail .d-meta { margin: 0.2rem 0 0; font-variant: small-caps; letter-spacing: 0.04em; color: var(--ink-soft); }
-.shelf-detail .d-note { margin: 0.7rem 0 0; }
 
 .book-list { list-style: none; margin: 0; padding: 0; }
 .book-list li { display: grid; grid-template-columns: 10px 1fr; gap: 1rem; padding: 0.75rem 0; border-top: 1px solid var(--rule); }
@@ -696,11 +673,9 @@ a:hover { color: var(--foil); }
   .contents a { flex-wrap: wrap; }
   .c-dots { display: none; }
   .contents time { width: 100%; }
-  .spines { min-height: 280px; }
+  .spines { min-height: 340px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .spine { transition: none; }
-  .spine:hover, .spine[aria-expanded="true"] { transform: none; outline: 2px solid var(--cu); }
 }
 .board.tall .conn-label { font-size: 11px; letter-spacing: 0.04em; }

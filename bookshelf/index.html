@@ -35,7 +35,6 @@ section: bookshelf
       <span class="swatch" style="--c: {{ book.color | default: '#0f3d2c' }}" aria-hidden="true"></span>
       <div>
         <p class="book-line"><cite>{{ book.title }}</cite> by {{ book.author }}{% if book.status == "reading" %}<span class="status">reading now</span>{% elsif book.status == "next" %}<span class="status">up next</span>{% elsif book.year %}<span class="status">{{ book.year }}</span>{% endif %}</p>
-        {% if book.note and book.note != "" %}<p class="book-note">{{ book.note }}</p>{% endif %}
       </div>
     </li>
     {% endfor %}
