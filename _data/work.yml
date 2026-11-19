@@ -6,6 +6,20 @@
 # ─────────────────────────────────────────────
 
 experience:
+  - slug: feena
+    ref: U11
+    when: 2026
+    role: Co-founder
+    org: Feena
+    what: |
+      A startup I co-founded to make testing web apps less painful. Feena's AI agents open your app in a real browser, click through it the way a person would, and report what breaks, so teams catch bugs before their users do.
+
+      We built the whole product ourselves: a React dashboard, a FastAPI backend, browser agents running on Playwright in Docker workers, and integrations with GitHub, Slack and Stripe.
+    specs:
+      Product: AI agents that test web apps in a real browser
+      Stack: React, FastAPI, PostgreSQL, Playwright, Docker
+      Integrations: GitHub, Slack, Stripe
+
   - slug: anaula
     ref: U3
     when: Jun – Aug 2026
