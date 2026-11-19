@@ -14,11 +14,15 @@ experience:
     what: |
       A startup I co-founded to make testing web apps less painful. Feena's AI agents open your app in a real browser, click through it the way a person would, and report what breaks, so teams catch bugs before their users do.
 
-      We built the whole product ourselves: a React dashboard, a FastAPI backend, browser agents running on Playwright in Docker workers, and integrations with GitHub, Slack and Stripe.
+      We built it for The Race, run by Baseline, and won $100k. We built the whole product ourselves: a React dashboard, a FastAPI backend, browser agents running on Playwright in Docker workers, and integrations with GitHub, Slack and Stripe.
+
+      Feena is paused for now while we focus on college, and we plan to open-source it.
     specs:
       Product: AI agents that test web apps in a real browser
+      Result: won $100k at The Race, run by Baseline
       Stack: React, FastAPI, PostgreSQL, Playwright, Docker
       Integrations: GitHub, Slack, Stripe
+      Status: paused, to be open-sourced
 
   - slug: anaula
     ref: U3
@@ -149,6 +153,7 @@ projects:
       Role: CTO
 
 awards:
+  - "The Race, run by Baseline: won $100k with Feena (2026)"
   - "BT Young Scientist & Technology Exhibition: three-time winner, including first in Intermediate Individual Technology and the Stripe Software Award (2024), and second in Junior Technology (2022)"
   - "BTYSTE Bootcamp: one of 30 projects picked from 550+"
   - "SciFest: four-time winner and twice a national finalist"
