@@ -14,7 +14,7 @@ experience:
     what: |
       A startup I co-founded to make testing web apps less painful. Feena's AI agents open your app in a real browser, click through it the way a person would, and report what breaks, so teams catch bugs before their users do.
 
-      We built the MVP during Pressure Cooker, a week-long competition, and finished the week with 9 paying customers and around 10 letters of intent. We then won $100k at The Race, run by Baseline. A week later we took it to San Francisco on a fellowship, where we pitched it to people at NVIDIA, a16z and Y Combinator, and to Vercel's CTO.
+      We built the MVP during Pressure Cooker, a week-long competition, and finished the week with 9 paying customers and around 10 letters of intent. We then won $100k at The Raise, run by Baseline. A week later we took it to San Francisco on a fellowship, where we pitched it to people at NVIDIA, a16z and Y Combinator, and to Vercel's CTO.
 
       We built the whole product ourselves: a React dashboard, a FastAPI backend, browser agents running on Playwright in Docker workers, and integrations with GitHub, Slack and Stripe.
 
@@ -22,7 +22,7 @@ experience:
     specs:
       Product: AI agents that test web apps in a real browser
       Pressure Cooker: MVP, 9 paying customers and ~10 LOIs in one week
-      Result: won $100k at The Race, run by Baseline
+      Result: won $100k at The Raise, run by Baseline
       Next: San Francisco fellowship; met NVIDIA, Vercel's CTO, a16z and YC
       Stack: React, FastAPI, PostgreSQL, Playwright, Docker
       Integrations: GitHub, Slack, Stripe
@@ -157,7 +157,7 @@ projects:
       Role: CTO
 
 awards:
-  - "The Race, run by Baseline: won $100k with Feena (2026)"
+  - "The Raise, run by Baseline: won $100k with Feena (2026)"
   - "BT Young Scientist & Technology Exhibition: three-time winner, including first in Intermediate Individual Technology and the Stripe Software Award (2024), and second in Junior Technology (2022)"
   - "BTYSTE Bootcamp: one of 30 projects picked from 550+"
   - "SciFest: four-time winner and twice a national finalist"
