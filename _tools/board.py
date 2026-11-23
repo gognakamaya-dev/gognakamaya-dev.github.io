@@ -247,7 +247,7 @@ def wide():
     b.text(104, 556, "WS2812 · DATA →", "silk tiny")
 
     # Feena: the startup, on its own stub traces down through vias
-    u9 = b.chip("U9", "FEENA", "THE RAISE ’26", 380, 616, 132, 52, "/work/#feena", "feena", n=3, label="Feena: AI agents that test web apps")
+    u9 = b.chip("U9", "FEENA", "BROWSER AGENTS", 380, 616, 132, 52, "/work/#feena", "feena", n=3, label="Feena: AI agents that test web apps")
     # Feena runs to the MCU's spare bottom pin, around the scanner's bus and inside the LED chain
     b.trace([B[0], (B[0][0], 482), (560, 482), (560, 560), (u9["t"][2][0], 560), u9["t"][2]], "feena")
     for (px, py) in u9["t"][:2]:
@@ -289,7 +289,7 @@ def tall():
     u6 = b.chip("U6", "SCANNER", "INTRAORAL", 310, 616, 132, 46, "/work/#intraoral", "intraoral", label="Intraoral scanner")
     u7 = b.chip("U7", "ISS-CAM", "AGE 14", 110, 716, 132, 46, "/work/#iss", "iss", label="ISS camera")
     u8 = b.chip("U8", "ACCEL", "LAB", 310, 716, 132, 46, "/work/#accellab", "accellab", label="AccelLab")
-    u9 = b.chip("U9", "FEENA", "THE RAISE ’26", 210, 816, 132, 46, "/work/#feena", "feena", label="Feena")
+    u9 = b.chip("U9", "FEENA", "BROWSER AGENTS", 210, 816, 132, 46, "/work/#feena", "feena", label="Feena")
 
     T, B, L, R = u1["t"], u1["b"], u1["l"], u1["r"]
     bus(b, T[0:2], u2["b"][2:4], 360, "akara", gap=10)

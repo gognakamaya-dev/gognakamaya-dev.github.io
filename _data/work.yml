@@ -14,7 +14,7 @@ experience:
     what: |
       A startup I co-founded to make testing web apps less painful. Feena's AI agents open your app in a real browser, click through it the way a person would, and report what breaks, so teams catch bugs before their users do.
 
-      We built the MVP during Pressure Cooker, a week-long competition, and finished the week with 9 paying customers and around 10 letters of intent. We then won $100k at The Raise, run by Baseline.
+      We built the MVP during Pressure Cooker, a week-long competition run by Baseline. By the end of the week we had 9 paying customers and around 10 letters of intent, and we won $100k.
 
       A week later we took Feena to San Francisco on a fellowship. We talked to people at Y Combinator and a16z and to Vercel's CTO, got a tour of NVIDIA, and went on way too many Waymos.
 
@@ -22,7 +22,7 @@ experience:
     specs:
       Product: AI agents that test web apps in a real browser
       Pressure Cooker: MVP, 9 paying customers and ~10 LOIs in one week
-      Result: won $100k at The Raise, run by Baseline
+      Result: won $100k at Pressure Cooker, run by Baseline
       San Francisco: YC, a16z, Vercel's CTO, a tour of NVIDIA
       Stack: React, FastAPI, PostgreSQL, Playwright, Docker
       Status: paused, to be open-sourced
@@ -171,7 +171,7 @@ projects:
       Role: CTO
 
 awards:
-  - "The Raise, run by Baseline: won $100k with Feena (2026)"
+  - "Pressure Cooker, run by Baseline: won $100k with Feena (2026)"
   - "BT Young Scientist & Technology Exhibition: three-time winner, including first in Intermediate Individual Technology and the Stripe Software Award (2024), and second in Junior Technology (2022)"
   - "BTYSTE Bootcamp: one of 30 projects picked from 550+"
   - "SciFest: four-time winner and twice a national finalist"
