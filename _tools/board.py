@@ -55,7 +55,9 @@ class Board:
     # parts -----------------------------------------------------
     def chip(self, ref, name, sub, cx, cy, w, h, href, net, pins="tb", n=4, label=None):
         x, y = cx - w / 2, cy - h / 2
-        g = [f'<g class="part chip" data-net="{net}">',
+        tag = "a" if href else "g"
+        link = f' href="{href}" aria-label="{esc(label or name)}"' if href else ""
+        g = [f'<{tag} class="part chip" data-net="{net}"{link}>',
              f'<title>{esc(label or name)}</title>']
         pad_len, pad_w = 12, 7
         coords = {"t": [], "b": [], "l": [], "r": []}
@@ -80,7 +82,7 @@ class Board:
             g.append(f'<text class="mark-sub" x="{cx}" y="{cy + 13}" text-anchor="middle">{esc(sub)}</text>')
         ry = y - (24 if "t" in pins else 8)
         g.append(f'<text class="silk refdes" x="{x}" y="{ry}">{ref}</text>')
-        g.append("</g>")
+        g.append(f"</{tag}>")
         self.parts.append("".join(g))
         self.pins[ref] = coords
         return coords
@@ -212,8 +214,8 @@ def wide():
     b.text(86, 354, "medical devices, and read far too", "silk intro")
     b.text(86, 378, "many classic novels.", "silk intro")
 
-    u1 = b.chip("U1", "KG-18", "MCU", 890, 380, 150, 150, "", "mcu", pins="tblr", n=6,
-                label="KG-18, the main chip")
+    u1 = b.chip("U1", "KG-18", "MCU", 890, 380, 150, 150, "/about/", "mcu", pins="tblr", n=6,
+                label="About me")
     u2 = b.chip("U2", "AKARA", "VIOLET HRI", 640, 120, 132, 52, "/work/#akara", "akara", label="Akara Robotics: Violet's lights")
     u3 = b.chip("U3", "ANAULA", "BIOREACTOR", 890, 120, 132, 52, "/work/#anaula", "anaula", label="Anaula: photobioreactor control")
     u5 = b.chip("U5", "FIACLA", "X-RAY AI", 1080, 150, 112, 52, "/work/#fiacla", "fiacla", n=3, label="Fiacla: AI for dental X-rays")
@@ -245,8 +247,10 @@ def wide():
     b.text(104, 556, "WS2812 · DATA →", "silk tiny")
 
     # Feena: the startup, on its own stub traces down through vias
-    u9 = b.chip("U9", "FEENA", "THE RAISE ’26", 380, 616, 132, 52, "", "feena", n=3, label="Feena: AI agents that test web apps")
-    for (px, py) in u9["t"]:
+    u9 = b.chip("U9", "FEENA", "THE RAISE ’26", 380, 616, 132, 52, "/work/#feena", "feena", n=3, label="Feena: AI agents that test web apps")
+    # Feena runs to the MCU's spare bottom pin, around the scanner's bus and inside the LED chain
+    b.trace([B[0], (B[0][0], 482), (560, 482), (560, 560), (u9["t"][2][0], 560), u9["t"][2]], "feena")
+    for (px, py) in u9["t"][:2]:
         b.trace([(px, py), (px, py - 22)], "feena", via_end=True)
     for (px, py) in u9["b"]:
         b.trace([(px, py), (px, py + 18)], "feena", via_end=True)
@@ -259,7 +263,7 @@ def wide():
     b.header("J6", "GITHUB", 120, 616, "https://github.com/gognakamaya-dev", n=3)
 
     for ref, x, y, v in [("C1", 818, 278, False), ("C2", 962, 278, False), ("R1", 980, 470, True),
-                         ("R2", 800, 470, True), ("C3", 760, 300, True)]:
+                         ("C3", 760, 300, True)]:
         b.passive(ref, x, y, v)
 
     b.text(1150, 718, "KG-PCB-01 · MADE IN DUBLIN", "silk tiny", "end")
@@ -276,16 +280,16 @@ def tall():
     b.text(36, 180, "GOGNA", "silk name")
     b.text(40, 212, "REV 18 · DUBLIN · PHYSICS @ DCU", "silk meta")
 
-    u2 = b.chip("U2", "AKARA", "VIOLET HRI", 110, 290, 132, 50, "", "akara", label="Akara Robotics")
-    u3 = b.chip("U3", "ANAULA", "BIOREACTOR", 310, 290, 132, 50, "", "anaula", label="Anaula")
-    u1 = b.chip("U1", "KG-18", "MCU", 210, 452, 116, 116, "", "mcu", pins="tblr", n=5, label="KG-18, the main chip")
-    m1 = b.chip("M1", "ROBO", "WARS", 62, 452, 58, 104, "", "robowars", pins="r", n=3, label="Robowars")
-    u4 = b.chip("U4", "SCOPE", "LAB", 358, 452, 58, 104, "", "patch", pins="l", n=3, label="ScopeLab")
-    u5 = b.chip("U5", "FIACLA", "X-RAY AI", 110, 616, 132, 46, "", "fiacla", label="Fiacla")
-    u6 = b.chip("U6", "SCANNER", "INTRAORAL", 310, 616, 132, 46, "", "intraoral", label="Intraoral scanner")
-    u7 = b.chip("U7", "ISS-CAM", "AGE 14", 110, 716, 132, 46, "", "iss", label="ISS camera")
-    u8 = b.chip("U8", "ACCEL", "LAB", 310, 716, 132, 46, "", "accellab", label="AccelLab")
-    u9 = b.chip("U9", "FEENA", "THE RAISE ’26", 210, 816, 132, 46, "", "feena", label="Feena")
+    u2 = b.chip("U2", "AKARA", "VIOLET HRI", 110, 290, 132, 50, "/work/#akara", "akara", label="Akara Robotics")
+    u3 = b.chip("U3", "ANAULA", "BIOREACTOR", 310, 290, 132, 50, "/work/#anaula", "anaula", label="Anaula")
+    u1 = b.chip("U1", "KG-18", "MCU", 210, 452, 116, 116, "/about/", "mcu", pins="tblr", n=5, label="About me")
+    m1 = b.chip("M1", "ROBO", "WARS", 62, 452, 58, 104, "/work/#robowars", "robowars", pins="r", n=3, label="Robowars")
+    u4 = b.chip("U4", "SCOPE", "LAB", 358, 452, 58, 104, "/work/#patch", "patch", pins="l", n=3, label="ScopeLab")
+    u5 = b.chip("U5", "FIACLA", "X-RAY AI", 110, 616, 132, 46, "/work/#fiacla", "fiacla", label="Fiacla")
+    u6 = b.chip("U6", "SCANNER", "INTRAORAL", 310, 616, 132, 46, "/work/#intraoral", "intraoral", label="Intraoral scanner")
+    u7 = b.chip("U7", "ISS-CAM", "AGE 14", 110, 716, 132, 46, "/work/#iss", "iss", label="ISS camera")
+    u8 = b.chip("U8", "ACCEL", "LAB", 310, 716, 132, 46, "/work/#accellab", "accellab", label="AccelLab")
+    u9 = b.chip("U9", "FEENA", "THE RAISE ’26", 210, 816, 132, 46, "/work/#feena", "feena", label="Feena")
 
     T, B, L, R = u1["t"], u1["b"], u1["l"], u1["r"]
     bus(b, T[0:2], u2["b"][2:4], 360, "akara", gap=10)
@@ -298,6 +302,7 @@ def tall():
     b.trace([u6["b"][3], (u6["b"][3][0], 664), u8["t"][3]], "accellab")
     b.trace([u7["b"][3], (u7["b"][3][0], 764), (u9["t"][0][0], 764 + (u9["t"][0][0] - u7["b"][3][0]) * 0), u9["t"][0]], "feena")
     b.trace([u8["b"][0], (u8["b"][0][0], 764), (u9["t"][3][0], 764), u9["t"][3]], "feena")
+    b.trace([B[2], (B[2][0], 764), (u9["t"][2][0], 764), u9["t"][2]], "feena")
 
     for ref, label, cx, href in [("J1", "ABOUT", 50, "/about/"), ("J2", "ESSAYS", 130, "/essays/"),
                                  ("J3", "BOOKS", 210, "/bookshelf/"), ("J4", "WORK", 290, "/work/"),

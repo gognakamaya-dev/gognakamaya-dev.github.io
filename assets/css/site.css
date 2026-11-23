@@ -203,6 +203,7 @@ body.home main { display: grid; place-items: center; padding: clamp(10px, 2.5vmi
 /* interaction: chips light up, connectors take you places */
 .board .part { outline: none; }
 .board .chip { cursor: default; }
+.board a.chip { cursor: pointer; }
 .board .conn { cursor: pointer; }
 .board .hit { fill: transparent; }
 .board .socket-glow { fill: none; stroke: #ffc768; stroke-width: 3; opacity: 0; transition: opacity 200ms; }
