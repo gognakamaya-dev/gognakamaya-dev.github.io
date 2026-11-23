@@ -43,11 +43,5 @@ section: travel
   {% endif %}
 </section>
 
-<dialog class="lightbox" aria-label="Photo">
-  <figure>
-    <img alt="">
-    <figcaption></figcaption>
-  </figure>
-  <button type="button" class="lightbox-close" aria-label="Close">Close</button>
-</dialog>
+{% include lightbox.html %}
 <script src="{{ '/assets/js/travel.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

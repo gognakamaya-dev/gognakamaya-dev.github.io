@@ -14,19 +14,33 @@ experience:
     what: |
       A startup I co-founded to make testing web apps less painful. Feena's AI agents open your app in a real browser, click through it the way a person would, and report what breaks, so teams catch bugs before their users do.
 
-      We built the MVP during Pressure Cooker, a week-long competition, and finished the week with 9 paying customers and around 10 letters of intent. We then won $100k at The Raise, run by Baseline. A week later we took it to San Francisco on a fellowship, where we pitched it to people at NVIDIA, a16z and Y Combinator, and to Vercel's CTO.
+      We built the MVP during Pressure Cooker, a week-long competition, and finished the week with 9 paying customers and around 10 letters of intent. We then won $100k at The Raise, run by Baseline.
 
-      We built the whole product ourselves: a React dashboard, a FastAPI backend, browser agents running on Playwright in Docker workers, and integrations with GitHub, Slack and Stripe.
+      A week later we took Feena to San Francisco on a fellowship. We talked to people at Y Combinator and a16z and to Vercel's CTO, got a tour of NVIDIA, and went on way too many Waymos.
 
-      Feena is paused for now while we focus on college, and we plan to open-source it.
+      We built the whole product ourselves: a React dashboard, a FastAPI backend, browser agents running on Playwright in Docker workers, and integrations with GitHub, Slack and Stripe. Feena is paused for now while we focus on college, and we plan to open-source it.
     specs:
       Product: AI agents that test web apps in a real browser
       Pressure Cooker: MVP, 9 paying customers and ~10 LOIs in one week
       Result: won $100k at The Raise, run by Baseline
-      Next: San Francisco fellowship; met NVIDIA, Vercel's CTO, a16z and YC
+      San Francisco: YC, a16z, Vercel's CTO, a tour of NVIDIA
       Stack: React, FastAPI, PostgreSQL, Playwright, Docker
-      Integrations: GitHub, Slack, Stripe
       Status: paused, to be open-sourced
+    gallery:
+      - file: feena/sf-nvidia.jpg
+        caption: The NVIDIA tour.
+      - file: feena/sf-yc.jpg
+        caption: Y Combinator.
+      - video: feena/sf-waymo.mp4
+        poster: feena/sf-waymo.jpg
+        caption: One of way too many Waymos.
+      - file: feena/sf-startup-curve.jpg
+        fit: contain
+        caption: The startup curve.
+      - file: feena/sf-cybertruck.jpg
+        caption: Spotted on the walk.
+      - file: feena/sf-golden-gate.jpg
+        caption: The Golden Gate at sunset.
 
   - slug: anaula
     ref: U3

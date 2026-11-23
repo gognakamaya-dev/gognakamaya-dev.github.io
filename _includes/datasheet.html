@@ -22,4 +22,21 @@
       {% if d.link %}<p class="ds-link"><a href="{{ d.link }}">See the code</a></p>{% endif %}
     </div>
   </div>
+  {% if d.gallery %}
+  <div class="ds-gallery">
+    {% for g in d.gallery %}
+    <figure class="postcard">
+      {% if g.video %}
+      <video src="{{ '/assets/img/' | append: g.video | relative_url }}" poster="{{ '/assets/img/' | append: g.poster | relative_url }}" autoplay muted loop playsinline aria-label="{{ g.caption | escape }}"></video>
+      {% else %}
+      {% capture src %}{{ '/assets/img/' | append: g.file | relative_url }}{% endcapture %}
+      <button type="button" class="postcard-open" data-src="{{ src }}" data-caption="{{ g.caption | escape }}" data-place="{{ d.org | default: d.name | escape }}">
+        <img src="{{ src }}" alt="{{ g.caption | escape }}" loading="lazy"{% if g.fit == "contain" %} class="contain"{% endif %}>
+      </button>
+      {% endif %}
+      {% if g.caption %}<figcaption>{{ g.caption }}</figcaption>{% endif %}
+    </figure>
+    {% endfor %}
+  </div>
+  {% endif %}
 </article>
