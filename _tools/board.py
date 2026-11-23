@@ -132,6 +132,22 @@ class Board:
         self.parts.append("".join(g))
         return (x0, cy)
 
+    def display(self, ref, x, y, w, h, img, href, label):
+        """A little screen module showing a photo, with its header pins down the left."""
+        pad = 7
+        g = [f'<a class="part display" href="{href}" aria-label="{esc(label)}">',
+             f'<title>{esc(label)}</title>',
+             f'<clipPath id="clip-{ref}-{self.w}"><rect x="{x + pad}" y="{y + pad}" width="{w - 2 * pad}" height="{h - 2 * pad}" rx="2"/></clipPath>']
+        for k in range(4):
+            py = y + 16 + k * (h - 32) / 3
+            g.append(f'<rect class="pad" x="{x - 12}" y="{py - 3.5:.1f}" width="12" height="7" rx="1"/>')
+        g += [f'<rect class="bezel" x="{x}" y="{y}" width="{w}" height="{h}" rx="4"/>',
+              f'<image href="{img}" x="{x + pad}" y="{y + pad}" width="{w - 2 * pad}" height="{h - 2 * pad}" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-{ref}-{self.w})"/>',
+              f'<rect class="glass" x="{x + pad}" y="{y + pad}" width="{w - 2 * pad}" height="{h - 2 * pad}" rx="2"/>',
+              f'<text class="silk refdes" x="{x}" y="{y - 8}">{ref}</text>',
+              '</a>']
+        self.parts.append("".join(g))
+
     def passive(self, ref, cx, cy, vertical=False):
         w, h = (14, 30) if vertical else (30, 14)
         p = [f'<g class="passive">']
@@ -259,6 +275,7 @@ def wide():
                                  ("J3", "BOOKSHELF", 450, "/bookshelf/"), ("J4", "TRAVEL", 600, "/travel/")]:
         b.usbc(ref, label, cx, 740, href, w=100)
     b.header("J5", "GITHUB", 120, 616, "https://github.com/gognakamaya-dev", n=3)
+    b.display("LCD1", 345, 578, 136, 104, "/assets/img/kamaya.jpg", "/about/", "About me")
 
     for ref, x, y, v in [("C1", 818, 278, False), ("C2", 962, 278, False), ("R1", 980, 470, True)]:
         b.passive(ref, x, y, v)
@@ -276,6 +293,7 @@ def tall():
     b.text(36, 120, "KAMAYA", "silk name")
     b.text(36, 180, "GOGNA", "silk name")
     b.text(40, 212, "REV 18 · DUBLIN · PHYSICS @ DCU", "silk meta")
+    b.display("LCD1", 300, 78, 86, 100, "/assets/img/kamaya.jpg", "/about/", "About me")
 
     u2 = b.chip("U2", "AKARA", "VIOLET HRI", 110, 290, 132, 50, "/work/#akara", "akara", label="Akara Robotics")
     u3 = b.chip("U3", "ANAULA", "BIOREACTOR", 310, 290, 132, 50, "/work/#anaula", "anaula", label="Anaula")

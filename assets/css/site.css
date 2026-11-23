@@ -171,7 +171,7 @@ body.home main { display: grid; place-items: center; padding: clamp(10px, 2.5vmi
 
 .board .silk { fill: var(--silk); }
 .board .name { font-size: 78px; font-weight: 800; font-stretch: 112.5%; letter-spacing: 0.01em; }
-.board.tall .name { font-size: 60px; }
+.board.tall .name { font-size: 51px; }
 .board .meta { font-size: 13px; letter-spacing: 0.14em; fill: var(--cu); }
 .board.tall .meta { font-size: 11px; letter-spacing: 0.1em; }
 .board .intro { font-size: 15px; font-weight: 400; fill-opacity: 0.92; }
@@ -199,6 +199,14 @@ body.home main { display: grid; place-items: center; padding: clamp(10px, 2.5vmi
 .board .led-body { fill: #ebe8df; }
 .board .led-lens { fill: #b8ae95; transition: fill 200ms; }
 .board .led-glow { fill: #ffb846; opacity: 0; filter: blur(7px); transition: opacity 200ms; }
+
+/* the photo on the board: a little screen module */
+.board .bezel { fill: #101112; stroke: #000; stroke-opacity: 0.5; transition: stroke 160ms; }
+.board .glass { fill: rgba(255, 255, 255, 0.04); stroke: rgba(255, 255, 255, 0.08); stroke-width: 1; pointer-events: none; }
+.board .display { cursor: pointer; }
+.board .display image { filter: saturate(0.85) contrast(1.03); transition: filter 200ms; }
+.board .display:hover image, .board .display:focus-visible image { filter: none; }
+.board .display:hover .bezel, .board .display:focus-visible .bezel { stroke: var(--cu); stroke-opacity: 1; stroke-width: 2.5; }
 
 /* interaction: chips light up, connectors take you places */
 .board .part { outline: none; }

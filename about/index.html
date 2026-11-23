@@ -2,6 +2,10 @@
 title: About
 section: about
 ---
+{% assign place_count = 0 %}
+{% for c in site.data.travel %}{% assign place_count = place_count | plus: c.places.size %}{% endfor %}
+{% assign books = site.data.books | map: "title" %}
+
 <section class="book about">
   <figure class="plate">
     <img src="{{ '/assets/img/kamaya.jpg' | relative_url }}" alt="Kamaya Gogna, smiling, wearing a conference lanyard" width="560" height="560">
@@ -9,7 +13,45 @@ section: about
   <div class="about-text">
     <h1 class="chapter">About me</h1>
     <p>Hi, I'm Kamaya. I'm eighteen, from Dublin, and I study physics at DCU. I like the problems where hardware and software meet: robots, embedded systems, control loops, and the moment a board I designed lights up for the first time.</p>
-    <p>I learn by building. At sixteen I designed the lights that let a hospital robot tell people where it's going. Since then I've built a wireless debugger for robots, an AI that reads dental X-rays, an intraoral scanner, and a chainsaw robot armoured in baking tins. At fourteen I sent a camera to the International Space Station, and this year I co-founded Feena.</p>
-    <p>Away from the bench I swim in the sea, play badminton, and read classic novels. This is where I write things down.</p>
+    <p>I learn by building. At sixteen I designed the lights that let a hospital robot tell people where it's going. Since then I've built a wireless debugger for robots, an AI that reads dental X-rays, an intraoral scanner, and a chainsaw robot armoured in baking tins. At fourteen I sent a camera to the International Space Station, and this year I co-founded Feena and took it to San Francisco.</p>
+    <p>Away from the bench I swim in the sea, play badminton, listen to a lot of music, and read classic novels.</p>
   </div>
 </section>
+
+<section class="book wide-book">
+  <article class="datasheet">
+    <header class="ds-head">
+      <span class="ds-ref">KG-18</span>
+      <h3>Kamaya Gogna</h3>
+      <span class="ds-when">rev 18</span>
+    </header>
+    <div class="ds-body">
+      <table class="specs about-specs">
+        <tbody>
+          <tr><th scope="row">Based in</th><td>Dublin, Ireland</td></tr>
+          <tr><th scope="row">Studying</th><td>Physics at DCU</td></tr>
+          <tr><th scope="row">Builds</th><td>circuit boards, robots, medical devices, and a startup</td></tr>
+          <tr><th scope="row">Speaks</th><td>English, Hindi, Punjabi, Irish and French</td></tr>
+          <tr><th scope="row">Been to</th><td><a href="{{ '/travel/' | relative_url }}">{{ site.data.travel.size }} countries and {{ place_count }} places</a></td></tr>
+          <tr><th scope="row">Next stop</th><td>Amsterdam, in December</td></tr>
+          <tr><th scope="row">On the shelf</th><td><a href="{{ '/bookshelf/' | relative_url }}"><cite>{{ books[0] }}</cite>, <cite>{{ books[1] }}</cite> and {{ books.size | minus: 2 }} more</a></td></tr>
+          <tr><th scope="row">Off the bench</th><td>sea swimming, badminton, music</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ds-gallery">
+      {% assign snaps = "feena/sf-nvidia.jpg|At NVIDIA.,robowars-arena.jpg|Robowars at Patch.,feena/sf-golden-gate.jpg|The Golden Gate." | split: "," %}
+      {% for snap in snaps %}{% assign bits = snap | split: "|" %}
+      {% capture src %}{{ '/assets/img/' | append: bits[0] | relative_url }}{% endcapture %}
+      <figure class="postcard">
+        <button type="button" class="postcard-open" data-src="{{ src }}" data-caption="{{ bits[1] }}" data-place="">
+          <img src="{{ src }}" alt="{{ bits[1] }}" loading="lazy">
+        </button>
+        <figcaption>{{ bits[1] }}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </article>
+</section>
+
+{% include lightbox.html %}

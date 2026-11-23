@@ -58,6 +58,11 @@ experience:
       Sensors: temperature, pH, turbidity, dissolved O₂, optical
       Actuators: LEDs, motors, pumps, valves, heating
       Team: five people, I owned the electronics
+    gallery:
+      - file: anaula-bench.jpg
+        caption: The electronics bench.
+      - file: anaula-bench-2.jpg
+        caption: Mid-build, with the control board.
 
   - slug: patch
     ref: U4
@@ -75,6 +80,11 @@ experience:
       Link: ESP32, Wi-Fi streaming
       Buses: I²C, UART, in real time
       Demo: live, to 300+ people
+    gallery:
+      - file: scopelab-pcb.jpg
+        caption: The ScopeLab analyser board.
+      - file: scopelab-pcb-2.jpg
+        caption: Both boards, back from the fab.
 
   - slug: akara
     ref: U2
@@ -92,6 +102,11 @@ experience:
       Firmware: FastLED lighting patterns
       Signals: turn left, turn right, battery, status
       Deployed: hospitals in the US, UK and Ireland
+    gallery:
+      - file: akara-violet.jpg
+        caption: Violet at work in a hospital room.
+      - file: akara-pcb.jpg
+        caption: The LED control boards I designed.
 
   - slug: coderdojo
     ref: U9
@@ -128,6 +143,11 @@ projects:
       Method: photogrammetry
       Built: optics housing, PCB, software
       Team: just me
+    gallery:
+      - file: intraoral-scan.jpg
+        caption: Scanning a dental model on the calibration board.
+      - file: intraoral-pcb.jpg
+        caption: The scanner's PCB layout.
 
   - slug: robowars
     ref: M1
@@ -140,6 +160,13 @@ projects:
       Drive: BLDC motors, mecanum wheels
       Weapon: chainsaw, remote actuated
       Armour: baking tins
+    gallery:
+      - file: robowars-build.jpg
+        caption: Fitting the chainsaw.
+      - file: robowars.jpg
+        caption: Finished, in its baking-tin armour.
+      - file: robowars-arena.jpg
+        caption: At the Patch Robowars arena.
 
   - slug: iss
     ref: U7
@@ -156,6 +183,8 @@ projects:
   - slug: accellab
     ref: U8
     name: AccelLab
+    image: accellab.jpg
+    alt: AccelLab's 3D render of the accelerator ring with a particle on its path
     link: https://github.com/gognakamaya-dev/AccelLab
     what: |
       A 3D particle accelerator visualiser with torus geometry and simulated trajectories, in NumPy and Matplotlib.
