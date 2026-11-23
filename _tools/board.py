@@ -255,11 +255,10 @@ def wide():
         b.trace([(px, py), (px + 18, py)], "feena", via_end=True)
 
     # connectors = the only way into the site
-    for ref, label, cx, href in [("J1", "ABOUT", 160, "/about/"), ("J2", "ESSAYS", 290, "/essays/"),
-                                 ("J3", "BOOKSHELF", 420, "/bookshelf/"), ("J4", "WORK", 565, "/work/"),
-                                 ("J5", "TRAVEL", 695, "/travel/")]:
+    for ref, label, cx, href in [("J1", "ABOUT", 170, "/about/"), ("J2", "WORK", 310, "/work/"),
+                                 ("J3", "BOOKSHELF", 450, "/bookshelf/"), ("J4", "TRAVEL", 600, "/travel/")]:
         b.usbc(ref, label, cx, 740, href, w=100)
-    b.header("J6", "GITHUB", 120, 616, "https://github.com/gognakamaya-dev", n=3)
+    b.header("J5", "GITHUB", 120, 616, "https://github.com/gognakamaya-dev", n=3)
 
     for ref, x, y, v in [("C1", 818, 278, False), ("C2", 962, 278, False), ("R1", 980, 470, True)]:
         b.passive(ref, x, y, v)
@@ -302,10 +301,9 @@ def tall():
     b.trace([u8["b"][0], (u8["b"][0][0], 764), (u9["t"][3][0], 764), u9["t"][3]], "feena")
     b.trace([B[2], (B[2][0], 764), (u9["t"][2][0], 764), u9["t"][2]], "feena")
 
-    for ref, label, cx, href in [("J1", "ABOUT", 50, "/about/"), ("J2", "ESSAYS", 130, "/essays/"),
-                                 ("J3", "BOOKS", 210, "/bookshelf/"), ("J4", "WORK", 290, "/work/"),
-                                 ("J5", "TRAVEL", 370, "/travel/")]:
-        b.usbc(ref, label, cx, 1000, href, w=64, center=True)
+    for ref, label, cx, href in [("J1", "ABOUT", 66, "/about/"), ("J2", "WORK", 162, "/work/"),
+                                 ("J3", "BOOKS", 258, "/bookshelf/"), ("J4", "TRAVEL", 354, "/travel/")]:
+        b.usbc(ref, label, cx, 1000, href, w=76, center=True)
     return b.svg("A circuit board with my name on it. Each chip is a project; the connectors along the bottom are the pages.", "tall")
 
 
