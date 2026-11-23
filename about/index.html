@@ -2,9 +2,6 @@
 title: About
 section: about
 ---
-{% assign place_count = 0 %}
-{% for c in site.data.travel %}{% assign place_count = place_count | plus: c.places.size %}{% endfor %}
-{% assign books = site.data.books | map: "title" %}
 
 <section class="book about">
   <figure class="plate">
@@ -32,9 +29,6 @@ section: about
           <tr><th scope="row">Studying</th><td>Physics at DCU</td></tr>
           <tr><th scope="row">Builds</th><td>circuit boards, robots, medical devices, and a startup</td></tr>
           <tr><th scope="row">Speaks</th><td>English, Hindi, Punjabi, Irish and French</td></tr>
-          <tr><th scope="row">Been to</th><td><a href="{{ '/travel/' | relative_url }}">{{ site.data.travel.size }} countries and {{ place_count }} places</a></td></tr>
-          <tr><th scope="row">Next stop</th><td>Amsterdam, in December</td></tr>
-          <tr><th scope="row">On the shelf</th><td><a href="{{ '/bookshelf/' | relative_url }}"><cite>{{ books[0] }}</cite>, <cite>{{ books[1] }}</cite> and {{ books.size | minus: 2 }} more</a></td></tr>
           <tr><th scope="row">Off the bench</th><td>sea swimming, badminton, music</td></tr>
         </tbody>
       </table>

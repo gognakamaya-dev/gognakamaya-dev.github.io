@@ -275,7 +275,6 @@ def wide():
                                  ("J3", "BOOKSHELF", 450, "/bookshelf/"), ("J4", "TRAVEL", 600, "/travel/")]:
         b.usbc(ref, label, cx, 740, href, w=100)
     b.header("J5", "GITHUB", 120, 616, "https://github.com/gognakamaya-dev", n=3)
-    b.display("LCD1", 345, 578, 136, 104, "/assets/img/kamaya.jpg", "/about/", "About me")
 
     for ref, x, y, v in [("C1", 818, 278, False), ("C2", 962, 278, False), ("R1", 980, 470, True)]:
         b.passive(ref, x, y, v)
@@ -293,7 +292,6 @@ def tall():
     b.text(36, 120, "KAMAYA", "silk name")
     b.text(36, 180, "GOGNA", "silk name")
     b.text(40, 212, "REV 18 · DUBLIN · PHYSICS @ DCU", "silk meta")
-    b.display("LCD1", 300, 78, 86, 100, "/assets/img/kamaya.jpg", "/about/", "About me")
 
     u2 = b.chip("U2", "AKARA", "VIOLET HRI", 110, 290, 132, 50, "/work/#akara", "akara", label="Akara Robotics")
     u3 = b.chip("U3", "ANAULA", "BIOREACTOR", 310, 290, 132, 50, "/work/#anaula", "anaula", label="Anaula")

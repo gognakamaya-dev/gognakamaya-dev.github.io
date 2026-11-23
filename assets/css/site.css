@@ -171,7 +171,7 @@ body.home main { display: grid; place-items: center; padding: clamp(10px, 2.5vmi
 
 .board .silk { fill: var(--silk); }
 .board .name { font-size: 78px; font-weight: 800; font-stretch: 112.5%; letter-spacing: 0.01em; }
-.board.tall .name { font-size: 51px; }
+.board.tall .name { font-size: 60px; }
 .board .meta { font-size: 13px; letter-spacing: 0.14em; fill: var(--cu); }
 .board.tall .meta { font-size: 11px; letter-spacing: 0.1em; }
 .board .intro { font-size: 15px; font-weight: 400; fill-opacity: 0.92; }
