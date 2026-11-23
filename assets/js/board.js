@@ -12,9 +12,10 @@ document.querySelectorAll(".board").forEach((board) => {
 
   if (!visible || still) {
     lightLeds(0);
+    board.classList.add("ready");
   } else {
     // stagger traces outward from the MCU, measured in real path lengths
-    const mcu = board.querySelector('[data-net="about"] .pkg').getBBox();
+    const mcu = board.querySelector('[data-net="mcu"] .pkg').getBBox();
     const cx = mcu.x + mcu.width / 2, cy = mcu.y + mcu.height / 2;
     traces.forEach((t) => {
       const len = t.getTotalLength();
@@ -28,6 +29,7 @@ document.querySelectorAll(".board").forEach((board) => {
     requestAnimationFrame(() => {
       traces.forEach((t) => { t.classList.add("drawing"); t.style.strokeDashoffset = "0"; });
       setTimeout(() => lightLeds(150), 1100);
+      setTimeout(() => board.classList.add("ready"), 1900);
       // tidy up so hover transitions aren't delayed
       setTimeout(() => traces.forEach((t) => {
         t.classList.remove("drawing");

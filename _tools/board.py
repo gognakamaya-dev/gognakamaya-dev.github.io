@@ -55,8 +55,8 @@ class Board:
     # parts -----------------------------------------------------
     def chip(self, ref, name, sub, cx, cy, w, h, href, net, pins="tb", n=4, label=None):
         x, y = cx - w / 2, cy - h / 2
-        g = [f'<a class="part chip" href="{href}" data-net="{net}" aria-label="{esc(label or name)}">',
-             f'<g>']
+        g = [f'<g class="part chip" data-net="{net}">',
+             f'<title>{esc(label or name)}</title>']
         pad_len, pad_w = 12, 7
         coords = {"t": [], "b": [], "l": [], "r": []}
         for side in pins:
@@ -80,7 +80,7 @@ class Board:
             g.append(f'<text class="mark-sub" x="{cx}" y="{cy + 13}" text-anchor="middle">{esc(sub)}</text>')
         ry = y - (24 if "t" in pins else 8)
         g.append(f'<text class="silk refdes" x="{x}" y="{ry}">{ref}</text>')
-        g.append("</g></a>")
+        g.append("</g>")
         self.parts.append("".join(g))
         self.pins[ref] = coords
         return coords
@@ -97,15 +97,17 @@ class Board:
         self.parts.append("".join(g))
         return (cx - s / 2, cy), (cx + s / 2, cy)
 
-    def usbc(self, ref, label, cx, y_edge, href, w=92):
+    def usbc(self, ref, label, cx, y_edge, href, w=92, center=False):
         h = 40
         x = cx - w / 2
         y = y_edge - h + 12   # sticks out past the board edge, like a real connector
-        g = [f'<a class="part conn" href="{href}" aria-label="{esc(label)}">',
+        g = [f'<a class="part conn usb" href="{href}" aria-label="{esc(label.title())}">',
+             f'<rect class="hit" x="{x - 6}" y="{y - 32}" width="{w + 12}" height="{h + 32}"/>',
+             f'<rect class="socket-glow" x="{x - 5}" y="{y - 5}" width="{w + 10}" height="{h + 10}" rx="13"/>',
              f'<rect class="shell" x="{x}" y="{y}" width="{w}" height="{h}" rx="9"/>',
              f'<rect class="slot" x="{x + 12}" y="{y + 12}" width="{w - 24}" height="{h - 24}" rx="6"/>',
-             f'<text class="silk refdes" x="{x}" y="{y - 12}">{ref}</text>',
-             f'<text class="silk conn-label" x="{x + 30}" y="{y - 12}">{esc(label)}</text>',
+             (f'<text class="silk conn-label" x="{cx}" y="{y - 12}" text-anchor="middle">{esc(label)}</text>' if center else
+              f'<text class="silk refdes" x="{x}" y="{y - 12}">{ref}</text><text class="silk conn-label" x="{x + 30}" y="{y - 12}">{esc(label)}</text>'),
              "</a>"]
         self.parts.append("".join(g))
         return (cx, y)
@@ -210,8 +212,8 @@ def wide():
     b.text(86, 354, "medical devices, and read far too", "silk intro")
     b.text(86, 378, "many classic novels.", "silk intro")
 
-    u1 = b.chip("U1", "KG-18", "ABOUT ME", 890, 380, 150, 150, "#about", "about", pins="tblr", n=6,
-                label="About me")
+    u1 = b.chip("U1", "KG-18", "MCU", 890, 380, 150, 150, "", "mcu", pins="tblr", n=6,
+                label="KG-18, the main chip")
     u2 = b.chip("U2", "AKARA", "VIOLET HRI", 640, 120, 132, 52, "/work/#akara", "akara", label="Akara Robotics: Violet's lights")
     u3 = b.chip("U3", "ANAULA", "BIOREACTOR", 890, 120, 132, 52, "/work/#anaula", "anaula", label="Anaula: photobioreactor control")
     u5 = b.chip("U5", "FIACLA", "X-RAY AI", 1080, 150, 112, 52, "/work/#fiacla", "fiacla", n=3, label="Fiacla: AI for dental X-rays")
@@ -242,65 +244,66 @@ def wide():
     b.trace([(690, 470), (760, 470), (760, L[5][1]), L[5]], "leds", width=3)
     b.text(104, 556, "WS2812 · DATA →", "silk tiny")
 
-    # connectors = navigation
-    for ref, label, cx, href in [("J1", "ESSAYS", 180, "/essays/"), ("J2", "BOOKSHELF", 340, "/bookshelf/"),
-                                 ("J3", "WORK", 500, "/work/"), ("J4", "TRAVEL", 660, "/travel/")]:
-        b.usbc(ref, label, cx, 740, href, w=104)
-    b.header("J5", "GITHUB", 120, 616, "https://github.com/gognakamaya-dev", n=3)
+    # Feena: the startup, on its own stub traces down through vias
+    u9 = b.chip("U9", "FEENA", "THE RAISE ’26", 380, 616, 132, 52, "", "feena", n=3, label="Feena: AI agents that test web apps")
+    for (px, py) in u9["t"]:
+        b.trace([(px, py), (px, py - 22)], "feena", via_end=True)
+    for (px, py) in u9["b"]:
+        b.trace([(px, py), (px, py + 18)], "feena", via_end=True)
+
+    # connectors = the only way into the site
+    for ref, label, cx, href in [("J1", "ABOUT", 160, "/about/"), ("J2", "ESSAYS", 290, "/essays/"),
+                                 ("J3", "BOOKSHELF", 420, "/bookshelf/"), ("J4", "WORK", 565, "/work/"),
+                                 ("J5", "TRAVEL", 695, "/travel/")]:
+        b.usbc(ref, label, cx, 740, href, w=100)
+    b.header("J6", "GITHUB", 120, 616, "https://github.com/gognakamaya-dev", n=3)
 
     for ref, x, y, v in [("C1", 818, 278, False), ("C2", 962, 278, False), ("R1", 980, 470, True),
                          ("R2", 800, 470, True), ("C3", 760, 300, True)]:
         b.passive(ref, x, y, v)
 
-    b.text(1150, 718, "KG-PCB-01 · 2 LAYERS · 1.6 MM · ENIG · MADE IN DUBLIN", "silk tiny", "end")
-    return b.svg("A circuit board with my name on it. Each chip is a project, each connector is a page.", "wide")
+    b.text(1150, 718, "KG-PCB-01 · MADE IN DUBLIN", "silk tiny", "end")
+    return b.svg("A circuit board with my name on it. Each chip is a project; the connectors along the bottom are the pages.", "wide")
 
 
 # ── phone board ───────────────────────────────────────────────
 
 def tall():
-    b = Board(420, 1240)
-    for x, y in [(44, 44), (376, 44), (44, 1150), (376, 1150)]:
+    b = Board(420, 1000)
+    for x, y in [(40, 40), (380, 40), (40, 900), (380, 900)]:
         b.hole(x, y)
-    b.text(36, 128, "KAMAYA", "silk name")
-    b.text(36, 190, "GOGNA", "silk name")
-    b.text(40, 226, "REV 18 · DUBLIN · PHYSICS @ DCU", "silk meta")
-    b.text(40, 266, "I build robots, circuit boards and", "silk intro")
-    b.text(40, 288, "medical devices, and read far too", "silk intro")
-    b.text(40, 310, "many classic novels.", "silk intro")
+    b.text(36, 120, "KAMAYA", "silk name")
+    b.text(36, 180, "GOGNA", "silk name")
+    b.text(40, 212, "REV 18 · DUBLIN · PHYSICS @ DCU", "silk meta")
 
-    u2 = b.chip("U2", "AKARA", "VIOLET HRI", 110, 420, 132, 50, "/work/#akara", "akara", label="Akara Robotics")
-    u3 = b.chip("U3", "ANAULA", "BIOREACTOR", 310, 420, 132, 50, "/work/#anaula", "anaula", label="Anaula")
-    u1 = b.chip("U1", "KG-18", "ABOUT ME", 210, 590, 124, 124, "#about", "about", pins="tblr", n=5, label="About me")
-    m1 = b.chip("M1", "ROBO", "WARS", 62, 590, 58, 110, "/work/#robowars", "robowars", pins="r", n=3, label="Robowars")
-    u4 = b.chip("U4", "SCOPE", "LAB", 358, 590, 58, 110, "/work/#patch", "patch", pins="l", n=3, label="ScopeLab")
-    u5 = b.chip("U5", "FIACLA", "X-RAY AI", 110, 770, 132, 50, "/work/#fiacla", "fiacla", label="Fiacla")
-    u6 = b.chip("U6", "SCANNER", "INTRAORAL", 310, 770, 132, 50, "/work/#intraoral", "intraoral", label="Intraoral scanner")
-    u7 = b.chip("U7", "ISS-CAM", "AGE 14", 110, 880, 132, 50, "/work/#iss", "iss", label="ISS camera")
-    u8 = b.chip("U8", "ACCEL", "LAB", 310, 880, 132, 50, "/work/#accellab", "accellab", label="AccelLab")
+    u2 = b.chip("U2", "AKARA", "VIOLET HRI", 110, 290, 132, 50, "", "akara", label="Akara Robotics")
+    u3 = b.chip("U3", "ANAULA", "BIOREACTOR", 310, 290, 132, 50, "", "anaula", label="Anaula")
+    u1 = b.chip("U1", "KG-18", "MCU", 210, 452, 116, 116, "", "mcu", pins="tblr", n=5, label="KG-18, the main chip")
+    m1 = b.chip("M1", "ROBO", "WARS", 62, 452, 58, 104, "", "robowars", pins="r", n=3, label="Robowars")
+    u4 = b.chip("U4", "SCOPE", "LAB", 358, 452, 58, 104, "", "patch", pins="l", n=3, label="ScopeLab")
+    u5 = b.chip("U5", "FIACLA", "X-RAY AI", 110, 616, 132, 46, "", "fiacla", label="Fiacla")
+    u6 = b.chip("U6", "SCANNER", "INTRAORAL", 310, 616, 132, 46, "", "intraoral", label="Intraoral scanner")
+    u7 = b.chip("U7", "ISS-CAM", "AGE 14", 110, 716, 132, 46, "", "iss", label="ISS camera")
+    u8 = b.chip("U8", "ACCEL", "LAB", 310, 716, 132, 46, "", "accellab", label="AccelLab")
+    u9 = b.chip("U9", "FEENA", "THE RAISE ’26", 210, 816, 132, 46, "", "feena", label="Feena")
 
     T, B, L, R = u1["t"], u1["b"], u1["l"], u1["r"]
-    bus(b, T[0:2], u2["b"][2:4], 494, "akara", gap=10)
-    bus(b, T[3:5], u3["b"][0:2], 494, "anaula", gap=10)
+    bus(b, T[0:2], u2["b"][2:4], 360, "akara", gap=10)
+    bus(b, T[3:5], u3["b"][0:2], 360, "anaula", gap=10)
     bus(b, L[1:4], m1["r"], 122, "robowars", axis="x", gap=8)
     bus(b, R[1:4], u4["l"], 298, "patch", axis="x", gap=8)
-    bus(b, B[0:2], u5["t"][2:4], 688, "fiacla", gap=10)
-    bus(b, B[3:5], u6["t"][0:2], 688, "intraoral", gap=10)
-    b.trace([u5["b"][0], (u5["b"][0][0], 820), u7["t"][0]], "iss")
-    b.trace([u6["b"][3], (u6["b"][3][0], 820), u8["t"][3]], "accellab")
+    bus(b, B[0:2], u5["t"][2:4], 548, "fiacla", gap=10)
+    bus(b, B[3:5], u6["t"][0:2], 548, "intraoral", gap=10)
+    b.trace([u5["b"][0], (u5["b"][0][0], 664), u7["t"][0]], "iss")
+    b.trace([u6["b"][3], (u6["b"][3][0], 664), u8["t"][3]], "accellab")
+    b.trace([u7["b"][3], (u7["b"][3][0], 764), (u9["t"][0][0], 764 + (u9["t"][0][0] - u7["b"][3][0]) * 0), u9["t"][0]], "feena")
+    b.trace([u8["b"][0], (u8["b"][0][0], 764), (u9["t"][3][0], 764), u9["t"][3]], "feena")
 
-    prev = None
-    for i, name in enumerate(INTERESTS):
-        col, row = i % 3, i // 3
-        din, dout = b.led(f"D{i + 1}", 90 + col * 120, 990 + row * 78, name, i)
-        if prev and col:
-            b.trace([prev, din], "leds", width=3)
-        prev = dout
-
-    for ref, label, cx, href in [("J1", "ESSAYS", 64, "/essays/"), ("J2", "BOOKS", 162, "/bookshelf/"),
-                                 ("J3", "WORK", 260, "/work/"), ("J4", "TRAVEL", 358, "/travel/")]:
-        b.usbc(ref, label, cx, 1240, href, w=72)
-    return b.svg("A circuit board with my name on it. Each chip is a project, each connector is a page.", "tall")
+    for ref, label, cx, href in [("J1", "ABOUT", 50, "/about/"), ("J2", "ESSAYS", 130, "/essays/"),
+                                 ("J3", "BOOKS", 210, "/bookshelf/"), ("J4", "WORK", 290, "/work/"),
+                                 ("J5", "TRAVEL", 370, "/travel/")]:
+        b.usbc(ref, label, cx, 1000, href, w=64, center=True)
+    return b.svg("A circuit board with my name on it. Each chip is a project; the connectors along the bottom are the pages.", "tall")
 
 
 if __name__ == "__main__":
