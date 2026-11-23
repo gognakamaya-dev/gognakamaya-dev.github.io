@@ -246,14 +246,13 @@ def wide():
     b.trace([(690, 470), (760, 470), (760, L[5][1]), L[5]], "leds", width=3)
     b.text(104, 556, "WS2812 · DATA →", "silk tiny")
 
-    # Feena: the startup, on its own stub traces down through vias
-    u9 = b.chip("U9", "FEENA", "BROWSER AGENTS", 380, 616, 132, 52, "/work/#feena", "feena", n=3, label="Feena: AI agents that test web apps")
-    # Feena runs to the MCU's spare bottom pin, around the scanner's bus and inside the LED chain
-    b.trace([B[0], (B[0][0], 482), (560, 482), (560, 560), (u9["t"][2][0], 560), u9["t"][2]], "feena")
-    for (px, py) in u9["t"][:2]:
-        b.trace([(px, py), (px, py - 22)], "feena", via_end=True)
-    for (px, py) in u9["b"]:
-        b.trace([(px, py), (px, py + 18)], "feena", via_end=True)
+    # Feena sits between the name and the Akara / Robowars column, wired to the MCU's spare left pin
+    u9 = b.chip("U9", "FEENA", "AGENTS", 530, 250, 80, 132, "/work/#feena", "feena", pins="r", n=4,
+                label="Feena: AI agents that test web apps")
+    F = u9["r"]
+    b.trace([F[3], (730, F[3][1]), (730, L[0][1]), L[0]], "feena")
+    for (px, py) in F[:3]:
+        b.trace([(px, py), (px + 18, py)], "feena", via_end=True)
 
     # connectors = the only way into the site
     for ref, label, cx, href in [("J1", "ABOUT", 160, "/about/"), ("J2", "ESSAYS", 290, "/essays/"),
