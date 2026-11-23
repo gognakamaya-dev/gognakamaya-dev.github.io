@@ -261,8 +261,7 @@ def wide():
         b.usbc(ref, label, cx, 740, href, w=100)
     b.header("J6", "GITHUB", 120, 616, "https://github.com/gognakamaya-dev", n=3)
 
-    for ref, x, y, v in [("C1", 818, 278, False), ("C2", 962, 278, False), ("R1", 980, 470, True),
-                         ("C3", 760, 300, True)]:
+    for ref, x, y, v in [("C1", 818, 278, False), ("C2", 962, 278, False), ("R1", 980, 470, True)]:
         b.passive(ref, x, y, v)
 
     b.text(1150, 718, "KG-PCB-01 · MADE IN DUBLIN", "silk tiny", "end")

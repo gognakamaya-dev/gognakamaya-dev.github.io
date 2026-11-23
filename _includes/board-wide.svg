@@ -80,6 +80,5 @@
 <g class="passive"><rect class="pad" x="803" y="271" width="8" height="14" rx="1"/><rect class="pad" x="825" y="271" width="8" height="14" rx="1"/><rect class="smd" x="811" y="272" width="14" height="12"/><text class="silk refdes small" x="803" y="264">C1</text></g>
 <g class="passive"><rect class="pad" x="947" y="271" width="8" height="14" rx="1"/><rect class="pad" x="969" y="271" width="8" height="14" rx="1"/><rect class="smd" x="955" y="272" width="14" height="12"/><text class="silk refdes small" x="947" y="264">C2</text></g>
 <g class="passive"><rect class="pad" x="973" y="455" width="14" height="8" rx="1"/><rect class="pad" x="973" y="477" width="14" height="8" rx="1"/><rect class="smd" x="974" y="463" width="12" height="14"/><text class="silk refdes small" x="992" y="474">R1</text></g>
-<g class="passive"><rect class="pad" x="753" y="285" width="14" height="8" rx="1"/><rect class="pad" x="753" y="307" width="14" height="8" rx="1"/><rect class="smd" x="754" y="293" width="12" height="14"/><text class="silk refdes small" x="772" y="304">C3</text></g>
 </g>
 </svg>
